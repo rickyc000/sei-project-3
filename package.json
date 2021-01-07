@@ -1,0 +1,17 @@
+{
+  "name": "sei-project-3",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/rickyc000/sei-project-3.git",
+  "author": "tobil <tobilesi@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.11.10"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "npx nodemon",
+    "seed": "node db/seeds.js"
+  }
+}
