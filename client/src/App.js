@@ -7,6 +7,8 @@ import SpaceIndex from './components/spaces/SpaceIndex'
 import SpaceShow from './components/spaces/SpaceShow'
 import SpaceNew from './components/spaces/SpaceNew'
 import SpaceEdit from './components/spaces/SpaceEdit'
+import Register from './components/auth/Register'
+import Login from './components/auth/Login'
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route path="/spaces/spaceshow" component={SpaceShow} />
         <Route path="/spaces/edit" component={SpaceEdit} />
         <Route path="/spaces" component={SpaceIndex} />
+        <Route path="/register" component={Register} />
+        <Route path="/login" component={Login} />
       </Switch>
     </BrowserRouter>
   )
