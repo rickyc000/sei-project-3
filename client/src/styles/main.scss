@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap');
+
+.header {
+  margin: calc(15rem - .14285714em) 0 1rem;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  h1 {
+    font-size: 5em;
+    font-family: 'Comfortaa', cursive;
+    font-weight: normal;
+    margin-bottom: 0;
+    margin-top: 3em;
+  }
+}
+
+.button-wrapper{
+  display: flex;
+  justify-content: center;
+}
