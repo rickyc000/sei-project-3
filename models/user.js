@@ -11,6 +11,22 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
 })
 
+userSchema.virtual('createdSpaces', {
+  ref: 'Space',
+  localField: '_id',
+  foreignField: 'owner',
+})
+
+userSchema.set('toJSON', {
+  virtuals: true,
+  transform(_doc, json) {
+    delete json.password
+    delete json.__v
+    return json
+  },
+})
+
+
 userSchema
   .virtual('passwordConfirmation')
   .set(function(passwordConfirmation) {

@@ -15,13 +15,25 @@ router.route('/spaces/:id')
   .put(spaces.update)
   .delete(secureRoute, spaces.delete)
 
+router.route('/profile')
+  .get(secureRoute, users.userProfile)
+
+
 router.route('/register')
   .post(auth.registerUser)
 
 router.route('/login')
   .post(auth.loginUser)
 
+router.route('/spaces/:id/comments')
+  .post(secureRoute, spaces.commentCreate)
+
+router.route('/spaces/:id/comments/:commentId')
+  .delete(secureRoute, spaces.commentDelete)  
+
 router.route('/users')
   .get(users.index)
+
   
+
 export default router

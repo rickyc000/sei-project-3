@@ -1,4 +1,5 @@
 import Space from '../models/space.js'
+import { notFound, forbidden } from '../lib/errorHandler.js'
 
 // spaces index
 
@@ -15,7 +16,8 @@ async function spaceIndex(_req, res, next){
 
 async function spaceCreate (req, res, next){
   try {
-    const newSpace = await Space.create(req.body)
+    const newSpaceData = { ...req.body, owner: req.currentUser._id }
+    const newSpace = await Space.create(newSpaceData)
     return res.status(201).json(newSpace)
   } catch (err) {
     next(err)
@@ -27,7 +29,7 @@ async function spaceCreate (req, res, next){
 async function spaceShow(req, res, next){
   const { id } = req.params
   try {
-    const space = await Space.findById(id)
+    const space = await Space.findById(id).populate('owner').populate('comments.owner')
     if (!space) throw new Error()
     return res.status(200).json(space)
   } catch (err) {
@@ -56,13 +58,49 @@ async function spaceDelete(req, res, next) {
   const { id } = req.params
   try {
     const spaceToDelete = await Space.findById(id)
-    if (!spaceToDelete) throw new Error()
+    if (!spaceToDelete) throw new Error(notFound)
+    if (!spaceToDelete.owner.equals(req.currentUser._id)) throw new Error(forbidden)
     await spaceToDelete.remove()
     return res.sendStatus(204)
   } catch (err) {
     next(err)
   }
 }
+
+// add a comment
+
+async function spaceCommentCreate(req, res, next) {
+  const { id } = req.params
+  try {
+    const space = await Space.findById(id)
+    if (!space) throw new Error(notFound)
+    const newComment = { ...req.body, owner: req.currentUser._id }
+    space.comments.push(newComment)
+    await space.save()
+    return res.status(201).json(space)
+  } catch (err) {
+    next(err)
+  }
+}
+
+// delete a comment
+
+async function spaceCommentDelete(req, res, next) {
+  const { id, commentId } = req.params
+  try {
+    const space = await Space.findById(id)
+    if (!space) throw new Error(notFound)
+    const commentToDelete = space.comments.id(commentId)
+    if (!commentToDelete) throw new Error(notFound)
+    if (!commentToDelete.owner.equals(req.currentUser._id)) throw new Error(forbidden)
+    await commentToDelete.remove()
+    await space.save()
+    return res.sendStatus(204)
+  } catch (err) {
+    next(err)
+  }
+}
+
 
 
 export default {
@@ -71,4 +109,6 @@ export default {
   show: spaceShow,
   update: spaceUpdate,
   delete: spaceDelete,
+  commentCreate: spaceCommentCreate,
+  commentDelete: spaceCommentDelete,
 }
