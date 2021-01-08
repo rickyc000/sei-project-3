@@ -91,7 +91,7 @@ export default [
   },
   {
     name: 'Little Venice Canal',
-    description: 'Stunning canals in ',
+    description: 'A lovely and tranquil place to take a break. Walk along the canals and spot the all the different canal boats',
     image: 'https://offloadmedia.feverup.com/secretldn.com/wp-content/uploads/2020/02/18075556/little-venice.jpg',
     location: { longitude: '-0.180200', latitude: '51.522990' },
   },
@@ -103,7 +103,7 @@ export default [
   },
   {
     name: 'Parliament Hill, Hampstead Heath',
-    description: '',
+    description: 'Stunning views of the London skyline. Its a great place to sit out in warmer weather and spot central London landmarks such as the Shard, the Gherkin and St Pauls Cathedral.',
     image: 'https://media.istockphoto.com/photos/parliament-hill-picture-id1148794750?k=6&m=1148794750&s=612x612&w=0&h=e4OoB9RitsWKkFKpIouVoxcSLcGOsRKv_G-cxROrzz0=',
     location: { longitude: '-0.146330', latitude: '51.556431' },
   }
