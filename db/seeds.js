@@ -16,9 +16,7 @@ async function seedDatabase() {
 
     console.log('🤖 Database dropped')
 
-    const spaces = await Space.create(spaceData)
-    console.log(`🤖 ${spaces.length} spaces created`)
-
+  
     const users = [] // ! an array to push my 100 fake users into
 
     for (let index = 0; index < 100; index++) { // ! looping to created 300 users
@@ -40,7 +38,17 @@ async function seedDatabase() {
 
     const createdUsers = await User.create(users) // ! then pass that users array
 
-    console.log(`🤖 Created ${createdUsers.length}`)
+    console.log(`🤖 Created ${createdUsers.length} users`)
+
+    const spaceDataWithOwners = spaceData.map(space => {
+      const randomIndex = Math.floor(Math.random() * users.length)
+      space.owner = createdUsers[randomIndex]._id
+      return space
+    })
+    
+    const spaces = await Space.create(spaceDataWithOwners)
+
+    console.log(`🤖 ${spaces.length} spaces created`)
 
 
     await mongoose.connection.close()
