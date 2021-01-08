@@ -6,3 +6,4 @@ export function getAllSpaces() {
   return axios.get(`${baseUrl}/spaces`)
 }
 
+export default getAllSpaces
