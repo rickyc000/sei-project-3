@@ -31,6 +31,9 @@ router.route('/spaces/:id/comments')
 router.route('/spaces/:id/comments/:commentId')
   .delete(secureRoute, spaces.commentDelete)  
 
+router.route('/spaces/:id/favourite')
+  .post(secureRoute, spaces.favouriteASpace)
+
 router.route('/users')
   .get(users.index)
 

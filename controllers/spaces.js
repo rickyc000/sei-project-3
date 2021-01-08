@@ -29,7 +29,7 @@ async function spaceCreate (req, res, next){
 async function spaceShow(req, res, next){
   const { id } = req.params
   try {
-    const space = await Space.findById(id).populate('owner').populate('comments.owner')
+    const space = await Space.findById(id).populate('owner').populate('comments.owner').populate('favouritedBy.owner')
     if (!space) throw new Error()
     return res.status(200).json(space)
   } catch (err) {
@@ -101,6 +101,24 @@ async function spaceCommentDelete(req, res, next) {
   }
 }
 
+// favourite space
+
+async function favouriteASpace(req, res, next) {
+  const { id } = req.params
+  try {
+    const space = await Space.findById(id)
+    if (!space) throw new Error(notFound)
+    const favourited = { ...req.body, owner: req.currentUser._id }
+    space.favouritedBy.push(favourited)
+    await space.save()
+    return res.status(201).json(space)
+  } catch (err) {
+    next(err)
+  }
+}
+
+
+
 
 
 export default {
@@ -111,4 +129,5 @@ export default {
   delete: spaceDelete,
   commentCreate: spaceCommentCreate,
   commentDelete: spaceCommentDelete,
+  favouriteASpace: favouriteASpace,
 }

@@ -8,6 +8,12 @@ const commentSchema = new mongoose.Schema({
   timestamps: true,
 })
 
+const favouriteSchema = new mongoose.Schema({
+  isFavourite: { type: Boolean, default: false },
+  owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true  },
+  space: { type: mongoose.Schema.ObjectId, ref: 'Space', required: true  },
+})
+
 const citySpaceSchema = new mongoose.Schema({
   name: { type: String, required: true, unique: true },
   description: { type: String, required: true, maxlength: 800 },
@@ -15,6 +21,7 @@ const citySpaceSchema = new mongoose.Schema({
   location: { type: Object, required: true },
   owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true  },
   comments: [commentSchema],
+  favouritedBy: [favouriteSchema],
 })
 
 citySpaceSchema.plugin(uniqueValidator)
