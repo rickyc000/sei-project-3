@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useHistory, useLocation } from 'react-router-dom'
 import { isAuthenticated, logout } from '../lib/auth'
 import {
   Button,
@@ -10,24 +10,17 @@ import {
 
 function Nav() {
 
-  const isLoggedIn = isAuthenticated()
-  console.log(isLoggedIn)
-
-  const [loggedOut, setLoggedOut] = React.useState(false)
-  // const [features, setFeatures] = React.useState(true)
- 
+  useLocation()
   
-
+  const isLoggedIn = isAuthenticated()
+  
   const history = useHistory()
 
   const handleLogout = () => {
     logout()
-    setLoggedOut(true)
     history.push('/')
-   
   }
 
-  console.log(loggedOut)
   
   return (
     <Menu
