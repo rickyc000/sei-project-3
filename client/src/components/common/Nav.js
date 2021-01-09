@@ -1,5 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
+import { isAuthenticated, logout } from '../lib/auth'
 import {
   Button,
   Container,
@@ -9,6 +10,15 @@ import {
 
 function Nav() {
 
+  const isLoggedIn = isAuthenticated()
+
+  const history = useHistory()
+
+  const handleLogout = () => {
+    logout()
+    history.push('/')
+  }
+  
   return (
     <Menu
       size='large'
@@ -21,13 +31,28 @@ function Nav() {
             name='home'
           />
         </Link>
+        {isLoggedIn && <Button as={Link} to='/edit'>
+          Add Space
+        </Button>}
         <Menu.Item position='right'>
-          <Button as='a' >
-            Log in
-          </Button>
-          <Button as='a' style={{ marginLeft: '0.5em' }}>
-            Sign Up
-          </Button>
+          {!isLoggedIn ?
+            <>
+              <Button as={Link} to='/login'>
+                Log In
+              </Button>
+              <Button as={Link} to='/register' style={{ marginLeft: '0.5em' }}>
+                Register
+              </Button>
+            </>
+            :
+            <>
+              <Button as="" onClick={handleLogout}>
+              Log Out
+              </Button>
+              <Button as={Link} to='/profile'>
+            Profile
+              </Button>
+            </>}
         </Menu.Item>
       </Container>
     </Menu>
