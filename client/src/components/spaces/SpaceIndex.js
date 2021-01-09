@@ -30,6 +30,7 @@ function SpaceIndex() {
 
 
 
+
   return (
     <div className="map-container">
 

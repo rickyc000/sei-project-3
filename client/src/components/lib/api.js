@@ -9,6 +9,12 @@ export function getAllSpaces() {
   return axios.get(`${baseUrl}/spaces`)
 }
 
+// Show Single Space 
+
+export function getSingleSpace(id) {
+  return axios.get(`${baseUrl}/spaces/${id}`)
+}
+
 //* AUTH Requests
 
 export function registerUser(formdata) {

@@ -17,8 +17,8 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/spaces/new" component={SpaceNew} />
-        <Route path="/spaces/spaceshow" component={SpaceShow} />
-        <Route path="/spaces/edit" component={SpaceEdit} />
+        <Route path="/spaces/:id" component={SpaceShow} />
+        <Route path="/spaces/:id/edit" component={SpaceEdit} />
         <Route path="/spaces" component={SpaceIndex} />
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
