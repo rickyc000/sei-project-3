@@ -1,6 +1,17 @@
 import mongoose from 'mongoose'
 import uniqueValidator from 'mongoose-unique-validator'
 
+export const tagCategories = [
+  'Riverside Spot',
+  'Architecture',
+  'Art & Design',
+  'Food & Drink',
+  'Peace & Quiet',
+  'Lively',
+  'Mother Nature',
+  'Sports & Leisure'
+] 
+
 const commentSchema = new mongoose.Schema({
   text: { type: String, required: true, maxlength: 300 },
   owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true  },
@@ -22,6 +33,7 @@ const citySpaceSchema = new mongoose.Schema({
   owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true  },
   comments: [commentSchema],
   favouritedBy: [favouriteSchema],
+  tags: [{ type: String, required: false }]
 })
 
 citySpaceSchema.plugin(uniqueValidator)

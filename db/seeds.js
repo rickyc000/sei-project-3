@@ -4,6 +4,7 @@ import Space from '../models/space.js'
 import User from '../models/user.js'
 import spaceData from './data/spaces.js'
 import faker from 'faker'
+import { tagCategories } from '../models/space.js'
 
 
 async function seedDatabase() {
@@ -25,6 +26,14 @@ async function seedDatabase() {
       const lastName = faker.name.lastName() // ! A fake last name
       const email = `${firstName}${lastName}@email.com` // ! concatening them together to make the email
       const profileImage = faker.image.avatar() // ! and a fake profile image
+      const tags = []
+      const numberOfTags = Math.floor(Math.random() * 5)
+      for (let i = 0; i <= numberOfTags; i++) {
+        const randomIndex = Math.floor(Math.random() * tagCategories.length)
+        tags.push(tagCategories[randomIndex])
+      }
+      const favouriteTags = [...new Set(tags)]
+
       users.push({
         username,
         firstName,
@@ -33,6 +42,7 @@ async function seedDatabase() {
         profileImage,
         password: 'pass', // ! setting all the passwords the same
         passwordConfirmation: 'pass',
+        favouriteTags
       })
     }
 

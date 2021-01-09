@@ -37,6 +37,9 @@ router.route('/spaces/:id/favourite')
 router.route('/users')
   .get(users.index)
 
+router.route('/users/:id')
+  .get(users.viewProfile)
+
   
 
 export default router

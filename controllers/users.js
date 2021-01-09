@@ -20,8 +20,21 @@ async function userProfile(req, res, next) {
   }
 }
 
+async function viewProfile(req, res, next) {
+  const { id } = req.params
+  try {
+    const user = await User.findById(id).populate('favouritedSpaces').populate('createdSpaces')
+    if (!user) throw new Error(notFound)
+    return res.status(200).json(user)
+  } catch (err) {
+    next(err)
+  }
+}
+
+
 
 export default {
   index: getAllUsers,
   userProfile: userProfile,
+  viewProfile: viewProfile
 }

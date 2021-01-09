@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   profileImage: { type: String, required: true },
   password: { type: String, required: true },
+  favouriteTags: [{ type: String, required: false }]
 })
 
 userSchema.virtual('createdSpaces', {
