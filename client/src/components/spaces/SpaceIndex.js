@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactMapGL, { Marker, Popup } from 'react-map-gl'
-import getAllSpaces from '../lib/api'
+import { getAllSpaces } from '../lib/api'
+// import { getToken } from '../lib/auth'
 
 
 function SpaceIndex() {
@@ -12,12 +13,12 @@ function SpaceIndex() {
 
   const [spaces, setSpaces] = React.useState([])
   const [popup, setPopup] = React.useState(null)
+  // const token = getToken()
 
   React.useEffect(() => {
     const getSpaces = async () => {
       try {
         const { data } = await getAllSpaces()
-        console.log(data)
         setSpaces(data)
 
       } catch (err) {
@@ -27,9 +28,7 @@ function SpaceIndex() {
     getSpaces()
   }, [])
 
-  console.log(spaces)
 
-  console.log(process.env.REACT_APP_MAPBOX_ACCESS_TOKEN)
 
   return (
     <div className="map-container">

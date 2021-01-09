@@ -11,13 +11,23 @@ import {
 function Nav() {
 
   const isLoggedIn = isAuthenticated()
+  console.log(isLoggedIn)
+
+  const [loggedOut, setLoggedOut] = React.useState(false)
+  // const [features, setFeatures] = React.useState(true)
+ 
+  
 
   const history = useHistory()
 
   const handleLogout = () => {
     logout()
+    setLoggedOut(true)
     history.push('/')
+   
   }
+
+  console.log(loggedOut)
   
   return (
     <Menu
@@ -44,8 +54,8 @@ function Nav() {
                 Register
               </Button>
             </>
-            :
-            <>
+            : 
+            <> 
               <Button as="" onClick={handleLogout}>
               Log Out
               </Button>

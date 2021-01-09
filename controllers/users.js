@@ -36,5 +36,5 @@ async function viewProfile(req, res, next) {
 export default {
   index: getAllUsers,
   userProfile: userProfile,
-  viewProfile: viewProfile
+  viewProfile: viewProfile,
 }
