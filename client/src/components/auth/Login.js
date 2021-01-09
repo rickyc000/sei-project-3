@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import useForm from '../../utils/useForm'
 import { loginUser } from '../lib/api'
 import { setToken } from '../lib/auth'
+import { Button, Form } from 'semantic-ui-react'
 
 
 function Login() {
@@ -32,43 +33,42 @@ function Login() {
   }
 
   return (
-    <section>
-      <div>
-        <div>
-          <form onSubmit={handleSubmit}>
-            <div>
-              <label>Email</label>
-              <div>
-                <input
-                  
-                  placeholder="Email"
-                  onChange={handleChange}
-                  name="email"
-                  value={formdata.email}
-                  onFocus={handleFocus}
-                />
-              </div>
-            </div>
-            <div>
-              <label>Password</label>
-              <div>
-                <input
-                  type="password"
-                  
-                  placeholder="Password"
-                  onChange={handleChange}
-                  name="password"
-                  value={formdata.password}
-                  onFocus={handleFocus}
-                />
-              </div>
-              {error && <p>Sorry, your username or password are incorrect</p>}
-            </div>
-            <div>
-              <button type="submit">Log Me In</button>
-            </div>
-          </form>
-        </div>
+    <section className="form-container">
+      <div className="form-box">
+
+        <Form
+          onSubmit={handleSubmit}>
+
+          <Form.Field>
+            <label>Email</label>
+            <input
+              placeholder="Email"
+              onChange={handleChange}
+              name="email"
+              value={formdata.email}
+              onFocus={handleFocus}
+            />
+          </Form.Field>
+
+          <Form.Field>
+            <label>Password</label>
+            <input
+              type="password"
+              placeholder="Password"
+              onChange={handleChange}
+              name="password"
+              value={formdata.password}
+              onFocus={handleFocus}
+            />
+          </Form.Field>
+
+          {error && <p>Sorry, your username or password are incorrect</p>}
+
+          <Button type="submit">
+            Log In
+          </Button>
+
+        </Form>
       </div>
     </section>
   )

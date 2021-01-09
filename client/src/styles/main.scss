@@ -23,3 +23,15 @@
   height: calc(100vh - 52px);
   width: 100%;
 }
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  margin: 100px 0 0 0;
+}
+
+.form-box {
+  width: 400px;
+}

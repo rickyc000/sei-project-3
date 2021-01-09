@@ -3,6 +3,7 @@ import useForm from '../../utils/useForm'
 import { registerUser } from '../lib/api'
 import { useHistory } from 'react-router-dom'
 import ImageUploadField from '../../utils/ImageUpload'
+import { Button, Form, Divider } from 'semantic-ui-react'
 
 function Register() {
 
@@ -30,113 +31,116 @@ function Register() {
   }
 
   return (
-    <section>
-      <div>
-        <div>
-          <form onSubmit={handleSubmit}>
+    <section className="form-container">
+      <div className="form-box">
+        <Form
+          onSubmit={handleSubmit}>
 
-            <div>
-              <label>Username</label>
-              <div>
-                <input
-                  
-                  placeholder="Username"
-                  onChange={handleChange}
-                  name="username"
-                  value={formdata.username}
-                />
-              </div>
-              {errors.username && <p>{errors.username}</p>}
-            </div>
+          <ImageUploadField
+            onChange={handleChange}
+            labelText="Profile Image"
+            name="profileImage"
+            value={formdata.profileImage}
+          />
 
-            <div>
+          {errors.profileImage &&
+            <p className='error field ui pointing above prompt label'>
+              {errors.profileImage}</p>}
+
+          <Divider />
+
+          <Form.Field>
+            <label>Username</label>
+            <input
+              placeholder="Username"
+              onChange={handleChange}
+              name="username"
+              value={formdata.username}
+            />
+          </Form.Field>
+
+          {errors.username &&
+            <p className='error field ui pointing above prompt label'>
+              {errors.username}</p>}
+
+          <Form.Group>
+            <Form.Field>
               <label>First Name</label>
-              <div>
-                <input
-                  
-                  placeholder="First Name"
-                  onChange={handleChange}
-                  name="firstName"
-                  value={formdata.firstName}
-                />
-              </div>
-              {errors.firstName && <p>{errors.firstName}</p>}
-            </div>
-
-            <div>
-              <label>Last Name</label>
-              <div>
-                <input
-                  
-                  placeholder="Last Name"
-                  onChange={handleChange}
-                  name="lastName"
-                  value={formdata.lastName}
-                />
-              </div>
-              {errors.lastName && <p>{errors.lastName}</p>}
-            </div>
-
-            <div>
-              <label>Email</label>
-              <div>
-                <input
-                  
-                  placeholder="Email"
-                  onChange={handleChange}
-                  name="email"
-                  value={formdata.email}
-                />
-              </div>
-              {errors.email && <p>{errors.email}</p>}
-            </div>
-
-            <div>
-              <label>Password</label>
-              <div>
-                <input
-                  type="password"
-                  
-                  placeholder="Password"
-                  onChange={handleChange}
-                  name="password"
-                  value={formdata.password}
-                />
-              </div>
-              {errors.password && <p>{errors.password}</p>}
-            </div>
-
-            <div>
-              <label>Password Confirmation</label>
-              <div>
-                <input
-                  type="password"
-                
-                  placeholder="Password Confirmation"
-                  onChange={handleChange}
-                  name="passwordConfirmation"
-                  value={formdata.passwordConfirmation}
-                />
-              </div>
-              {errors.passwordConfirmation && <p>{errors.passwordConfirmation}</p>}
-            </div>
-
-            <div className="field">
-              <ImageUploadField
+              <input
+                placeholder="First Name"
                 onChange={handleChange}
-                labelText="Profile Image"
-                name="profileImage"
-                value={formdata.profileImage}
+                name="firstName"
+                value={formdata.firstName}
               />
-              {errors.profileImage && <p>{errors.profileImage}</p>}
-            </div>
+            </Form.Field>
 
-            <div>
-              <button type="submit">Register</button>
-            </div>
+            <Form.Field>
+              <label>Last Name</label>
+              <input
+                placeholder="Last Name"
+                onChange={handleChange}
+                name="lastName"
+                value={formdata.lastName}
+              />
+            </Form.Field>
+          </Form.Group>
 
-          </form>
-        </div>
+          {errors.firstName &&
+            <p className='error field ui pointing above prompt label'>
+              {errors.firstName}</p>}
+          {errors.lastName &&
+            <p className='error field ui pointing above prompt label'>
+              {errors.lastName}</p>}
+
+          <Form.Field>
+            <label>Email</label>
+            <input
+              placeholder="Email"
+              onChange={handleChange}
+              name="email"
+              value={formdata.email}
+            />
+          </Form.Field>
+
+          {errors.email &&
+            <p className='error field ui pointing above prompt label'>
+              {errors.email}</p>}
+
+          <Form.Field>
+            <label>Password</label>
+            <input
+              type="password"
+              placeholder="Password"
+              onChange={handleChange}
+              name="password"
+              value={formdata.password}
+            />
+          </Form.Field>
+
+          {errors.password &&
+            <p className='error field ui pointing above prompt label'>
+              {errors.password}</p>}
+
+          <Form.Field>
+            <label>Password Confirmation</label>
+            <input
+              type="password"
+              placeholder="Password Confirmation"
+              onChange={handleChange}
+              name="passwordConfirmation"
+              value={formdata.passwordConfirmation}
+            />
+          </Form.Field>
+
+          {errors.passwordConfirmation &&
+            <p className='error field ui pointing above prompt label'>
+              {errors.passwordConfirmation}</p>}
+
+          <Button type="submit">
+            Register
+          </Button>
+
+        </Form>
       </div>
     </section>
   )
