@@ -14,7 +14,8 @@ function SpaceIndexView() {
     pauseOnHover: true
   }
 
-  const [spaces, setSpaces] = React.useState([])
+  const [spaces, setSpaces] = React.useState(null)
+  const [hasError, setHasError] = React.useState(false)
   console.log(spaces)
 
   React.useEffect(() => {
@@ -25,6 +26,7 @@ function SpaceIndexView() {
 
       } catch (err) {
         console.log(err)
+        setHasError(true)
       }
     }
     getSpaces()
@@ -32,19 +34,25 @@ function SpaceIndexView() {
 
   return (
     <div>
-      <Slider {...settings}>
-        <img src={spaces[0].image} className="ui small image"/>
-        <img src={spaces[1].image} className="ui small image"/>
-        <img src={spaces[2].image} className="ui small image"/>
-        <img src={spaces[3].image} className="ui small image"/>
-        <img src={spaces[4].image} className="ui small image"/>
-        <img src={spaces[5].image} className="ui small image"/>
-        <img src={spaces[6].image} className="ui small image"/>
-      </Slider>
+      {spaces ?
+        <Slider {...settings}>
+          {spaces.map(space => (
+            <div className="card" key={space._id}>
+              <div className="ui-card img-wrapper">
+                <img key={space._id} className="images" src={space.image} />
+              </div>
+            </div>
+          ))}
+        </Slider>
+        :
+        <h2 className="title has-text-centered">
+          {hasError ? 'Oh something went wrong, the sadness 😞' : '...loading 🎬 '}
+        </h2>
+      }
     </div>
+
   )
 }
-
 
 
 export default SpaceIndexView

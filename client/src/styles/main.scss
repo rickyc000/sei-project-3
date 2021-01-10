@@ -41,3 +41,30 @@
 .form-box {
   width: 400px;
 }
+
+.img-wrapper{
+  position: relative;
+  width: 300px;     
+  height: 250px;
+  overflow: hidden;
+  margin-left: 10px;
+  border: 10px solid white;
+  border-radius: 25px;
+
+  img {
+    position: relative;
+    width: 100%;
+    height: auto;
+    top: 50%;     
+    left: 50%;
+    transform: translate( -50%, -50%);
+  }
+}
+img.images {
+  height: 100%;
+  width: auto;
+}
+// .slider-wrapper{
+//   display: flex;
+//   justify-content: space-around;
+// }
