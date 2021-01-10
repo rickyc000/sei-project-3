@@ -1,6 +1,8 @@
 import React from 'react'
 import { getAllSpaces } from '../lib/api'
 import Slider from 'react-slick'
+import SimpleReactLightbox from 'simple-react-lightbox'
+import { SRLWrapper } from 'simple-react-lightbox'
 
 function SpaceIndexView() {
 
@@ -14,9 +16,17 @@ function SpaceIndexView() {
     pauseOnHover: true
   }
 
+  const options = {
+    settings: {
+      overlayColor: 'rgba(120, 120, 120, 0.5)'
+    }
+  }
   const [spaces, setSpaces] = React.useState(null)
   const [hasError, setHasError] = React.useState(false)
+  
   console.log(spaces)
+
+ 
 
   React.useEffect(() => {
     const getSpaces = async () => {
@@ -33,23 +43,30 @@ function SpaceIndexView() {
   }, [])
 
   return (
-    <div>
-      {spaces ?
-        <Slider {...settings}>
-          {spaces.map(space => (
-            <div className="card" key={space._id}>
-              <div className="ui-card img-wrapper">
-                <img key={space._id} className="images" src={space.image} />
-              </div>
-            </div>
-          ))}
-        </Slider>
-        :
-        <h2 className="title has-text-centered">
-          {hasError ? 'Oh something went wrong, the sadness 😞' : '...loading 🎬 '}
-        </h2>
-      }
-    </div>
+    <SimpleReactLightbox>
+      <div className="slider-container">
+        <h2 className="featured-list">Featured</h2>
+        {spaces ?
+          <SRLWrapper options={options}>
+            <Slider {...settings}>
+              {spaces.map(space => (
+                <div className="card" key={space._id}>
+                  <div className="ui-card img-wrapper">
+                    <a href={space.image}>
+                      <img key={space._id} className="images" src={space.image} />
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </Slider>
+          </SRLWrapper>
+          :
+          <h2 className="title has-text-centered">
+            {hasError ? 'Oh something went wrong, the sadness 😞' : '...loading 🎬 '}
+          </h2>
+        }
+      </div>
+    </SimpleReactLightbox>
 
   )
 }
