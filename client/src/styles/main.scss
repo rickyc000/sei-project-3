@@ -41,3 +41,43 @@
 .form-box {
   width: 400px;
 }
+
+//* Show Page
+
+.showpage-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    font-family: 'Comfortaa', cursive;
+  }
+}
+
+.showpage-image-and-text-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  width: 800px;
+  // height: 800px;
+  // border: solid 1px grey; 
+}
+
+.showpage-text-wrapper, showpage-image-wrapper {
+  width: 400px;
+}
+
+.showpage-text-wrapper {
+  padding: 10px;
+}
+
+@media only screen and (max-width: 880px) {
+  .showpage-image-and-text-wrapper{
+    flex-direction: column;
+  }
+}
+
+
+
+
