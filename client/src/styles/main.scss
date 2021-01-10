@@ -1,8 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap');
 @import '_slick.scss';
 @import '_slickTheme.scss';
+<<<<<<< HEAD
 @import 'indexMap';
 @import 'showPage';
+=======
+@import 'spaceIndexView.scss';
+>>>>>>> development
 
 .header {
   margin: calc(15rem - .14285714em) 0 1rem;
@@ -44,6 +48,33 @@
   width: 400px;
 }
 
+.img-wrapper{
+  position: relative;
+  width: 300px;     
+  height: 250px;
+  overflow: hidden;
+  margin-left: 10px;
+  border: 10px solid white;
+  border-radius: 25px;
+
+  img {
+    position: relative;
+    width: 100%;
+    height: auto;
+    top: 50%;     
+    left: 50%;
+    transform: translate( -50%, -50%);
+  }
+}
+img.images {
+  height: 100%;
+  width: auto;
+}
+// .slider-wrapper{
+//   display: flex;
+//   justify-content: space-around;
+// }
+//* Show Page
 
 
 

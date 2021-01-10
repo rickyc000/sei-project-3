@@ -14,6 +14,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.10",
     "mongoose-unique-validator": "^2.0.3",
+    "react-images": "^1.1.7",
+    "react-images-viewer": "^1.6.2",
     "react-map-gl": "^6.0.3",
     "react-router-dom": "^5.2.0",
     "react-slick": "^0.27.13",
