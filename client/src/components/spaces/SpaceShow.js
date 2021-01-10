@@ -1,7 +1,9 @@
 import React from 'react'
-import { getSingleSpace } from '../lib/api'
+import { getSingleSpace, addToFavourites } from '../lib/api'
 import { useParams, useLocation } from 'react-router-dom'
-import ReactMapGL, { Marker } from 'react-map-gl'
+// import SpaceShowMap from './SpaceShowMap'
+import { Menu } from 'semantic-ui-react'
+
 import {
   Button,
   Container,
@@ -10,7 +12,7 @@ import {
 
 function SpaceShow() {
 
-  const [isFavourited, setIsFavourited] = React.useState(false)
+  const [isFavourite, setIsFavourite] = React.useState(false)
 
   useLocation()
 
@@ -30,17 +32,24 @@ function SpaceShow() {
     getSpace()
   }, [id])
 
-  // console.log(space)
-
-
-  const handleFavourite = event => {
+  const handleFavourite = async event => {
     event.preventDefault()
-    setIsFavourited(!isFavourited)
-    console.log('Add to Favourites')
+    try {
+      await addToFavourites(id)
+      setIsFavourite(!isFavourite)
+      console.log('Add to Favourites')
+    } catch (err) {
+      console.log(err)
+    }
     //* Add to the users favourites
   }
 
-  
+  const [activeTab, setActiveTab] = React.useState({ activeItem: 'image' })
+
+  const handleTabClick = (e, { name }) => {
+    console.log(e)
+    setActiveTab({ activeItem: name })
+  }
 
   // Mapbox Functions:
 
@@ -50,7 +59,7 @@ function SpaceShow() {
   //   zoom: 12
   // })
 
-  
+
 
   console.log(space.location)
 
@@ -61,53 +70,70 @@ function SpaceShow() {
           <>
             <div className="showpage-wrapper">
               <h1>{space.name}</h1>
+
               <div className="showpage-image-and-text-wrapper">
+
                 <div className="showpage-image-wrapper">
-                  <img src={space.image} className="ui large rounded image"></img>
+
+                  <Menu tabular>
+                    <Menu.Item
+                      name='image'
+                      active={activeTab === 'image'}
+                      onClick={handleTabClick}
+                    >
+                      {/* <div>
+                        <img src={space.image} className="ui large rounded image"></img>
+                      </div> */}
+                      <p>image</p>
+                    </Menu.Item>
+
+                    <Menu.Item
+                      name='map'
+                      active={activeTab === 'map'}
+                      onClick={handleTabClick}
+                    >
+                      {/* <div>
+                        <SpaceShowMap space={space} />
+                      </div> */}
+                      <p>map</p>
+                    </Menu.Item>
+
+
+
+                  </Menu>
+
+
+
+
                 </div>
+
+
+
+
+
                 <div className="showpage-text-wrapper">
-                  <p>Description: {space.description}</p>
-                  <p>Added By: {space.owner ? space.owner.username : ''}</p>
+                  <p>{space.description}</p>
+                  <div>
+                    <a className="ui image label">
+                      <Icon name="user circle" />
+                      Added by {space.owner ? space.owner.username : ''}
+                    </a>
+                  </div>
+
                   <p>Favourited By: {space.favouritedBy ? space.favouritedBy.length : 0} people</p>
                   <p>Comments:</p>
                   <p>Tags: {space.tags ? space.tags.map(tag => (`${tag} `)) : ''} </p>
                   <Button as='' onClick={handleFavourite} >
-          Add To Favourites
+                    Add To Favourites
                   </Button>
-                  {isFavourited ?
-        
+                  {isFavourite ?
+
                     <Icon name="heart" onClick={handleFavourite} ></Icon> : <Icon name="heart outline" onClick={handleFavourite} ></Icon>
 
                   }
                 </div>
               </div>
-              <p>Location:</p>
-              <div className="map-container-small">
-                <ReactMapGL
-                  mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
-                  height="100%"
-                  width="100%"
-                  mapStyle='mapbox://styles/mapbox/streets-v11'
-                  latitude={space.location ? space.location.latitude : 51.533451}
-                  longitude={space.location ? space.location.longitude : -51.533451}
-                  zoom={14}
-                // {...viewport}
-                // onViewportChange={(viewport) => setViewport(viewport)}
-                >
-                  <Marker
-                    key={space._id}
-                    latitude={space.location ? space.location.latitude : 51.533451}
-                    longitude={space.location ? space.location.longitude : 51.533451}
-                  >
-                    <span
-                      role="img"
-                      aria-label="map-marker"
-                    >
-                😺‍
-                    </span>
-                  </Marker>
-                </ReactMapGL>
-              </div>
+
             </div>
           </>
           : <p>Error Loading</p>

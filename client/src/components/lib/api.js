@@ -1,7 +1,12 @@
 import axios from 'axios'
-
-
+import { getToken } from './auth'
 const baseUrl = '/api'
+
+function headers() {
+  return {
+    headers: { authorization: `Bearer ${getToken()}` }
+  }
+}
 
 //* SPACES Requests
 
@@ -13,6 +18,13 @@ export function getAllSpaces() {
 
 export function getSingleSpace(id) {
   return axios.get(`${baseUrl}/spaces/${id}`)
+}
+
+// Add to favourites
+
+export function addToFavourites(id) {
+  console.log(headers())
+  return axios.post(`${baseUrl}/spaces/${id}/favourite`, headers())
 }
 
 //* AUTH Requests

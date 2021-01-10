@@ -105,6 +105,7 @@ async function spaceCommentDelete(req, res, next) {
 
 async function favouriteASpace(req, res, next) {
   const { id } = req.params
+  console.log(req.params)
   try {
     const space = await Space.findById(id)
     if (!space) throw new Error(notFound)

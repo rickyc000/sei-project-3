@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactMapGL, { Marker, Popup } from 'react-map-gl'
 import { getAllSpaces } from '../lib/api'
+import { Link } from 'react-router-dom'
 // import { getToken } from '../lib/auth'
 
 
@@ -59,17 +60,27 @@ function SpaceIndex() {
           </Marker>
         ))}
         {popup &&
-          <Popup
-            closeOnClick={true}
-            onClose={() => setPopup(null)}
-            latitude={Number(popup.location.latitude)}
-            longitude={Number(popup.location.longitude)}
-          >
-            <div>{popup.name}</div>
-          </Popup>
+          <Link to={`/spaces/${popup._id}`}>
+            <Popup
+              // closeOnClick={true}
+              // onClose={() => setPopup(null)}
+              latitude={Number(popup.location.latitude)}
+              longitude={Number(popup.location.longitude)}
+            >
+              <div className="index-popup-image">
+                <img src={popup.image}/>
+              </div>
+              <div>
+                {popup.name}
+              </div>
+            </Popup>
+          </Link>
         }
       </ReactMapGL>
-    </div>
+      {/* <Link to={`/spaces/${popup._id}`}>
+        <div>Link here</div>
+      </Link> */}
+    </div >
 
 
   )
