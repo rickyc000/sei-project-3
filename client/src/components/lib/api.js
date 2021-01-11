@@ -14,6 +14,18 @@ export function getAllSpaces() {
   return axios.get(`${baseUrl}/spaces`)
 }
 
+export function createSpace(formdata) {
+  return axios.post(`${baseUrl}/spaces`, formdata, headers())
+}
+
+export function editSpace(id, formdata) {
+  return axios.put(`${baseUrl}/spaces/${id}`, formdata, headers())
+}
+
+export function deleteSpace(id) {
+  return axios.delete(`${baseUrl}/spaces/${id}`, headers())
+}
+
 // Show Single Space 
 
 export function getSingleSpace(id) {

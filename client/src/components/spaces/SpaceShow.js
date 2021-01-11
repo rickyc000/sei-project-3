@@ -1,7 +1,8 @@
 import React from 'react'
-import { getSingleSpace, addToFavourites } from '../lib/api'
-import { useParams, useLocation } from 'react-router-dom'
+import { getSingleSpace, deleteSpace, addToFavourites } from '../lib/api'
+import { useParams, useLocation, Link } from 'react-router-dom'
 import SpaceShowMap from './SpaceShowMap'
+import { isOwner } from '../lib/auth'
 // import { Menu } from 'semantic-ui-react'
 
 import {
@@ -42,6 +43,15 @@ function SpaceShow() {
       console.log(err)
     }
     //* Add to the users favourites
+  }
+
+  const handleDelete = async () => {
+    try {
+      await deleteSpace(id)
+      history.push('/spaces')
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   // const [activeTab, setActiveTab] = React.useState({ activeItem: 'image' })
@@ -111,7 +121,16 @@ function SpaceShow() {
                       ''
                     }
                   </div>
-
+              
+                 
+                  {isOwner(space.owner ? space.owner._id : '') &&
+                    <div className="buttons">
+                      <button onClick={handleDelete} className="button is-danger">Delete Cheese</button>
+                      <Link to={`/spaces/${id}/edit`} className="button is-warning">Edit Space</Link>
+                    </div>
+                  }
+               
+              
                   <p className="show-page-favourites">
                     {isFavourite ?
                       <Icon
@@ -125,7 +144,7 @@ function SpaceShow() {
                     }
                     <p>{space.favouritedBy ? space.favouritedBy.length : 0} favourites</p>
                   </p>
-
+                  
                 </div>
               </div>
             </div>

@@ -34,8 +34,8 @@ function Nav() {
             name='home'
           />
         </Link>
-        {isLoggedIn && <Button as={Link} to='/edit'>
-          Add Space
+        {isLoggedIn && <Button as={Link} to='/spaces/new'>
+          Add A Space
         </Button>}
         <Menu.Item position='right'>
           {!isLoggedIn ?
