@@ -42,7 +42,7 @@ async function seedDatabase() {
         profileImage,
         password: 'pass', // ! setting all the passwords the same
         passwordConfirmation: 'pass',
-        favouriteTags
+        favouriteTags,
       })
     }
 
@@ -59,7 +59,7 @@ async function seedDatabase() {
     const spaces = await Space.create(spaceDataWithOwners)
 
     console.log(`🤖 ${spaces.length} spaces created`)
-
+    
 
     await mongoose.connection.close()
     console.log('🤖 Goodbye')
