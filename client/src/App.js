@@ -13,15 +13,16 @@ import Login from './components/auth/Login'
 import Profile from './components/users/Profile'
 import OtherUserProfile from './components/users/OtherUserProfile'
 
+
 function App() {
   return (
     <BrowserRouter>
       <Nav />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/spaces/new" component={SpaceNew} />
-        <Route path="/spaces/:id" component={SpaceShow} />
         <Route path="/spaces/:id/edit" component={SpaceEdit} />
+        <Route path="/spaces/new" component={SpaceNew} />
+        <Route path="/spaces/:id" component={SpaceShow} />  
         <Route path="/spaces" component={SpaceIndex} />
         <Route path="/space" component={SpaceIndexView} />
         <Route path="/register" component={Register} />
