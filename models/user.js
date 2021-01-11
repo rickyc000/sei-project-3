@@ -21,7 +21,7 @@ userSchema.virtual('createdSpaces', {
 userSchema.virtual('favouritedSpaces', {
   ref: 'Space',
   localField: '_id',
-  foreignField: 'favouritedBy.owner',
+  foreignField: 'favouritedBy',
 })
 
 userSchema.set('toJSON', {

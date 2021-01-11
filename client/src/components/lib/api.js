@@ -1,8 +1,8 @@
 import axios from 'axios'
-import { getToken } from './auth'
+import { getToken, getUserId } from './auth'
 const baseUrl = '/api'
 
-function headers() {
+export function headers() {
   return {
     headers: { authorization: `Bearer ${getToken()}` }
   }
@@ -25,6 +25,18 @@ export function getSingleSpace(id) {
 export function addToFavourites(id) {
   console.log(headers())
   return axios.post(`${baseUrl}/spaces/${id}/favourite`, null, headers())
+}
+
+// Get Current User Profile
+
+export function getUserProfile() {
+  console.log(headers())
+  return axios.get(`${baseUrl}/profile/${getUserId()}`, headers())
+}
+
+export function getOtherUserProfile(id) {
+  console.log(headers())
+  return axios.get(`${baseUrl}/users/${id}`, headers())
 }
 
 //* AUTH Requests

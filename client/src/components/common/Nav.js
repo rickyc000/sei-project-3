@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useHistory, useLocation } from 'react-router-dom'
-import { isAuthenticated, logout } from '../lib/auth'
+import { isAuthenticated, logout, getUserId } from '../lib/auth'
 import {
   Button,
   Container,
@@ -52,7 +52,7 @@ function Nav() {
               <Button as="" onClick={handleLogout}>
               Log Out
               </Button>
-              <Button as={Link} to='/profile'>
+              <Button as={Link} to={`/profile/${getUserId()}`}>
             Profile
               </Button>
             </>}

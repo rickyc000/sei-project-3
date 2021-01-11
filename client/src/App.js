@@ -11,6 +11,7 @@ import SpaceEdit from './components/spaces/SpaceEdit'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
 import Profile from './components/users/Profile'
+import OtherUserProfile from './components/users/OtherUserProfile'
 
 function App() {
   return (
@@ -25,7 +26,8 @@ function App() {
         <Route path="/space" component={SpaceIndexView} />
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
-        <Route path="/profile" component={Profile} />
+        <Route path="/profile/:id" component={Profile} />
+        <Route path="/users/:id" component={OtherUserProfile} />
       </Switch>
     </BrowserRouter>
   )

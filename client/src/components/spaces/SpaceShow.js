@@ -1,6 +1,6 @@
 import React from 'react'
 import { getSingleSpace, addToFavourites } from '../lib/api'
-import { useParams, useLocation } from 'react-router-dom'
+import { useParams, useLocation, Link } from 'react-router-dom'
 import SpaceShowMap from './SpaceShowMap'
 // import { Menu } from 'semantic-ui-react'
 
@@ -111,10 +111,10 @@ function SpaceShow() {
                 <div className="showpage-text-wrapper">
                   <p>{space.description}</p>
                   <div>
-                    <a className="ui image label">
+                    <Link to={space.owner ? `/users/${space.owner._id}` : ''} className="ui image label">
                       <Icon name="user circle" />
                       Added by {space.owner ? space.owner.username : ''}
-                    </a>
+                    </Link>
                   </div>
 
                   <div>
