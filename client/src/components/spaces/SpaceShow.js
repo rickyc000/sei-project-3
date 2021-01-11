@@ -1,11 +1,11 @@
 import React from 'react'
 import { getSingleSpace, addToFavourites } from '../lib/api'
 import { useParams, useLocation } from 'react-router-dom'
-// import SpaceShowMap from './SpaceShowMap'
-import { Menu } from 'semantic-ui-react'
+import SpaceShowMap from './SpaceShowMap'
+// import { Menu } from 'semantic-ui-react'
 
 import {
-  Button,
+  // Button,
   Container,
   Icon
 } from 'semantic-ui-react'
@@ -44,15 +44,16 @@ function SpaceShow() {
     //* Add to the users favourites
   }
 
-  const [activeTab, setActiveTab] = React.useState({ activeItem: 'image' })
+  // const [activeTab, setActiveTab] = React.useState({ activeItem: 'image' })
 
-  const handleTabClick = (e, { name }) => {
-    console.log(e)
-    setActiveTab({ activeItem: name })
+  const [photoTab, setPhotoTab] = React.useState(true)
+  const handlePhotoTab = () => {
+    setPhotoTab(!photoTab)
+    console.log('photo tab')
   }
 
-  // Mapbox Functions:
 
+  // Mapbox Functions:
   // const [viewport, setViewport] = React.useState({
   //   latitude: 51.502643,
   //   longitude: -0.07497,
@@ -60,57 +61,37 @@ function SpaceShow() {
   // })
 
 
-
-  console.log(space.location)
-
   return (
+
     <Container>
-      <>
-        { space ?
-          <>
-            <div className="showpage-wrapper">
-              <h1>{space.name}</h1>
-
-              <div className="showpage-image-and-text-wrapper">
-
-                <div className="showpage-image-wrapper">
-
-                  <Menu tabular>
-                    <Menu.Item
-                      name='image'
-                      active={activeTab === 'image'}
-                      onClick={handleTabClick}
-                    >
-                      {/* <div>
-                        <img src={space.image} className="ui large rounded image"></img>
-                      </div> */}
-                      <p>image</p>
-                    </Menu.Item>
-
-                    <Menu.Item
-                      name='map'
-                      active={activeTab === 'map'}
-                      onClick={handleTabClick}
-                    >
-                      {/* <div>
-                        <SpaceShowMap space={space} />
-                      </div> */}
-                      <p>map</p>
-                    </Menu.Item>
-
-
-
-                  </Menu>
-
-
-
-
+      {space
+        ?
+        <div>
+          <div className="showpage-wrapper">
+            <h1>{space.name}</h1>
+            <div className="showpage-main-content">
+              <div className="photo-map-tabs-wrapper">
+                <div className="ui attached tabular menu">
+                  <div className={photoTab ? 'active item' : 'item'}>
+                    <div onClick={handlePhotoTab}> Photo </div>
+                  </div>
+                  <div className={photoTab ? 'item' : 'active item'}>
+                    <div onClick={handlePhotoTab}> Map </div>
+                  </div>
                 </div>
-
-
-
-
-
+                {photoTab ?
+                  <div className="ui bottom attached segment active tab">
+                    <img src={space.image} className="ui large rounded image"></img>
+                  </div>
+                  :
+                  <div className="ui bottom attached segment active tab">
+                    <div className="showpage-map-wrapper">
+                      <SpaceShowMap space={space} />
+                    </div>
+                  </div>
+                }
+              </div>
+              <div className="showpage-info-wrapper">
                 <div className="showpage-text-wrapper">
                   <p>{space.description}</p>
                   <div>
@@ -120,25 +101,56 @@ function SpaceShow() {
                     </a>
                   </div>
 
-                  <p>Favourited By: {space.favouritedBy ? space.favouritedBy.length : 0} people</p>
-                  <p>Comments:</p>
-                  <p>Tags: {space.tags ? space.tags.map(tag => (`${tag} `)) : ''} </p>
-                  <Button as='' onClick={handleFavourite} >
-                    Add To Favourites
-                  </Button>
-                  {isFavourite ?
+                  <div>
+                    {space.tags ?
+                      <div>
+                        {space.tags.map(tag => (
+                          <p className="ui olive label" key={tag}>{tag}</p>))}
+                      </div>
+                      :
+                      ''
+                    }
+                  </div>
 
-                    <Icon name="heart" onClick={handleFavourite} ></Icon> : <Icon name="heart outline" onClick={handleFavourite} ></Icon>
+                  <p className="show-page-favourites">
+                    {isFavourite ?
+                      <Icon
+                        name="heart"
+                        size="big"
+                        onClick={handleFavourite}></Icon>
+                      :
+                      <Icon
+                        name="heart outline" size="big"
+                        onClick={handleFavourite}></Icon>
+                    }
+                    <p>{space.favouritedBy ? space.favouritedBy.length : 0} favourites</p>
+                  </p>
 
-                  }
                 </div>
               </div>
-
             </div>
-          </>
-          : <p>Error Loading</p>
-        }
-      </>
+          </div>
+        </div>
+        :
+        <p>Error Loading</p>
+      }
+      <div className="ui comments">
+        <h2 className="ui comments">Comments</h2>
+        <div className="comment">
+          <div className="avatar">
+            <img src="https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/3_avatar-512.png"/>
+          </div>
+          <div className="content">
+            <a className="author">Ricky</a>
+            <div className="metadata">
+              <div>2 days ago</div>
+            </div>
+            <div className="text">
+              What a fantastic spot! Thanks {space.owner ? space.owner.username : ''}.
+            </div>
+          </div>
+        </div>
+      </div>
     </Container>
   )
 }

@@ -6,8 +6,8 @@ function spaceShowMap({ space }) {
     <div className="map-container-small">
       <ReactMapGL
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
-        height="100%"
-        width="100%"
+        height="300px"
+        width="400px"
         mapStyle='mapbox://styles/mapbox/streets-v11'
         latitude={space.location ? space.location.latitude : 51.533451}
         longitude={space.location ? space.location.longitude : -51.533451}
