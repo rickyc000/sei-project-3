@@ -12,13 +12,12 @@ import {
 
 function SpaceShow() {
 
-  const [isFavourite, setIsFavourite] = React.useState(false)
+
 
   useLocation()
 
   const [space, setSpace] = React.useState([])
   const { id } = useParams()
-
 
   React.useEffect(() => {
     const getSpace = async () => {
@@ -32,6 +31,18 @@ function SpaceShow() {
     getSpace()
   }, [id])
 
+
+  
+  // Favourite Functions
+
+
+  // const { isFavourited, setIsFavourited } = React.useState({
+  //   isFavourite: false,
+  //   space: {}
+  // })
+
+  const [isFavourite, setIsFavourite] = React.useState(false)
+
   const handleFavourite = async event => {
     event.preventDefault()
     try {
@@ -43,6 +54,9 @@ function SpaceShow() {
     }
     //* Add to the users favourites
   }
+
+
+  // Toggle Functions
 
   // const [activeTab, setActiveTab] = React.useState({ activeItem: 'image' })
 
@@ -59,6 +73,8 @@ function SpaceShow() {
   //   longitude: -0.07497,
   //   zoom: 12
   // })
+
+  console.log(space)
 
 
   return (
