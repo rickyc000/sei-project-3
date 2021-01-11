@@ -10,6 +10,7 @@ import SpaceNew from './components/spaces/SpaceNew'
 import SpaceEdit from './components/spaces/SpaceEdit'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
+import Profile from './components/users/Profile'
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
         <Route path="/space" component={SpaceIndexView} />
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
-        
+        <Route path="/profile" component={Profile} />
       </Switch>
     </BrowserRouter>
   )

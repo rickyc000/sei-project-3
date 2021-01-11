@@ -218,7 +218,7 @@ export default [
   {
     name: 'The Palm House - Kew Gardens',
     description: 'The Palm House is a greenhouse located in the Royal Botanic Gardens, Kew that specialises in growing palms and other tropical and subtropical plants. Many of its plants are endangered or extinct in the wild. Discover the beauty of these species and escape from the busy pace of London for a moment of meditative peace and quiet.',
-    image: 'https://www.parkgrandheathrow.co.uk/blog/wp-content/uploads/2019/05/Richmond-Park-2.jpg',
+    image: 'https://www.kew.org/sites/default/files/styles/mixed_featured_item/public/2019-02/Inside-TH_0.jpg?itok=gf_ke3f2',
     location: { longitude: -0.29541, latitude: 51.48323 },
     tags: ['Mother Nature', 'Peace & Quiet', 'Architecture', 'Riverside Spot', 'Food & Drink'],
   },
@@ -289,14 +289,14 @@ export default [
   {
     name: 'Streatham Rookery',
     description: 'The Rookery is an attractive, formally landscaped area with an ornamental pond, flower and herbaceous beds, and a rock garden with streams. It has a café and is surrounded by Streatham Common.',
-    image: 'https://www.londonxlondon.com/wp-content/uploads/2020/05/Nunhead-Crystal-Palace-Horniman-11.jpg',
+    image: 'https://media.timeout.com/images/102955613/630/472/image.jpg',
     location: { longitude: -0.13533, latitude: 51.41846 },
     tags: ['Mother Nature', 'Food & Drink', 'Peace & Quiet'],
   },
   {
     name: 'Leake Street Arches',
     description: 'Leake Street (also known as the Banksy Tunnel) is a road tunnel in Lambeth, London where graffiti is tolerated regardless of the fact that it is against the law. The street is about 300 metres long, runs off York Road and under the platforms and tracks of Waterloo station.',
-    image: 'https://www.londonxlondon.com/wp-content/uploads/2020/05/Nunhead-Crystal-Palace-Horniman-11.jpg',
+    image: 'https://media-cdn.tripadvisor.com/media/photo-s/15/01/48/75/leake-street-tunnel.jpg',
     location: { longitude: -0.11594, latitude: 51.50196 },
     tags: ['Art & Design'],
   },
