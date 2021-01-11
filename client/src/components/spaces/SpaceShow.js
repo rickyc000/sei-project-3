@@ -1,6 +1,6 @@
 import React from 'react'
 import { getSingleSpace, addToFavourites } from '../lib/api'
-import { useParams, useLocation } from 'react-router-dom'
+import { useParams, useLocation, Link } from 'react-router-dom'
 import SpaceShowMap from './SpaceShowMap'
 // import { Menu } from 'semantic-ui-react'
 
@@ -18,6 +18,7 @@ function SpaceShow() {
 
   const [space, setSpace] = React.useState([])
   const { id } = useParams()
+  console.log(id)
 
 
   React.useEffect(() => {
@@ -105,7 +106,13 @@ function SpaceShow() {
                     {space.tags ?
                       <div>
                         {space.tags.map(tag => (
-                          <p className="ui olive label" key={tag}>{tag}</p>))}
+                          <Link
+                            key={tag}
+                            to={`/spaces/category/${tag}`}>
+                            <p className="ui olive label" key={tag}>{tag}</p>
+                          </Link>
+                        )
+                        )}
                       </div>
                       :
                       ''
@@ -138,7 +145,7 @@ function SpaceShow() {
         <h2 className="ui comments">Comments</h2>
         <div className="comment">
           <div className="avatar">
-            <img src="https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/3_avatar-512.png"/>
+            <img src="https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/3_avatar-512.png" />
           </div>
           <div className="content">
             <a className="author">Ricky</a>
@@ -151,7 +158,7 @@ function SpaceShow() {
           </div>
         </div>
       </div>
-    </Container>
+    </Container >
   )
 }
 
