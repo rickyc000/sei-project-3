@@ -36,7 +36,7 @@ export function getSingleSpace(id) {
 
 export function addToFavourites(id) {
   console.log(headers())
-  return axios.post(`${baseUrl}/spaces/${id}/favourite`, headers())
+  return axios.post(`${baseUrl}/spaces/${id}/favourite`, null, headers())
 }
 
 //* AUTH Requests
