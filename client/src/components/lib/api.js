@@ -46,6 +46,17 @@ export function removeFromFavourites(id) {
   return axios.delete(`${baseUrl}/spaces/${id}/favourite`, headers())
 }
 
+export function addComment(id, formdata) {
+  console.log(headers())
+  return axios.post(`${baseUrl}/spaces/${id}/comments`, formdata, headers())
+}
+
+export function deleteComment(id, commentId) {
+  console.log(headers())
+  return axios.delete(`${baseUrl}/spaces/${id}/comments/${commentId}`, headers())
+}
+
+
 // Get Current User Profile
 
 export function getUserProfile() {
@@ -67,5 +78,6 @@ export function registerUser(formdata) {
 export function loginUser(formdata) {
   return axios.post(`${baseUrl}/login`, formdata)
 }
+
 
 export default getAllSpaces
