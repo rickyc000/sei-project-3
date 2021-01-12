@@ -109,8 +109,8 @@ async function favouriteASpace(req, res, next) {
   try {
     const space = await Space.findById(id)
     if (!space) throw new Error(notFound)
-    const favourited = { ...req.body, owner: req.currentUser._id }
-    space.favouritedBy.push(favourited)
+    // const favourited = { owner: req.currentUser._id }
+    space.favouritedBy.push(req.currentUser._id)
     await space.save()
     return res.status(201).json(space)
   } catch (err) {

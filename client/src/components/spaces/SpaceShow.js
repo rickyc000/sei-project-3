@@ -1,7 +1,12 @@
 import React from 'react'
+<<<<<<< HEAD
 import { getSingleSpace, addToFavourites } from '../lib/api'
+=======
+import { getSingleSpace, addToFavourites, deleteSpace } from '../lib/api'
+>>>>>>> development
 import { useParams, useLocation, Link } from 'react-router-dom'
 import SpaceShowMap from './SpaceShowMap'
+import { isOwner } from '../lib/auth'
 // import { Menu } from 'semantic-ui-react'
 
 import {
@@ -12,14 +17,13 @@ import {
 
 function SpaceShow() {
 
-  const [isFavourite, setIsFavourite] = React.useState(false)
+
 
   useLocation()
 
   const [space, setSpace] = React.useState([])
   const { id } = useParams()
   console.log(id)
-
 
   React.useEffect(() => {
     const getSpace = async () => {
@@ -33,6 +37,18 @@ function SpaceShow() {
     getSpace()
   }, [id])
 
+
+  
+  // Favourite Functions
+
+
+  // const { isFavourited, setIsFavourited } = React.useState({
+  //   isFavourite: false,
+  //   space: {}
+  // })
+
+  const [isFavourite, setIsFavourite] = React.useState(false)
+
   const handleFavourite = async event => {
     event.preventDefault()
     try {
@@ -44,6 +60,17 @@ function SpaceShow() {
     }
     //* Add to the users favourites
   }
+
+  const handleDelete = async () => {
+    try {
+      await deleteSpace(id)
+      history.push('/spaces')
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  // Toggle Functions
 
   // const [activeTab, setActiveTab] = React.useState({ activeItem: 'image' })
 
@@ -60,6 +87,8 @@ function SpaceShow() {
   //   longitude: -0.07497,
   //   zoom: 12
   // })
+
+  console.log(space)
 
 
   return (
@@ -96,10 +125,10 @@ function SpaceShow() {
                 <div className="showpage-text-wrapper">
                   <p>{space.description}</p>
                   <div>
-                    <a className="ui image label">
+                    <Link to={space.owner ? `/users/${space.owner._id}` : ''} className="ui image label">
                       <Icon name="user circle" />
                       Added by {space.owner ? space.owner.username : ''}
-                    </a>
+                    </Link>
                   </div>
 
                   <div>
@@ -118,7 +147,16 @@ function SpaceShow() {
                       ''
                     }
                   </div>
-
+              
+                 
+                  {isOwner(space.owner ? space.owner._id : '') &&
+                    <div className="buttons">
+                      <button onClick={handleDelete} className="button is-danger">Delete Cheese</button>
+                      <Link to={`/spaces/${id}/edit`} className="button is-warning">Edit Space</Link>
+                    </div>
+                  }
+               
+              
                   <p className="show-page-favourites">
                     {isFavourite ?
                       <Icon
@@ -132,7 +170,7 @@ function SpaceShow() {
                     }
                     <p>{space.favouritedBy ? space.favouritedBy.length : 0} favourites</p>
                   </p>
-
+                  
                 </div>
               </div>
             </div>
