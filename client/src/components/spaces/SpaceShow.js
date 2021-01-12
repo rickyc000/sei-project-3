@@ -41,6 +41,9 @@ function SpaceShow() {
         if (data.favouritedBy) {
           setFavourites(data.favouritedBy.length)
         }
+        if (data.comments) {
+          setComments(data.comments)
+        }
       } catch (err) {
         console.log(err)
       }
@@ -54,12 +57,15 @@ function SpaceShow() {
 
   const [isFavourite, setIsFavourite] = React.useState(false)
   const [favourites, setFavourites] = React.useState(0)
+
+  const [comments, setComments] = React.useState(null)
+  // const [newComment, setNewComment] = React.useState('')
+ 
+  console.log(comments)
   
   
   const handleFavourite = async event => {
     event.preventDefault()
-    // setIsFavourite(!isFavourite)
-    // setFavourites(space.favouritedBy.length)
     try {
       await addToFavourites(id)
       setIsFavourite(!isFavourite)
@@ -72,8 +78,6 @@ function SpaceShow() {
 
   const handleUnFavourite = async event => {
     event.preventDefault()
-    // setIsFavourite(!isFavourite)
-    // setFavourites(space.favouritedBy.length)
     try {
       setIsFavourite(!isFavourite)
       setFavourites(favourites - 1)
@@ -91,7 +95,9 @@ function SpaceShow() {
     event.preventDefault()
     try {
       await addComment(id, formdata)
+      // setComments({ ...comments, formdata })
       history.push(`/spaces/${space ? space._id : ''}`)
+
       console.log('Add Comment')
     } catch (err) {
       console.log(err)
@@ -100,12 +106,10 @@ function SpaceShow() {
 
   const handleDeleteComment = async event => {
     event.preventDefault()
-    
     try {
-      
-      // history.push('/spaces')
       const commentId = event.target.name
       await deleteComment(id, commentId)
+      // setComments({ ...comments, formdata })
       history.push(`/spaces/${space ? space._id : ''}`)
       console.log('Delete me')
     } catch (err) {
@@ -239,7 +243,7 @@ function SpaceShow() {
       Comments
           </Header>
 
-          {space.comments ? space.comments.map(comment => (
+          {comments ? comments.map(comment => (
             <>
               <Comment key={comment._id} value={comment._id}>
 
