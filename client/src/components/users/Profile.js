@@ -13,7 +13,7 @@ function Profile() {
     const getProfile = async () => {
       try {
         const { data } = await getUserProfile(headers())
-        console.log(data)
+        // console.log(data)
         setProfile(data)
       } catch (err) {
         console.log(err)
@@ -22,7 +22,7 @@ function Profile() {
     getProfile()
   }, [])
 
-  console.log(profile)
+  // console.log(profile)
   return (
     <>
       <ProfileInfo profile={profile}
