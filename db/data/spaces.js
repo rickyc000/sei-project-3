@@ -381,7 +381,7 @@ export default [
     name: 'Town Hall Square',
     description: 'Town Hall Square is the heart of the Crouch End community, with greenery, outdoor seating and a selection of cafés and restaurants bringing locals together throughout the year. Crouch End’s Town Hall Square was originally designed by Reginald Uren, the same architect who won a competition to design Hornsey Town Hall, which dates back to 1935. Over the years the square has changed considerbly, but the original fountain and matured trees still remain today.',
     image: 'https://www.twilleys.com/cupboard/uploads/2019/02/Crouch-End-London.jpg',
-    location: { longitude: -0.122574, latitude: 51.578671},
+    location: { longitude: -0.122574, latitude: 51.578671 },
     tags: ['Lively', 'Food & Drink'],
   },
   {
@@ -404,5 +404,47 @@ export default [
     image: 'https://d36tnp772eyphs.cloudfront.net/blogs/1/2020/05/Severndroog-Castle-in-London.jpg',
     location: { longitude: 0.069764 , latitude: 51.466589 },
     tags: ['Architecture', 'Mother Nature'],
+  },
+  {
+    name: 'Hackney City Farm',
+    description: 'Entry to this community city farm is free and there are many animals to see up close including pigs, sheep, rabbits and donkeys. Pottery and woodcraft sessions are available and they also run baby music classes and a young farmers club.',
+    image: 'https://offloadmedia.feverup.com/secretldn.com/wp-content/uploads/2018/09/18121110/Hackney-City-Farm.jpg',
+    location: { longitude: -0.06665, latitude: 51.53203 },
+    tags: ['Peace & Quiet', 'Mother Nature', 'Food & Drink'],
+  },
+  {
+    name: 'Lincolns Inn Fields',
+    description: 'Laid out in the 1630s, this is Londons largest and arguably finest public square. Its a large green space thats surrounded on all sides by historic buildings and institutions, giving it a cloistered atmosphere. At the eastern side is the brick gatehouse to Lincolns Inn Court',
+    image: 'https://www.britainexpress.com/images/attractions/editor3/Lincolns-Inn-Fields-9900.jpg',
+    location: { longitude: -0.11448, latitude: 51.51676 },
+    tags: ['Lively', 'Mother Nature', 'Architecture'],
+  },
+  {
+    name: 'The John Madejski Garden - V&A Museum',
+    description: 'In the heart of the V&As museum is this superb courtyard garden. Its a delightful space, surrounded on all sides by the imposing 19th century Italianate museum buildings. Redesigned in 2005 the main feature is a large oval stone pool with fountains, grass areas and hydrangeas and lemon trees planted by the walls.',
+    image: 'https://davisla.files.wordpress.com/2013/12/victoria-and-albert-museum-john-madejski-garden-courtyard-pool-1.jpg',
+    location: { longitude: -0.17222, latitude: 51.49694 },
+    tags: ['Lively', 'Art & Design', 'Peace & Quiet', 'Architecture'],
+  },
+  {
+    name: 'Tibetan Peace Garden',
+    description: 'Opened by the Dalia Lama in 1999 this is a beautiful garden with the Kalachakra Mandala at its centre, surrounded by meditating seats, sculptures and Tibetan and Himalyan herbs and plants. Designed to promote the need for understanding between different cultures and an awareness of Buddhist culture, it shares a park with the Imperial War Museum.',
+    image: 'https://static1.squarespace.com/static/564192fae4b0b6ef97b82ba5/5e9ec97aa9f391603d10272c/5d11b28f85a6ee0001548687/1561878040947/1467606082351.jpg?format=1500w',
+    location: { longitude: -0.10469, latitude: 51.49585 },
+    tags: ['Art & Design', 'Peace & Quiet', 'Architecture'],
+  },
+  {
+    name: 'Phoenix Garden',
+    description: 'This small and enclosed community garden in the middle of the West End was created in 1984 on the site of a former car park. Its located behind the Phoenix Theatre and can be accessed by a number of dingy alleyways. Offering a tranquil and pleasant respite from the city the garden is full of interesting planting thats designed to encourage wildlife.',
+    image: 'https://i.pinimg.com/736x/3f/7b/8b/3f7b8b0519c9302cd1fbb1aa9267d5d7.jpg',
+    location: { longitude: -0.12894, latitude: 51.51464 },
+    tags: ['Mother Nature', 'Peace & Quiet', 'Architecture'],
+  },
+  {
+    name: 'Postmans Park',
+    description: 'This small and atmospheric park lies on the site of the former burial ground of St Botolphs Churhc, Aldersgate. Underneath an awning is the Watts Memorial to Heroic Self Sacrific, with 54 Arts and Crafts memorial tablets commemorating people who lost their lives whilst attempting to save others. Its a peaceful enclosed space with trees, a pond and a water fountain.',
+    image: 'https://media.newyorker.com/photos/5eebf67142fc416930e9775b/master/w_2560%2Cc_limit/Dillon-HeroicSelfSacrifice01.jpg',
+    location: { longitude: -0.09836, latitude: 51.51686 },
+    tags: ['Mother Nature', 'Peace & Quiet', 'Architecture'],
   }
 ]

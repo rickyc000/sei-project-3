@@ -1,9 +1,5 @@
 import React from 'react'
-<<<<<<< HEAD
-import { getSingleSpace, addToFavourites } from '../lib/api'
-=======
 import { getSingleSpace, addToFavourites, deleteSpace } from '../lib/api'
->>>>>>> development
 import { useParams, useLocation, Link } from 'react-router-dom'
 import SpaceShowMap from './SpaceShowMap'
 import { isOwner } from '../lib/auth'

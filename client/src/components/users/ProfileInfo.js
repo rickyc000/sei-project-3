@@ -28,7 +28,9 @@ function ProfileInfo({ profile, image, name }) {
                 {profile.favouriteTags ?
                   <div className="tags">
                     {profile.favouriteTags.map(tag => (
-                      <p className="ui olive label" key={tag}>{tag}</p>))}
+                      <Link to={`/spaces/category/${tag}`} key={tag}>
+                        <p className="ui olive label" key={tag}>{tag}</p></Link>))}
+
                   </div>
                   :
                   ''
