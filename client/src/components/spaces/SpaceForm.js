@@ -6,13 +6,11 @@ function SpaceForm({ formdata, handleChange, handleSubmit, buttonText = 'Submit'
     <section className="form-container">
       <div className="form-box">
         <form className="ui form" onSubmit={handleSubmit}>
-     
+    
           <div className="field">
             <label className="label">Name</label>
             <div className="control">
               <input
-              //className={`input ${errors.name ? 'is-danger' : ''}`}
-              //input type="text"
                 placeholder="Name"
                 name="name"
                 onChange={handleChange}
@@ -25,21 +23,19 @@ function SpaceForm({ formdata, handleChange, handleSubmit, buttonText = 'Submit'
             <label className="label">Description</label>
             <div className="control">
               <textarea
-              //className={`textarea ${errors.description ? 'is-danger' : ''}`}
                 placeholder="Description"
                 name="description"
                 onChange={handleChange}
                 value={formdata.description}
               />
             </div>
-         
+        
           </div>
           <div className="field">
-            <label className="label">Image</label>
+            <label className="label">Image URL</label>
             <div className="control">
               <input
-              //className={`input ${errors.image ? 'is-danger' : ''}`}
-                placeholder="Image"
+                placeholder="Image URL"
                 name="image"
                 onChange={handleChange}
                 value={formdata.image}
@@ -48,11 +44,10 @@ function SpaceForm({ formdata, handleChange, handleSubmit, buttonText = 'Submit'
           
           </div>
           <div className="field">
-            <label className="label">Location</label>
+            <label className="label">Postcode</label>
             <div className="control">
               <input
-              //className={`input ${errors.location ? 'is-danger' : ''}`}
-                placeholder="Location"
+                placeholder="Postcode"
                 name="location"
                 onChange={handleChange}
                 value={formdata.location}

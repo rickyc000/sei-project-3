@@ -61,4 +61,11 @@ export function loginUser(formdata) {
   return axios.post(`${baseUrl}/login`, formdata)
 }
 
+// //* POST CODE Request
+
+export function getPostcodeData(postcode) {
+  return axios.get(`https://api.postcodes.io/postcodes/${postcode}`)
+}
+
+
 export default getAllSpaces
