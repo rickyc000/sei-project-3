@@ -1,7 +1,12 @@
 import React from 'react'
+<<<<<<< HEAD
 import { getSingleSpace, addToFavourites } from '../lib/api'
-import { useParams, useLocation } from 'react-router-dom'
+=======
+import { getSingleSpace, addToFavourites, deleteSpace } from '../lib/api'
+>>>>>>> development
+import { useParams, useLocation, Link } from 'react-router-dom'
 import SpaceShowMap from './SpaceShowMap'
+import { isOwner } from '../lib/auth'
 // import { Menu } from 'semantic-ui-react'
 
 import {
@@ -12,13 +17,13 @@ import {
 
 function SpaceShow() {
 
-  const [isFavourite, setIsFavourite] = React.useState(false)
+
 
   useLocation()
 
   const [space, setSpace] = React.useState([])
   const { id } = useParams()
-
+  console.log(id)
 
   React.useEffect(() => {
     const getSpace = async () => {
@@ -32,6 +37,18 @@ function SpaceShow() {
     getSpace()
   }, [id])
 
+
+  
+  // Favourite Functions
+
+
+  // const { isFavourited, setIsFavourited } = React.useState({
+  //   isFavourite: false,
+  //   space: {}
+  // })
+
+  const [isFavourite, setIsFavourite] = React.useState(false)
+
   const handleFavourite = async event => {
     event.preventDefault()
     try {
@@ -43,6 +60,17 @@ function SpaceShow() {
     }
     //* Add to the users favourites
   }
+
+  const handleDelete = async () => {
+    try {
+      await deleteSpace(id)
+      history.push('/spaces')
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  // Toggle Functions
 
   // const [activeTab, setActiveTab] = React.useState({ activeItem: 'image' })
 
@@ -59,6 +87,8 @@ function SpaceShow() {
   //   longitude: -0.07497,
   //   zoom: 12
   // })
+
+  console.log(space)
 
 
   return (
@@ -95,23 +125,38 @@ function SpaceShow() {
                 <div className="showpage-text-wrapper">
                   <p>{space.description}</p>
                   <div>
-                    <a className="ui image label">
+                    <Link to={space.owner ? `/users/${space.owner._id}` : ''} className="ui image label">
                       <Icon name="user circle" />
                       Added by {space.owner ? space.owner.username : ''}
-                    </a>
+                    </Link>
                   </div>
 
                   <div>
                     {space.tags ?
                       <div>
                         {space.tags.map(tag => (
-                          <p className="ui olive label" key={tag}>{tag}</p>))}
+                          <Link
+                            key={tag}
+                            to={`/spaces/category/${tag}`}>
+                            <p className="ui olive label" key={tag}>{tag}</p>
+                          </Link>
+                        )
+                        )}
                       </div>
                       :
                       ''
                     }
                   </div>
-
+              
+                 
+                  {isOwner(space.owner ? space.owner._id : '') &&
+                    <div className="buttons">
+                      <button onClick={handleDelete} className="button is-danger">Delete Cheese</button>
+                      <Link to={`/spaces/${id}/edit`} className="button is-warning">Edit Space</Link>
+                    </div>
+                  }
+               
+              
                   <p className="show-page-favourites">
                     {isFavourite ?
                       <Icon
@@ -125,7 +170,7 @@ function SpaceShow() {
                     }
                     <p>{space.favouritedBy ? space.favouritedBy.length : 0} favourites</p>
                   </p>
-
+                  
                 </div>
               </div>
             </div>
@@ -138,7 +183,7 @@ function SpaceShow() {
         <h2 className="ui comments">Comments</h2>
         <div className="comment">
           <div className="avatar">
-            <img src="https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/3_avatar-512.png"/>
+            <img src="https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/3_avatar-512.png" />
           </div>
           <div className="content">
             <a className="author">Ricky</a>
@@ -151,7 +196,7 @@ function SpaceShow() {
           </div>
         </div>
       </div>
-    </Container>
+    </Container >
   )
 }
 

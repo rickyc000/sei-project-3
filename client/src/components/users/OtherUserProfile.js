@@ -1,18 +1,18 @@
 import React from 'react'
-import { getUserProfile, headers } from '../lib/api'
+import { getOtherUserProfile } from '../lib/api'
+import { useParams } from 'react-router-dom'
 import ProfileInfo from './ProfileInfo'
 
-
-
-function Profile() {
+function UserProfile() {
 
   const [profile, setProfile] = React.useState({})
+  const { id } = useParams()
 
 
   React.useEffect(() => {
     const getProfile = async () => {
       try {
-        const { data } = await getUserProfile(headers())
+        const { data } = await getOtherUserProfile(id)
         console.log(data)
         setProfile(data)
       } catch (err) {
@@ -23,13 +23,15 @@ function Profile() {
   }, [])
 
   console.log(profile)
+
   return (
     <>
       <ProfileInfo profile={profile}
-        image={profile.profileImage}
-        name={'you find your'} />
+        image={'https://cdn1.vectorstock.com/i/1000x1000/38/05/male-face-avatar-logo-template-pictograph-vector-11333805.jpg'}
+        name={`${profile.firstName} finds their`}
+      />
     </>
   )
 }
 
-export default Profile
+export default UserProfile

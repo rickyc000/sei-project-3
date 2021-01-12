@@ -362,5 +362,47 @@ export default [
     image: 'https://offloadmedia.feverup.com/secretldn.com/wp-content/uploads/2020/12/03033623/The-national-theatre.jpg',
     location: { longitude: -0.114085, latitude: 51.506865 },
     tags: ['Architecture', 'Lively'],
+  },
+  {
+    name: 'Hilly Fields',
+    description: 'Hilly Fields Park is a natural park with fields, meadows and woods. Popular with runners, walkers, dog walkers, cyclists, families. Bandstand events are held in the summer and are enjoyed by the whole community.',
+    image: 'https://londongardenstrust.org/photos/upload/2019/08/20/20190820175328-422fe13f.jpg',
+    location: { longitude: -0.024822, latitude: 51.458373 },
+    tags: ['Mother Nature', 'Peace & Quiet'],
+  },
+  {
+    name: 'Priory Park',
+    description: 'Priory Park is a 6.5-hectare public park in Hornsey, in the London Borough of Haringey. It is located between Priory Road and Middle Lane, approximately 0.5 km north of Crouch End Broadway. The park is protected as a Fields in Trust Queen Elizabeth II Field. It has won multiple Green Flag Awards since 2003, and has an active community group. The park contains a fountain made from Lamorna stone which was installed in 1909. This originally stood in St Paul\'s Cathedral churchyard.',
+    image: 'https://cdn.londonandpartners.com/asset/258f50700f8a17990d98989ea54f43b5.jpg',
+    location: { longitude: -0.123512, latitude: 51.586384 },
+    tags: ['Sports & Leisure', 'Peace & Quiet'],
+  },
+  {
+    name: 'Town Hall Square',
+    description: 'Town Hall Square is the heart of the Crouch End community, with greenery, outdoor seating and a selection of cafés and restaurants bringing locals together throughout the year. Crouch End’s Town Hall Square was originally designed by Reginald Uren, the same architect who won a competition to design Hornsey Town Hall, which dates back to 1935. Over the years the square has changed considerbly, but the original fountain and matured trees still remain today.',
+    image: 'https://www.twilleys.com/cupboard/uploads/2019/02/Crouch-End-London.jpg',
+    location: { longitude: -0.122574, latitude: 51.578671},
+    tags: ['Lively', 'Food & Drink'],
+  },
+  {
+    name: 'Highgate Wood',
+    description: 'Highgate Wood is a 28 hectare area of ancient woodland in North London, lying between East Finchley, Highgate and Muswell Hill. It was originally part of the ancient Forest of Middlesex which covered much of London, Hertfordshire and Essex and was mentioned in the Domesday Book.',
+    image: 'https://d36tnp772eyphs.cloudfront.net/blogs/1/2020/05/Highgate-Wood-in-North-London-England.jpg',
+    location: { longitude: -0.149774, latitude: 51.582376 },
+    tags: ['Mother Nature', 'Peace & Quiet'],
+  },
+  {
+    name: 'Barnard Park',
+    description: 'A short walk from the Angel or King’s Cross, Barnard Park is large city park which provides green space and amenities for a diverse community. Cricket was invented nearby in the early eighteenth century, at White Conduit Fields (just south of the modern intersection of Barnsbury Road and Dewey Road). The area was developed into terraces of brick houses in the nineteenth century, and then bombed in the 1940s. Re-developed as a park in the 1960s, Barnard Park now contains a football pitch, playgrounds for children of various ages and a pleasant green space with views reaching over King’s Cross to the West End.',
+    image: 'https://media.timeout.com/images/102603377/1372/772/image.jpg',
+    location: { longitude: -0.110338 , latitude: 51.537883 },
+    tags: ['Mother Nature', 'Sports & Leisure'],
+  },
+  {
+    name: 'Oxleas Wood and Severndroog Castle',
+    description: 'Oxleas Wood is an ancient woodland located across Shooter’s Hill in South London’s Greenwich, dating back as far as 8,000 years. It’s part of a larger site that encompasses Oxleas Woodlands, Castle Wood, Jack Wood, and Shepherdleas Wood. The area is considered a Site of Special Scientific Interest because of the impressive trees that inhabit it, including oak, silver birch, hazel, and hornbeam. You’ll be privy to stunning views across Oxlea meadows, which offer acres and acres of open grassland.',
+    image: 'https://d36tnp772eyphs.cloudfront.net/blogs/1/2020/05/Severndroog-Castle-in-London.jpg',
+    location: { longitude: 0.069764 , latitude: 51.466589 },
+    tags: ['Architecture', 'Mother Nature'],
   }
 ]

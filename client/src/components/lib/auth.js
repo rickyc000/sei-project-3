@@ -18,6 +18,12 @@ function getPayload() {
   return JSON.parse(atob(parts[1]))
 }
 
+export function getUserId() {
+  return getPayload().sub
+}
+
+
+
 export function isAuthenticated() {
   const payload = getPayload()
   console.log(payload)

@@ -15,10 +15,6 @@ router.route('/spaces/:id')
   .put(spaces.update)
   .delete(secureRoute, spaces.delete)
 
-router.route('/profile')
-  .get(secureRoute, users.userProfile)
-
-
 router.route('/register')
   .post(auth.registerUser)
 
@@ -33,6 +29,9 @@ router.route('/spaces/:id/comments/:commentId')
 
 router.route('/spaces/:id/favourite')
   .post(secureRoute, spaces.favouriteASpace)
+
+router.route('/profile/:id')
+  .get(secureRoute, users.userProfile)
 
 router.route('/users')
   .get(users.index)
