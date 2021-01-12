@@ -1,6 +1,6 @@
 import React from 'react'
 // import { Link } from 'react-router-dom'
-import { getAllSpaces } from '../lib/api'
+import { getAllSpaces } from '../../lib/api'
 
 
 function SpaceIndexCategories() {
