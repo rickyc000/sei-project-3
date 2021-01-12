@@ -22,13 +22,15 @@ function SpaceShow() {
 
   useLocation()
 
-  const { formdata, handleChange } = useForm({
+  const { formdata, setFormdata, handleChange } = useForm({
     text: ''
   })
 
   const [space, setSpace] = React.useState([])
+  const [refreshData, setRefreshData] = React.useState(true)
   const { id } = useParams()
-  // console.log(id)
+ 
+
 
   React.useEffect(() => {
     const getSpace = async () => {
@@ -43,13 +45,14 @@ function SpaceShow() {
         }
         if (data.comments) {
           setComments(data.comments)
+          setRefreshData(false)
         }
       } catch (err) {
         console.log(err)
       }
     }
-    getSpace()
-  }, [id])
+    if (refreshData) getSpace()
+  }, [id, refreshData])
 
   const history = useHistory()
   
@@ -59,7 +62,7 @@ function SpaceShow() {
   const [favourites, setFavourites] = React.useState(0)
 
   const [comments, setComments] = React.useState(null)
-  // const [newComment, setNewComment] = React.useState('')
+  
  
   console.log(comments)
   
@@ -90,28 +93,24 @@ function SpaceShow() {
 
 
 
-  // Delete Space Function
+  // Add Comment Data 
   const handleAddComment = async event => {
     event.preventDefault()
     try {
       await addComment(id, formdata)
-      // setComments({ ...comments, formdata })
-      history.push(`/spaces/${space ? space._id : ''}`)
-
+      setRefreshData(true)
+      setFormdata({ text: '' })
       console.log('Add Comment')
     } catch (err) {
       console.log(err)
     }
   }
-
   const handleDeleteComment = async event => {
     event.preventDefault()
     try {
       const commentId = event.target.name
       await deleteComment(id, commentId)
-      // setComments({ ...comments, formdata })
-      history.push(`/spaces/${space ? space._id : ''}`)
-      console.log('Delete me')
+      setRefreshData(true)
     } catch (err) {
       console.log(err)
     }
