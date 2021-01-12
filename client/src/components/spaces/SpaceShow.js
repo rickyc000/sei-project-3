@@ -1,12 +1,16 @@
 import React from 'react'
-import { getSingleSpace, addToFavourites, deleteSpace } from '../lib/api'
-import { useParams, useLocation, Link } from 'react-router-dom'
+import { getSingleSpace, addToFavourites, deleteSpace, addComment, deleteComment } from '../lib/api'
+import { useParams, useLocation, Link, useHistory } from 'react-router-dom'
 import SpaceShowMap from './SpaceShowMap'
 import { isOwner } from '../lib/auth'
-// import { Menu } from 'semantic-ui-react'
+import useForm from '../../utils/useForm'
+//import { Button, Comment, Form, Header } from 'semantic-ui-react'
 
 import {
-  // Button,
+  Button,
+  Comment,
+  Form,
+  Header,
   Container,
   Icon
 } from 'semantic-ui-react'
@@ -16,6 +20,10 @@ function SpaceShow() {
 
 
   useLocation()
+
+  const { formdata, handleChange } = useForm({
+    text: ''
+  })
 
   const [space, setSpace] = React.useState([])
   const { id } = useParams()
@@ -33,7 +41,7 @@ function SpaceShow() {
     getSpace()
   }, [id])
 
-
+  const history = useHistory()
   
   // Favourite Functions
 
@@ -57,6 +65,35 @@ function SpaceShow() {
     //* Add to the users favourites
   }
 
+  const handleAddComment = async event => {
+    event.preventDefault()
+    try {
+      await addComment(id, formdata)
+      history.push(`/spaces/${space ? space._id : ''}`)
+      console.log('Add Comment')
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const handleDeleteComment = async event => {
+    event.preventDefault()
+    
+    try {
+      
+      // history.push('/spaces')
+      const commentId = event.target.name
+      await deleteComment(id, commentId)
+      history.push(`/spaces/${space ? space._id : ''}`)
+      console.log('Delete me')
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+
+  //Delete Space
+
   const handleDelete = async () => {
     try {
       await deleteSpace(id)
@@ -65,10 +102,8 @@ function SpaceShow() {
       console.log(err)
     }
   }
+  
 
-  // Toggle Functions
-
-  // const [activeTab, setActiveTab] = React.useState({ activeItem: 'image' })
 
   const [photoTab, setPhotoTab] = React.useState(true)
   const handlePhotoTab = () => {
@@ -175,23 +210,54 @@ function SpaceShow() {
         :
         <p>Error Loading</p>
       }
-      <div className="ui comments">
-        <h2 className="ui comments">Comments</h2>
-        <div className="comment">
-          <div className="avatar">
-            <img src="https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/3_avatar-512.png" />
-          </div>
-          <div className="content">
-            <a className="author">Ricky</a>
-            <div className="metadata">
-              <div>2 days ago</div>
-            </div>
-            <div className="text">
-              What a fantastic spot! Thanks {space.owner ? space.owner.username : ''}.
-            </div>
-          </div>
-        </div>
-      </div>
+      <>
+        <Comment.Group>
+          <Header as='h3' dividing>
+      Comments
+          </Header>
+
+          {space.comments ? space.comments.map(comment => (
+            <>
+              <Comment key={comment._id} value={comment._id}>
+
+                <Comment.Avatar src={comment.owner.profileImage} />
+                <Comment.Content>
+                  <Comment.Author as='a'>{comment.owner.name}</Comment.Author>
+                  <Comment.Metadata>
+                    <div>Today at 5:42PM</div>
+                  </Comment.Metadata>
+                  <Comment.Text>{comment.text}</Comment.Text>
+                  <Comment.Actions>
+                    <Comment.Action onClick={handleDeleteComment} name={comment._id}>Delete</Comment.Action>
+                  </Comment.Actions>
+                </Comment.Content>
+              </Comment>
+            </>
+          ))
+            :
+            <Comment>
+              <Comment.Avatar image="" />
+              <Comment.Content>
+                <Comment.Author as='a'>Matt</Comment.Author>
+                <Comment.Metadata>
+                  <div>Today at 5:42PM</div>
+                </Comment.Metadata>
+                <Comment.Text>How artistic!</Comment.Text>
+                <Comment.Actions>
+                  <Comment.Action>Reply</Comment.Action>
+                </Comment.Actions>
+              </Comment.Content>
+            </Comment>
+          }
+ 
+          <Form reply>
+          
+            <Form.TextArea onChange={handleChange} name="text" value={formdata.text}/>
+            <Button content='Add Reply' onClick={handleAddComment} labelPosition='left' icon='edit' primary />
+          </Form>
+        </Comment.Group>
+
+      </>
     </Container >
   )
 }
