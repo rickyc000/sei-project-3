@@ -36,13 +36,13 @@ function SpaceCategoriesView() {
   }
 
   const categoryList = [
-    'Riverside Spot',
     'Architecture',
     'Art & Design',
     'Food & Drink',
-    'Peace & Quiet',
     'Lively',
     'Mother Nature',
+    'Peace & Quiet',
+    'Riverside Spot',
     'Sports & Leisure'
   ]
 
@@ -73,19 +73,30 @@ function SpaceCategoriesView() {
             {filterSpaces(category).map((space =>
               <div key={space.name} className="ui card category-card">
                 <div className="image-card-wrapper">
-                  {/* <div> */}
-                  <img src={space.image} />
-                  {/* </div> */}
+                  <Link
+                    to={`/spaces/${space._id}`}
+                    key={space.name}>
+                    <img src={space.image} />
+                  </Link>
                 </div>
                 <div className="content category-card-content">
                   <div className="header">
                     {space.name}
                   </div>
-                  <div className="category-card-favourite">
-                    <a className="ui image label yellow">
-                      <Icon name="heart" />
-                      {space.favouritedBy.length}
-                    </a>
+                  <div>
+                    <div className="category-card-favourite">
+                      <a className="ui image label yellow">
+                        <Icon name="heart" />
+                        {space.favouritedBy.length}
+                      </a>
+                      <Link
+                        to={`/spaces/${space._id}`}
+                        key={space.name}>
+                        <div className="ui label">
+                          More info
+                        </div>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
