@@ -1,8 +1,8 @@
 import React from 'react'
-import { getSingleSpace, addToFavourites, deleteSpace } from '../lib/api'
+import { getSingleSpace, addToFavourites, removeFromFavourites, deleteSpace } from '../lib/api'
 import { useParams, useLocation, Link } from 'react-router-dom'
 import SpaceShowMap from './SpaceShowMap'
-import { isOwner } from '../lib/auth'
+import { isOwner, getUserId } from '../lib/auth'
 // import { Menu } from 'semantic-ui-react'
 
 import {
@@ -19,13 +19,19 @@ function SpaceShow() {
 
   const [space, setSpace] = React.useState([])
   const { id } = useParams()
-  console.log(id)
+  // console.log(id)
 
   React.useEffect(() => {
     const getSpace = async () => {
       try {
         const { data } = await getSingleSpace(id)
         setSpace(data)
+        if (data.favouritedBy.includes(getUserId())) {
+          setIsFavourite(true)
+        }
+        if (data.favouritedBy) {
+          setFavourites(data.favouritedBy.length)
+        }
       } catch (err) {
         console.log(err)
       }
@@ -37,25 +43,41 @@ function SpaceShow() {
   
   // Favourite Functions
 
-
-  // const { isFavourited, setIsFavourited } = React.useState({
-  //   isFavourite: false,
-  //   space: {}
-  // })
-
   const [isFavourite, setIsFavourite] = React.useState(false)
-
+  const [favourites, setFavourites] = React.useState(0)
+  
+  
   const handleFavourite = async event => {
     event.preventDefault()
+    // setIsFavourite(!isFavourite)
+    // setFavourites(space.favouritedBy.length)
     try {
       await addToFavourites(id)
       setIsFavourite(!isFavourite)
-      console.log('Add to Favourites')
+      setFavourites(favourites + 1)
     } catch (err) {
       console.log(err)
     }
     //* Add to the users favourites
   }
+
+  const handleUnFavourite = async event => {
+    event.preventDefault()
+    // setIsFavourite(!isFavourite)
+    // setFavourites(space.favouritedBy.length)
+    try {
+      setIsFavourite(!isFavourite)
+      setFavourites(favourites - 1)
+      await removeFromFavourites(id)
+    } catch (err) {
+      console.log(err)
+    }
+    //* Add to the users favourites
+  }
+
+
+
+  // Delete Space Function
 
   const handleDelete = async () => {
     try {
@@ -147,24 +169,25 @@ function SpaceShow() {
                  
                   {isOwner(space.owner ? space.owner._id : '') &&
                     <div className="buttons">
-                      <button onClick={handleDelete} className="button is-danger">Delete Cheese</button>
+                      <button onClick={handleDelete} className="button is-danger">Delete Space</button>
                       <Link to={`/spaces/${id}/edit`} className="button is-warning">Edit Space</Link>
                     </div>
                   }
                
               
                   <p className="show-page-favourites">
-                    {isFavourite ?
-                      <Icon
-                        name="heart"
-                        size="big"
-                        onClick={handleFavourite}></Icon>
-                      :
+                    {!isFavourite ?
                       <Icon
                         name="heart outline" size="big"
                         onClick={handleFavourite}></Icon>
+                      
+                      :
+                      <Icon
+                        name="heart"
+                        size="big"
+                        onClick={handleUnFavourite}></Icon>
                     }
-                    <p>{space.favouritedBy ? space.favouritedBy.length : 0} favourites</p>
+                    <p>{favourites ? favourites : 0} favourites</p>
                   </p>
                   
                 </div>

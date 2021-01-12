@@ -35,19 +35,26 @@ export function getSingleSpace(id) {
 // Add to favourites
 
 export function addToFavourites(id) {
-  console.log(headers())
+  // console.log(headers())
   return axios.post(`${baseUrl}/spaces/${id}/favourite`, null, headers())
+}
+
+//* Remove From Favourites
+
+export function removeFromFavourites(id) {
+  // console.log(headers())
+  return axios.delete(`${baseUrl}/spaces/${id}/favourite`, headers())
 }
 
 // Get Current User Profile
 
 export function getUserProfile() {
-  console.log(headers())
+  // console.log(headers())
   return axios.get(`${baseUrl}/profile/${getUserId()}`, headers())
 }
 
 export function getOtherUserProfile(id) {
-  console.log(headers())
+  // console.log(headers())
   return axios.get(`${baseUrl}/users/${id}`, headers())
 }
 

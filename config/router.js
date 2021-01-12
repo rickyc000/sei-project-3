@@ -29,6 +29,7 @@ router.route('/spaces/:id/comments/:commentId')
 
 router.route('/spaces/:id/favourite')
   .post(secureRoute, spaces.favouriteASpace)
+  .delete(secureRoute, spaces.unFavouriteASpace)
 
 router.route('/profile/:id')
   .get(secureRoute, users.userProfile)
