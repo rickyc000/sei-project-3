@@ -30,17 +30,34 @@ function ImageUploadField({ onChange, labelText, name, value }) {
         </div>
         :
         <>
-          <label>{labelText || 'Upload Image'}</label>
+          <label>{labelText || 'Upload Image'} </label>
           <input
-
             type="file"
             onChange={handleUpload}
             name={name}
           />
         </>
       }
-    </div>
+   
 
+      {value ?
+        <>
+          <label>{labelText || 'Upload Image'} </label>
+          <input
+            type="file"
+            onChange={handleUpload}
+            name={name}
+          />
+        </>
+        :
+        ''
+      }
+      
+    </div>
+    
+  //Add button
+  //When user uploaded show reupload image button
+  //Show in a terniary
   )
 }
 
