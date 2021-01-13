@@ -42,7 +42,7 @@ function SpaceEdit() {
     const getData = async () => {
       const { data } = await getSingleSpace(id)
       const updatedData = { ...data, location: '' }
-      setFormdata(updatedData) 
+      setFormdata(updatedData)
     }
     getData()
   }, [id, setFormdata])
@@ -62,8 +62,8 @@ function SpaceEdit() {
   }
 
   return (
-    <section className="section">
-      <div className="container">
+    <section className="form-container">
+      <div className="form-box">
         <SpaceForm
           formdata={formdata}
           errors={errors}
@@ -71,6 +71,15 @@ function SpaceEdit() {
           handleSubmit={handleSubmit}
           buttonText="Edit your Space!"
         />
+        <div>
+          {!errors ?
+            <div className="ui error message small">
+              <div className="header">Sorry, some information is incorrect.</div>
+            </div>
+            :
+            <p></p>
+          }
+        </div>
       </div>
     </section>
   )
