@@ -4,7 +4,6 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Nav from './components/common/Nav'
 import Home from './components/common/Home'
 
-import SpaceIndexMap from './components/spaces/indexPage/SpaceIndexMap'
 import SpaceIndexView from './components/spaces/SpaceIndexView'
 import SpaceShow from './components/spaces/SpaceShow'
 import SpaceNew from './components/spaces/SpaceNew'
@@ -28,9 +27,8 @@ function App() {
         <Route path="/spaces/:id/edit" component={SpaceEdit} />
         <Route path="/spaces/category/:category" component={SpaceCategories} />
         <Route path="/spaces/new" component={SpaceNew} />
-        <Route path="/spaces/:id" component={SpaceShow} />  
-        <Route path="/spaces" component={SpaceIndexMap} />
-        <Route path="/space" component={SpaceIndexView} />
+        <Route path="/spaces/:id" component={SpaceShow} /> 
+        <Route path="/spaces" component={SpaceIndexView} />
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
         <Route path="/profile/:id" component={Profile} />

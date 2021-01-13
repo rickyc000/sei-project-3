@@ -40,6 +40,7 @@ function SpaceIndexMap() {
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
         height="100%"
         width="100%"
+        scrollZoom='false'
         mapStyle='mapbox://styles/mapbox/streets-v11'
         {...viewport}
         onClick={() => setPopup(null)}

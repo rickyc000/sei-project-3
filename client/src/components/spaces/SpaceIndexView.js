@@ -9,15 +9,20 @@ import SpaceIndexCategories from './indexPage/SpaceIndexCategories'
 import SpaceIndexMap from './indexPage/SpaceIndexMap'
 import { isAuthenticated } from '../lib/auth'
 
+
 function SpaceIndexView() {
 
 
   const isLoggedIn = isAuthenticated()
 
+
+
   
   return (
+
     <>
       <SpaceSlider />
+   
       { isLoggedIn &&
         <ReccomendedSlider 
         />
@@ -29,8 +34,11 @@ function SpaceIndexView() {
       <footer className="footer">
         <p>&copy; CitySpace </p>
       </footer>
+
+
     </>
-    
   )
+
+  
 }
 export default SpaceIndexView

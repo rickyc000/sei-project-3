@@ -4,8 +4,10 @@ import Slider from 'react-slick'
 import { getAllSpaces } from '../lib/api'
 
 
+
 function SimilarPlacesSlider ({ space }) {
 
+  // const { id } = useParams()
   const recommendedSpaces = []
   const [spaces, setSpaces] = React.useState([])
   // const [hasError, setHasError] = React.useState(false)
@@ -68,14 +70,16 @@ function SimilarPlacesSlider ({ space }) {
         <Slider {...settings}>
           {recommendedSpaces.map(item => (
             <Link to={`/spaces/${item._id}`} key={item._id}>
-              <div className="card">
-                <div className="ui-card img-wrapper">
+              <div>
+                <div className="card">
+                  <div className="ui-card img-wrapper">
                 
                 
-                  <img key={item._id} className="images" src={item.image} />
+                    <img key={item._id} className="images" src={item.image} />
                 
-                </div>
+                  </div>
             
+                </div>
               </div>
             </Link>
           ))}
