@@ -1,5 +1,6 @@
 import React from 'react'
 import { getAllSpaces } from '../lib/api'
+// import { getUserId } from '../lib/auth'
 import { Icon } from 'semantic-ui-react'
 import { useParams, Link } from 'react-router-dom'
 
@@ -48,6 +49,65 @@ function SpaceCategoriesView() {
 
   filterSpaces(category)
   console.log(activeCategory)
+
+  // Favourites and Add Favourites
+
+  // const [isFavourite, setIsFavourite] = React.useState(false)
+  // const [favourites, setFavourites] = React.useState(0)
+
+  // const handleFavourite = async event => {
+  //   event.preventDefault()
+  //   try {
+  //     const spaceId = event.target.value
+  //     await addToFavourites(spaceId)
+  //     setIsFavourite(!isFavourite)
+  //     setFavourites(favourites + 1)
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
+
+  // //* Add to the users favourites
+  
+
+  // const handleUnFavourite = async event => {
+  //   event.preventDefault()
+  //   try {
+  //     setIsFavourite(!isFavourite)
+  //     setFavourites(favourites - 1)
+  //     const spaceId = event.target.value
+  //     await removeFromFavourites(spaceId)
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // //* Add to the users favourites
+  // }
+
+  // const favouriteSpaces = []
+
+  // const hasUserFavourited = () => {
+  //   spaces.forEeach(space => {
+  //     if (space.favouritedBy.includes(getUserId())) {
+  //       favouriteSpaces.push(space)
+  //     }
+  //   })
+  // }
+  
+
+  // const isItAFavourite = (space) => {
+  //   if (favouriteSpaces.includes(space)) {
+  //     return true
+  //   }
+  // }
+  
+
+  
+
+
+
+
+
+
   return (
     <section>
       <div
@@ -85,10 +145,30 @@ function SpaceCategoriesView() {
                   </div>
                   <div>
                     <div className="category-card-favourite">
-                      <a className="ui image label yellow">
-                        <Icon name="heart" />
-                        {space.favouritedBy.length}
-                      </a>
+                      {/* {isItAFavourite(space) ? 
+                        <button value={space._id} onClick={handleFavourite} className="ui button blue">
+
+                          <Icon name="heart" />
+                          {space.favouritedBy.length}
+                        
+                        </button>
+                        :
+                        <button value={space._id} onClick={handleUnFavourite} className="ui button yellow">
+
+                          <Icon name="heart outline" />
+                          {space.favouritedBy.length}
+                        
+                        </button>
+                      } */}
+                      <Link to={`/spaces/${space._id}`}>
+                        <a value={space._id} className="ui button yellow">
+
+                          <Icon name="heart" />
+                          {space.favouritedBy.length}
+
+                        </a>
+                      </Link>
+
                       <Link
                         to={`/spaces/${space._id}`}
                         key={space.name}>
