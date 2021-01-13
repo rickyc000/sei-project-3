@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactMapGL, { Marker, Popup } from 'react-map-gl'
-import { getAllSpaces } from '../lib/api'
+import { getAllSpaces } from '../../lib/api'
 import { Link } from 'react-router-dom'
 // import { getToken } from '../lib/auth'
 
 
-function SpaceIndex() {
+function SpaceIndexMap() {
   const [viewport, setViewport] = React.useState({
     latitude: 51.502643,
     longitude: -0.07497,
@@ -86,4 +86,4 @@ function SpaceIndex() {
   )
 }
 
-export default SpaceIndex
+export default SpaceIndexMap
