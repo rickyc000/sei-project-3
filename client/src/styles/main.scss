@@ -5,6 +5,7 @@
 @import '_showPage.scss';
 @import '_spaceCategories.scss';
 @import '_profileInfo.scss';
+@import '_registerAndLogin.scss';
 
 .header {
   margin: calc(15rem - .14285714em) 0 1rem;
@@ -36,13 +37,8 @@
 //   
 // }
 
-.form-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 60vh;
-  margin: 100px 0 0 0;
-}
+
+
 
 .form-box {
   width: 400px;

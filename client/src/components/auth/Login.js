@@ -34,7 +34,7 @@ function Login() {
 
   return (
     <section className="form-container">
-      <div className="form-box">
+      <div className="form-box ui form error">
 
         <Form
           onSubmit={handleSubmit}>
@@ -62,7 +62,14 @@ function Login() {
             />
           </Form.Field>
 
-          {error && <p>Sorry, your username or password are incorrect</p>}
+          {error &&
+          <div className="ui error message small">
+            <div className="header">Incorrect Password or Email</div>
+            <p>Sorry, your username or password are incorrect.</p>
+          </div>
+          }
+
+
 
           <Button type="submit">
             Log In

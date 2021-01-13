@@ -26,7 +26,7 @@ export function getUserId() {
 
 export function isAuthenticated() {
   const payload = getPayload()
-  console.log(payload)
+  // console.log(payload)
   if (!payload) return false
   const now = Math.round(Date.now() / 1000)
   return now < payload.exp

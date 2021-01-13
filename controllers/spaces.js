@@ -118,6 +118,25 @@ async function favouriteASpace(req, res, next) {
   }
 }
 
+// unfavourite a space
+
+async function unFavouriteASpace(req, res, next) {
+  const { id } = req.params
+  console.log(req.params)
+  try {
+    const space = await Space.findById(id)
+    if (!space) throw new Error(notFound)
+    // const favourited = { owner: req.currentUser._id }
+    space.favouritedBy.pull(req.currentUser._id)
+    await space.save()
+    return res.status(201).json(space)
+  } catch (err) {
+    next(err)
+  }
+}
+
+
+
 
 
 
@@ -131,4 +150,5 @@ export default {
   commentCreate: spaceCommentCreate,
   commentDelete: spaceCommentDelete,
   favouriteASpace: favouriteASpace,
+  unFavouriteASpace: unFavouriteASpace,
 }

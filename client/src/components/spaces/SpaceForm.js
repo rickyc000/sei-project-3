@@ -1,7 +1,7 @@
 import React from 'react'
 
 function SpaceForm({ formdata, handleChange, handleSubmit, buttonText = 'Submit' }) {
-  
+
   return (
     <section className="form-container">
       <div className="form-box">
@@ -10,56 +10,55 @@ function SpaceForm({ formdata, handleChange, handleSubmit, buttonText = 'Submit'
             <label className="label">Name</label>
             <div className="control">
               <input
-              //className={`input ${errors.name ? 'is-danger' : ''}`}
-              //input type="text"
                 placeholder="Name"
                 name="name"
                 onChange={handleChange}
                 value={formdata.name}
               />
             </div>
-          
+
           </div>
           <div className="field">
             <label className="label">Description</label>
             <div className="control">
               <textarea
-              //className={`textarea ${errors.description ? 'is-danger' : ''}`}
                 placeholder="Description"
                 name="description"
                 onChange={handleChange}
                 value={formdata.description}
               />
             </div>
-         
+
           </div>
           <div className="field">
-            <label className="label">Image</label>
+            <label className="label">Image URL</label>
             <div className="control">
               <input
-              //className={`input ${errors.image ? 'is-danger' : ''}`}
-                placeholder="Image"
+                placeholder="Image URL"
                 name="image"
                 onChange={handleChange}
                 value={formdata.image}
               />
             </div>
-          
+
           </div>
           <div className="field">
-            <label className="label">Location</label>
+            <label className="label">Postcode</label>
             <div className="control">
               <input
-              //className={`input ${errors.location ? 'is-danger' : ''}`}
-                placeholder="Location"
+                placeholder="Postcode"
                 name="location"
                 onChange={handleChange}
                 value={formdata.location}
               />
             </div>
-          
+            <div className="ui label">
+
+              Verify Postcode
+            </div>
+
           </div>
-        
+
 
           <div className="field">
             <button type="submit" className="ui button">{buttonText}</button>

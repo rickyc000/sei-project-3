@@ -12,7 +12,7 @@ router.route('/spaces')
 
 router.route('/spaces/:id')
   .get(spaces.show)
-  .put(spaces.update)
+  .put(secureRoute, spaces.update)
   .delete(secureRoute, spaces.delete)
 
 router.route('/register')
@@ -29,6 +29,7 @@ router.route('/spaces/:id/comments/:commentId')
 
 router.route('/spaces/:id/favourite')
   .post(secureRoute, spaces.favouriteASpace)
+  .delete(secureRoute, spaces.unFavouriteASpace)
 
 router.route('/profile/:id')
   .get(secureRoute, users.userProfile)
