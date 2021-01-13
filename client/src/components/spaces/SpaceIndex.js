@@ -2,6 +2,7 @@ import React from 'react'
 import ReactMapGL, { Marker, Popup } from 'react-map-gl'
 import { getAllSpaces } from '../lib/api'
 import { Link } from 'react-router-dom'
+import { Icon } from 'semantic-ui-react'
 // import { getToken } from '../lib/auth'
 
 
@@ -55,7 +56,7 @@ function SpaceIndex() {
               aria-label="map-marker"
               onClick={() => setPopup(space)}
             >
-              😺‍
+              <Icon name="circle thin green" />
             </span>
           </Marker>
         ))}
