@@ -75,7 +75,7 @@ function SpaceSlider() {
           // </SRLWrapper>
           :
           <h2 className="title has-text-centered">
-            {hasError ? 'Oh something went wrong, the sadness 😞' : '...loading 🎬 '}
+            {hasError ? 'There was An Error' : '...loading '}
           </h2>
         }
       </div>
