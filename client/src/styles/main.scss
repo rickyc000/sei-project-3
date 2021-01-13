@@ -5,6 +5,7 @@
 @import '_showPage.scss';
 @import '_spaceCategories.scss';
 @import '_profileInfo.scss';
+@import '_registerAndLogin.scss';
 
 .header {
   margin: calc(15rem - .14285714em) 0 1rem;
@@ -26,22 +27,18 @@
 }
 
 .map-container {
-  height: calc(100vh - 52px);
+  height: 100%;
   width: 100%;
+  // height: 500px;
+  // width: 500px;
 }
 
 // .map-container-small {
-//   height: 500px;
-//   width: 500px;
+//   
 // }
 
-.form-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 60vh;
-  margin: 100px 0 0 0;
-}
+
+
 
 .form-box {
   width: 400px;
@@ -77,5 +74,26 @@ img.images {
 
 
 
+.profile-icon{
+  margin-right: 20px;
+  width: 50px;
+}
 
 
+.navbar-item{
+  margin-left: 20px;
+}
+
+.mapbox-wrapper {
+  margin-top: 50px;
+  width: 100%;
+  height: 600px;
+  .map-container{
+    display: flex;
+    justify-content: center;
+    div{
+      border-radius: 40px;
+      margin: 0;
+    }
+  }
+}

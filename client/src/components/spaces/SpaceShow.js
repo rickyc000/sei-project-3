@@ -1,7 +1,7 @@
 import React from 'react'
 import { getSingleSpace, addToFavourites, removeFromFavourites, deleteSpace, addComment, deleteComment } from '../lib/api'
 import SpaceShowMap from './SpaceShowMap'
-import { isOwner, getUserId } from '../lib/auth'
+import { isOwner, getUserId, isAuthenticated } from '../lib/auth'
 // import { Menu } from 'semantic-ui-react'
 import { useParams, useLocation, Link, useHistory } from 'react-router-dom'
 import useForm from '../../utils/useForm'
@@ -30,6 +30,7 @@ function SpaceShow() {
   const [refreshData, setRefreshData] = React.useState(true)
   const { id } = useParams()
  
+  const isLoggedIn = isAuthenticated()
 
 
   React.useEffect(() => {
@@ -119,7 +120,8 @@ function SpaceShow() {
 
   //Delete Space
 
-  const handleDelete = async () => {
+  const handleDelete = async event => {
+    event.preventDefault()
     try {
       await deleteSpace(id)
       history.push('/spaces')
@@ -181,7 +183,7 @@ function SpaceShow() {
                 <div className="showpage-text-wrapper">
                   <p>{space.description}</p>
                   <div>
-                    <Link to={space.owner ? `/users/${space.owner._id}` : ''} className="ui image label">
+                    <Link to={ space.owner ? `/users/${space.owner._id}` : ''} className="ui image label">
                       <Icon name="user circle" />
                       Added by {space.owner ? space.owner.username : ''}
                     </Link>
@@ -253,9 +255,11 @@ function SpaceShow() {
                     <div>Today at 5:42PM</div>
                   </Comment.Metadata>
                   <Comment.Text>{comment.text}</Comment.Text>
+                  {isOwner(comment.owner ? comment.owner._id : '') && 
                   <Comment.Actions>
                     <Comment.Action onClick={handleDeleteComment} name={comment._id}>Delete</Comment.Action>
                   </Comment.Actions>
+                  }
                 </Comment.Content>
               </Comment>
             </>
@@ -276,11 +280,12 @@ function SpaceShow() {
             </Comment>
           }
  
-          <Form reply>
+          {isLoggedIn && <Form reply>
           
-            <Form.TextArea onChange={handleChange} name="text" value={formdata.text}/>
+            <Form.TextArea onChange={handleChange} name="text" value={formdata.text} placeholder="Max 300 Characters"/>
             <Button content='Add Reply' onClick={handleAddComment} labelPosition='left' icon='edit' primary />
           </Form>
+          }
         </Comment.Group>
 
       </>

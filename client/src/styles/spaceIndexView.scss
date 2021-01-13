@@ -35,12 +35,14 @@ h6{
 
 .category-wrapper{
   position: relative;
-  width: 150px;     
-  height: 125px;
+  width: 90px;     
+  height: 75px;
   overflow: hidden;
-  margin-left: 10px;
+  margin-left: 40px;
   border: 5px solid white;
-  border-radius: 25px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+
 
   img {
     position: relative;
@@ -56,4 +58,48 @@ h6{
   height: 300px;
   display: flex;
   align-items: space-around;
+}
+
+.user-tags{
+  display: flex;
+  align-items: center;
+  margin-left: 65px;
+  margin-bottom: 40px;
+}
+
+.user-label-tags{
+  font-family: 'Comfortaa', cursive;
+  padding: .8rem 1.25rem;
+  border: 1px solid grey;
+  margin-right: 10px;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  color: grey;
+}
+
+.user-label-tags:hover {
+  background-color: rgba(238, 238, 238, 1);
+}
+
+.categories-wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: 10px;
+  width: 90%;
+  .column{
+    .card {
+      display: flex;
+      align-items: center;
+      h6{
+        margin: 0;
+        font-size: 15px;
+        font-weight: 900;
+        margin-bottom: 30px;
+        width: 120px;
+      }
+    }
+  }
 }

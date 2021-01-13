@@ -31,11 +31,10 @@ function Register() {
   }
 
   return (
-    <section className="form-container">
-      <div className="form-box">
+    <section className={`form-container ${errors ? 'error-form-container ' : ''}`}>
+      <div className="form-box ui form error">
         <Form
           onSubmit={handleSubmit}>
-
           <ImageUploadField
             onChange={handleChange}
             labelText="Profile Image"
@@ -43,10 +42,16 @@ function Register() {
             value={formdata.profileImage}
           />
 
-          {errors.profileImage &&
+          {/* {errors.profileImage &&
             <p className='error field ui pointing above prompt label'>
-              {errors.profileImage}</p>}
+              {errors.profileImage}</p>} */}
 
+          {errors.profileImage &&
+          <div className="ui error message small">
+            <p>Profile Image is Required</p>
+          </div>
+          }
+          
           <Divider />
 
           <Form.Field>
@@ -59,11 +64,17 @@ function Register() {
             />
           </Form.Field>
 
-          {errors.username &&
+          {/* {errors.username &&
             <p className='error field ui pointing above prompt label'>
-              {errors.username}</p>}
+              {errors.username}</p>} */}
 
-          <Form.Group>
+          {errors.username &&
+          <div className="ui error message small">
+            <p>Username is Required</p>
+          </div>
+          }
+
+          <Form.Group className="name-errors">
             <Form.Field>
               <label>First Name</label>
               <input
@@ -74,6 +85,7 @@ function Register() {
               />
             </Form.Field>
 
+
             <Form.Field>
               <label>Last Name</label>
               <input
@@ -83,14 +95,41 @@ function Register() {
                 value={formdata.lastName}
               />
             </Form.Field>
+
           </Form.Group>
 
-          {errors.firstName &&
+          <div className="name-errors-form">
+            
+            <div className="first-name">
+              {errors.firstName &&
+            <div className="ui error message small">
+              <p>First Name is Required</p>
+            </div>
+              }
+            </div>
+            
+            
+            <div className="last-name">
+              {errors.lastName &&
+              <div className="ui error message small">
+                <p>Last Name is Required</p>
+              </div>
+              }
+            </div>
+          </div>
+        
+
+          {/* {errors.firstName &&
             <p className='error field ui pointing above prompt label'>
               {errors.firstName}</p>}
           {errors.lastName &&
             <p className='error field ui pointing above prompt label'>
-              {errors.lastName}</p>}
+              {errors.lastName}</p>} */}
+          
+           
+    
+       
+          
 
           <Form.Field>
             <label>Email</label>
@@ -102,9 +141,15 @@ function Register() {
             />
           </Form.Field>
 
-          {errors.email &&
+          {/* {errors.email &&
             <p className='error field ui pointing above prompt label'>
-              {errors.email}</p>}
+              {errors.email}</p>} */}
+
+          {errors.email &&
+          <div className="ui error message small">
+            <p>Email is Required</p>
+          </div>
+          }
 
           <Form.Field>
             <label>Password</label>
@@ -117,9 +162,15 @@ function Register() {
             />
           </Form.Field>
 
-          {errors.password &&
+          {/* {errors.password &&
             <p className='error field ui pointing above prompt label'>
-              {errors.password}</p>}
+              {errors.password}</p>} */}
+
+          {errors.password &&
+          <div className="ui error message small">
+            <p>Password is Required</p>
+          </div>
+          }
 
           <Form.Field>
             <label>Password Confirmation</label>
@@ -132,9 +183,15 @@ function Register() {
             />
           </Form.Field>
 
-          {errors.passwordConfirmation &&
+          {/* {errors.passwordConfirmation &&
             <p className='error field ui pointing above prompt label'>
-              {errors.passwordConfirmation}</p>}
+              {errors.passwordConfirmation}</p>} */}
+
+          {errors.passWordConfirmation &&
+          <div className="ui error message small">
+            <p>The Password doesnt match</p>
+          </div>
+          }
 
           <Button type="submit">
             Register

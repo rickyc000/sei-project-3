@@ -22,23 +22,42 @@ function ImageUploadField({ onChange, labelText, name, value }) {
 
 
   return (
-    <>
+    
+    <div className="image-upload-field">
       {value ?
-        <div style={{ width: '300px' }}>
-          <img src={value} alt="selected" style={{ width: '100%', height: 'auto' }} />
+        <div className="image-upload-field">
+          <img className="image-upload" src={value} alt="selected" style={{ width: '150px', height: '150px' }} />
         </div>
         :
         <>
-          <label>{labelText || 'Upload Image'}</label>
+          <label>{labelText || 'Upload Image'} </label>
           <input
-
             type="file"
             onChange={handleUpload}
             name={name}
           />
         </>
       }
-    </>
+   
+
+      {value ?
+        <>
+          <label>{labelText || 'Upload Image'} </label>
+          <input
+            type="file"
+            onChange={handleUpload}
+            name={name}
+          />
+        </>
+        :
+        ''
+      }
+      
+    </div>
+    
+  //Add button
+  //When user uploaded show reupload image button
+  //Show in a terniary
   )
 }
 
