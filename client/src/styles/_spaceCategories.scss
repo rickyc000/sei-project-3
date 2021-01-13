@@ -16,6 +16,14 @@
 .category-page-tags {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.category-tag {
+  margin: 5px;
+  height: 50px;
 }
 
 // .category-card-content {
@@ -27,19 +35,32 @@
   // width: 100%;
   height: 200px;
   margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-
-
-.image-card-wrapper img {
-  width: 100%;
-  // height: 100%;
-  
+.category-card-image {
+  height: 190px;
+  width: 270px;
+  // margin: 5px;
   object-fit: cover;
 }
 
 
 
 .category-card-content {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.category-card-header, .category-card-info {
   height: 50px;
+}
+
+.category-card-header {
+  text-align: center;
 }

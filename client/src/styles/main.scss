@@ -7,25 +7,10 @@
 @import '_profileInfo.scss';
 @import '_registerAndLogin.scss';
 @import '_indexMap.scss';
+@import '_landingPage.scss';
+@import '_navBar.scss';
 
-.header {
-  margin: calc(15rem - .14285714em) 0 1rem;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  h1 {
-    font-size: 5em;
-    font-family: 'Comfortaa', cursive;
-    font-weight: normal;
-    margin-bottom: 0;
-    margin-top: 3em;
-  }
-}
 
-.button-wrapper{
-  display: flex;
-  justify-content: center;
-}
 
 .map-container {
   height: 100%;

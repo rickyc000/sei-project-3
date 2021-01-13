@@ -2,34 +2,34 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import {
   Button,
-  Container,
-  Header
+  Container
 } from 'semantic-ui-react'
 
 function Home() {
 
   return (
-    <Container text className="container">
-      <div className="header">
-        <h1>
+    <section className="homepage">
+      <Container text className="container home-container">
+        <div className="header">
+          <h1 className="title-header">
           cityspace
-        </h1>
-      </div>
+          </h1>
+        </div>
 
-      <Header
-        as='h2'
-        content='Discover and share your favourite spots in the city.'
-        className="title"
-      />
-      <div className="button-wrapper">
-        <Link to="/spaces" className="navbar-item">
-          <Button primary size='huge' animated='fade'>
-            <Button.Content visible>Find your happy place</Button.Content>
-            <Button.Content hidden>London is waiting</Button.Content>
-          </Button>
-        </Link>
-      </div>
-    </Container>
+        <h2 className="title-header">
+          Discover and share your favourite spots in the city.
+          
+        </h2>
+        <div className="button-wrapper">
+          <Link to="/spaces" className="navbar-item">
+            <Button primary size='huge' animated='fade' style={{ backgroundColor: '#e0e1e2', borderRadius: 0 }}>
+              <Button.Content visible>Find your happy place</Button.Content>
+              <Button.Content hidden>London is waiting</Button.Content>
+            </Button>
+          </Link>
+        </div>
+      </Container>
+    </section>
   )
 }
 

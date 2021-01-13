@@ -119,10 +119,13 @@ function SpaceCategoriesView() {
         {categoryList.map(categoryTag => (
           <Link
             key={categoryTag}
-            to={`/spaces/category/${categoryTag}`}>
-            <div
-              className={activeCategory === categoryTag
-                ? 'ui olive label' : 'ui label'}>{categoryTag}</div>
+            to={`/spaces/category/${categoryTag}`}
+            className="category-tag">
+            <div className="category-tag">
+              <div
+                className={activeCategory === categoryTag
+                  ? 'ui olive label category-tag' : 'ui label category-tag'}>{categoryTag}</div>
+            </div>
           </Link>
         ))}
       </div>
@@ -139,14 +142,14 @@ function SpaceCategoriesView() {
                   <Link
                     to={`/spaces/${space._id}`}
                     key={space.name}>
-                    <img src={space.image} />
+                    <img className="category-card-image"src={space.image} />
                   </Link>
                 </div>
                 <div className="content category-card-content">
-                  <div className="header">
+                  <div className="header category-card-header">
                     {space.name}
                   </div>
-                  <div>
+                  <div className="category-card-info">
                     <div className="category-card-favourite">
                       {/* {isItAFavourite(space) ? 
                         <button value={space._id} onClick={handleFavourite} className="ui button blue">

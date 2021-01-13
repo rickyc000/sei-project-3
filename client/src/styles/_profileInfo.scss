@@ -4,8 +4,9 @@
   align-items: center;
   flex-direction: column;
   text-align: center;
-  border: 0.1px solid grey;
+  // border: 0.1px solid grey;
   border-radius: 5%;
+
 
   h1 {
     text-align: center;
@@ -33,7 +34,7 @@
 }
 
 .info-container {
-  width: 250px;
+  width: 300px;
   height: 500px;
   display: flex;
   flex-direction: column;
@@ -41,7 +42,17 @@
   justify-content: center;
 }
 
-.ui.olive.label {
+.ui.label {
+  margin: 20px;
+}
+
+.tags{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.profile-tag{
   margin: 5px;
 }
 

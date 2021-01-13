@@ -50,12 +50,16 @@ function Nav() {
         <Link to="/spaces" className="navbar-item">
           <Menu.Item
             className="home"
-            name='home'
+            name='Explore'
           />
         </Link>
-        {isLoggedIn && <Button as={Link} to='/spaces/new'>
-          Add A Space
-        </Button>}
+        {isLoggedIn && 
+         <Link to="/spaces/new" className="navbar-item">
+           <Menu.Item
+             className="home"
+             name='Add New Space'
+           />
+         </Link>}
         <Menu.Item position='right'>
           {!isLoggedIn ?
             <>
