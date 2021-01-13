@@ -25,10 +25,13 @@ function SpaceCategoriesView() {
   }, [])
 
   const filterSpaces = (category) => {
-    console.log(category)
-    return spaces.filter(space => {
-      return space.tags.includes(category)
-    })
+    if (category === 'View All') {
+      return spaces
+    } else {
+      return spaces.filter(space => {
+        return space.tags.includes(category)
+      })
+    }
   }
 
   const selectedCategory = (e) => {
@@ -37,6 +40,7 @@ function SpaceCategoriesView() {
   }
 
   const categoryList = [
+    'View All',
     'Architecture',
     'Art & Design',
     'Food & Drink',
@@ -48,7 +52,6 @@ function SpaceCategoriesView() {
   ]
 
   filterSpaces(category)
-  console.log(activeCategory)
 
   // Favourites and Add Favourites
 
@@ -68,7 +71,7 @@ function SpaceCategoriesView() {
   // }
 
   // //* Add to the users favourites
-  
+
 
   // const handleUnFavourite = async event => {
   //   event.preventDefault()
@@ -92,16 +95,16 @@ function SpaceCategoriesView() {
   //     }
   //   })
   // }
-  
+
 
   // const isItAFavourite = (space) => {
   //   if (favouriteSpaces.includes(space)) {
   //     return true
   //   }
   // }
-  
 
-  
+
+
 
 
 
