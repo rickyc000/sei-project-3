@@ -40,10 +40,12 @@ function SpaceIndexMap() {
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
         height="100%"
         width="100%"
+        scrollZoom={false} 
         mapStyle='mapbox://styles/mapbox/streets-v11'
         {...viewport}
         onClick={() => setPopup(null)}
         onViewportChange={(viewport) => setViewport(viewport)}
+        
       >
         {spaces.map(space => (
           <Marker
@@ -65,11 +67,12 @@ function SpaceIndexMap() {
             <Popup
               // closeOnClick={true}
               // onClose={() => setPopup(null)}
+              scrollZoom={false}
               latitude={Number(popup.location.latitude)}
               longitude={Number(popup.location.longitude)}
             >
               <div className="index-popup-image">
-                <img src={popup.image}/>
+                <img src={popup.image} width="150px"/>
               </div>
               <div>
                 {popup.name}

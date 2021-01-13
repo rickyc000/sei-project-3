@@ -3,3 +3,11 @@
   width: 200px;
   object-fit: cover;
 }
+
+.mapboxgl-popup-close-button {
+  display: none;
+}
+
+.mapboxgl-popup-content {
+  border-radius: none;
+}
