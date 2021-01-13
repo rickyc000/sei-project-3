@@ -12,7 +12,7 @@ router.route('/spaces')
 
 router.route('/spaces/:id')
   .get(spaces.show)
-  .put(spaces.update)
+  .put(secureRoute, spaces.update)
   .delete(secureRoute, spaces.delete)
 
 router.route('/register')

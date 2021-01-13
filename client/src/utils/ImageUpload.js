@@ -22,10 +22,11 @@ function ImageUploadField({ onChange, labelText, name, value }) {
 
 
   return (
-    <>
+    
+    <div className="image-upload-field">
       {value ?
-        <div style={{ width: '300px' }}>
-          <img src={value} alt="selected" style={{ width: '100%', height: 'auto' }} />
+        <div className="image-upload-field">
+          <img className="image-upload" src={value} alt="selected" style={{ width: '150px', height: '150px' }} />
         </div>
         :
         <>
@@ -38,7 +39,8 @@ function ImageUploadField({ onChange, labelText, name, value }) {
           />
         </>
       }
-    </>
+    </div>
+
   )
 }
 
