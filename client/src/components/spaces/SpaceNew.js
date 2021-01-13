@@ -25,6 +25,7 @@ function SpaceNew() {
 
   const handleSubmit = async event => {
     event.preventDefault()
+    console.log(errors)
     try {
       const longLat = await getLongLat(formdata.location) // * making the call for our lng lat from the postcode, awaiting it
       const newSpace = { ...formdata, location: longLat } // * when the response comes, making an object with the formdata location updated to the lng lat object
@@ -33,19 +34,31 @@ function SpaceNew() {
       history.push(`/spaces/${data._id}`)
     } catch (err) {
       setErrors(err.response.data.errors)
+      console.log(err.response.data.errors)
     }
   }
 
   return (
-    <div className="field">
-      <SpaceForm
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
-        formdata={formdata}
-        errors={errors}
-        buttonText="Add a new Space!"
-      />
-    </div>
+    <section className="form-container">
+      <div className="form-box">
+        <SpaceForm
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          formdata={formdata}
+          errors={errors}
+          buttonText="Add a new Space!"
+        />
+        <div>
+          {!errors ?
+            <div className="ui error message small">
+              <div className="header">Sorry, some information is incorrect.</div>
+            </div>
+            :
+            <p></p>
+          }
+        </div>
+      </div>
+    </section>
   )
 }
 
