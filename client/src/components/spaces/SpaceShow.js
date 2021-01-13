@@ -5,6 +5,7 @@ import { isOwner, getUserId, isAuthenticated } from '../lib/auth'
 // import { Menu } from 'semantic-ui-react'
 import { useParams, useLocation, Link, useHistory } from 'react-router-dom'
 import useForm from '../../utils/useForm'
+import SimilarPlacesSlider from './SimilarPlacesSlider'
 //import { Button, Comment, Form, Header } from 'semantic-ui-react'
 
 import {
@@ -287,7 +288,11 @@ function SpaceShow() {
           </Form>
           }
         </Comment.Group>
-
+        { isLoggedIn &&
+        <SimilarPlacesSlider
+          space={space} 
+        />
+        }
       </>
     </Container >
   )

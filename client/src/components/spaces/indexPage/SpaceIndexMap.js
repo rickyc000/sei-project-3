@@ -1,11 +1,12 @@
 import React from 'react'
 import ReactMapGL, { Marker, Popup } from 'react-map-gl'
-import { getAllSpaces } from '../lib/api'
+import { getAllSpaces } from '../../lib/api'
 import { Link } from 'react-router-dom'
+import { Icon } from 'semantic-ui-react'
 // import { getToken } from '../lib/auth'
 
 
-function SpaceIndex() {
+function SpaceIndexMap() {
   const [viewport, setViewport] = React.useState({
     latitude: 51.502643,
     longitude: -0.07497,
@@ -39,10 +40,12 @@ function SpaceIndex() {
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
         height="100%"
         width="100%"
+        scrollZoom={false} 
         mapStyle='mapbox://styles/mapbox/streets-v11'
         {...viewport}
         onClick={() => setPopup(null)}
         onViewportChange={(viewport) => setViewport(viewport)}
+        
       >
         {spaces.map(space => (
           <Marker
@@ -55,7 +58,7 @@ function SpaceIndex() {
               aria-label="map-marker"
               onClick={() => setPopup(space)}
             >
-              😺‍
+              <Icon name="circle thin green" />
             </span>
           </Marker>
         ))}
@@ -64,11 +67,12 @@ function SpaceIndex() {
             <Popup
               // closeOnClick={true}
               // onClose={() => setPopup(null)}
+              scrollZoom={false}
               latitude={Number(popup.location.latitude)}
               longitude={Number(popup.location.longitude)}
             >
               <div className="index-popup-image">
-                <img src={popup.image}/>
+                <img src={popup.image} width="150px"/>
               </div>
               <div>
                 {popup.name}
@@ -86,4 +90,4 @@ function SpaceIndex() {
   )
 }
 
-export default SpaceIndex
+export default SpaceIndexMap

@@ -34,6 +34,21 @@ function SpaceSlider() {
     pauseOnHover: true
   }
 
+  const mySpaces = []
+
+  const featuredSpaces = () => {
+    if (spaces) {
+      for (let i = 0; i <= spaces.length; i++) {
+        if (i === 0 || i === 5 || i === 6 || i === 7 || i === 9 
+          || i === 56 || i === 53 || i === 51 || i === 50 || i === 44
+          || i === 42 || i === 41 || i === 39 || i === 38 || i === 37) {
+          mySpaces.push(spaces[i])
+        }
+      }
+    }
+  }
+  featuredSpaces()
+  console.log(mySpaces)
   // const options = {
   //   settings: {
   //     overlayColor: 'rgba(120, 120, 120, 0.5)'
@@ -47,7 +62,7 @@ function SpaceSlider() {
         {spaces ?
           // <SRLWrapper options={options}>
           <Slider {...settings}>
-            {spaces.map(space => (
+            {mySpaces.map(space => (
               <div className="card" key={space._id}>
                 <div className="ui-card img-wrapper">
                   <Link to={`/spaces/${space._id}`}>
@@ -60,7 +75,7 @@ function SpaceSlider() {
           // </SRLWrapper>
           :
           <h2 className="title has-text-centered">
-            {hasError ? 'Oh something went wrong, the sadness 😞' : '...loading 🎬 '}
+            {hasError ? 'There was An Error' : '...loading '}
           </h2>
         }
       </div>

@@ -47,7 +47,7 @@ function Nav() {
       pointing secondary
     >
       <Container>
-        <Link to="/space" className="navbar-item">
+        <Link to="/spaces" className="navbar-item">
           <Menu.Item
             className="home"
             name='home'

@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactMapGL, { Marker } from 'react-map-gl'
+import { Icon } from 'semantic-ui-react'
 
 function spaceShowMap({ space }) {
   return (
@@ -24,7 +25,7 @@ function spaceShowMap({ space }) {
             role="img"
             aria-label="map-marker"
           >
-            😺‍
+            <Icon name="circle thin green" />
           </span>
         </Marker>
       </ReactMapGL>
