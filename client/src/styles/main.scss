@@ -6,6 +6,7 @@
 @import '_spaceCategories.scss';
 @import '_profileInfo.scss';
 @import '_registerAndLogin.scss';
+@import '_indexMap.scss';
 
 .header {
   margin: calc(15rem - .14285714em) 0 1rem;
@@ -92,7 +93,7 @@ img.images {
     display: flex;
     justify-content: center;
     div{
-      border-radius: 40px;
+      // border-radius: 40px;
       margin: 0;
     }
   }
