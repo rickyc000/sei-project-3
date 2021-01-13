@@ -15,9 +15,26 @@ function Register() {
     email: '',
     password: '',
     passwordConfirmation: '',
-    profileImage: ''
+    profileImage: '',
+    favouriteTags: []
   })
 
+
+  // * we need to know 2 things, the value of our checkbox, and whether it is being check or unchecked to determine if we should be adding or removing it from our array
+
+
+  const handleTags = event => {
+    const { checked, value, name } = event.target
+    const favouriteTags = checked ? // * using a ternary to set the tags value
+      [...formdata.favouriteTags, value]  // * if it was checked, add it
+      :
+      formdata.favouriteTags.filter(tag => tag !== value) // * if it was unchecked remove it
+    handleChange({ target: { name, value: favouriteTags } }) // * setting them in to the formstate
+  }
+
+
+
+  console.log(formdata)
   const handleSubmit = async event => {
     event.preventDefault()
 
@@ -47,11 +64,11 @@ function Register() {
               {errors.profileImage}</p>} */}
 
           {errors.profileImage &&
-          <div className="ui error message small">
-            <p>Profile Image is Required</p>
-          </div>
+            <div className="ui error message small">
+              <p>Profile Image is Required</p>
+            </div>
           }
-          
+
           <Divider />
 
           <Form.Field>
@@ -69,9 +86,9 @@ function Register() {
               {errors.username}</p>} */}
 
           {errors.username &&
-          <div className="ui error message small">
-            <p>Username is Required</p>
-          </div>
+            <div className="ui error message small">
+              <p>Username is Required</p>
+            </div>
           }
 
           <Form.Group className="name-errors">
@@ -99,25 +116,25 @@ function Register() {
           </Form.Group>
 
           <div className="name-errors-form">
-            
+
             <div className="first-name">
               {errors.firstName &&
-            <div className="ui error message small">
-              <p>First Name is Required</p>
-            </div>
+                <div className="ui error message small">
+                  <p>First Name is Required</p>
+                </div>
               }
             </div>
-            
-            
+
+
             <div className="last-name">
               {errors.lastName &&
-              <div className="ui error message small">
-                <p>Last Name is Required</p>
-              </div>
+                <div className="ui error message small">
+                  <p>Last Name is Required</p>
+                </div>
               }
             </div>
           </div>
-        
+
 
           {/* {errors.firstName &&
             <p className='error field ui pointing above prompt label'>
@@ -125,11 +142,6 @@ function Register() {
           {errors.lastName &&
             <p className='error field ui pointing above prompt label'>
               {errors.lastName}</p>} */}
-          
-           
-    
-       
-          
 
           <Form.Field>
             <label>Email</label>
@@ -146,9 +158,9 @@ function Register() {
               {errors.email}</p>} */}
 
           {errors.email &&
-          <div className="ui error message small">
-            <p>Email is Required</p>
-          </div>
+            <div className="ui error message small">
+              <p>Email is Required</p>
+            </div>
           }
 
           <Form.Field>
@@ -167,9 +179,9 @@ function Register() {
               {errors.password}</p>} */}
 
           {errors.password &&
-          <div className="ui error message small">
-            <p>Password is Required</p>
-          </div>
+            <div className="ui error message small">
+              <p>Password is Required</p>
+            </div>
           }
 
           <Form.Field>
@@ -188,11 +200,51 @@ function Register() {
               {errors.passwordConfirmation}</p>} */}
 
           {errors.passWordConfirmation &&
-          <div className="ui error message small">
-            <p>The Password doesnt match</p>
-          </div>
+            <div className="ui error message small">
+              <p>The Password doesnt match</p>
+            </div>
           }
 
+          <Form.Field
+            name="favouriteTags"
+            value="Peace & Quiet"
+            onChange={handleTags}
+            label='Peace & Quiet' control='input' type='checkbox' />
+          <Form.Field
+            name="favouriteTags"
+            value="Art & Design"
+            onChange={handleTags}
+            label='Art & Design' control='input' type='checkbox' />
+          <Form.Field
+            name="favouriteTags"
+            value='Sports & Leisure'
+            onChange={handleTags}
+            label='Sports & Leisure' control='input' type='checkbox' />
+          <Form.Field
+            name="favouriteTags"
+            value='Mother Nature'
+            onChange={handleTags}
+            label='Mother Nature' control='input' type='checkbox' />
+          <Form.Field
+            name="favouriteTags"
+            value='Architecture'
+            onChange={handleTags}
+            label='Architecture' control='input' type='checkbox' />
+          <Form.Field
+            name="favouriteTags"
+            value='Lively'
+            onChange={handleTags}
+            label='Lively' control='input' type='checkbox' />
+          <Form.Field
+            name="favouriteTags"
+            value='Food & Drink'
+            onChange={handleTags}
+            label='Food & Drink' control='input' type='checkbox' />
+          <Form.Field
+            name="favouriteTags"
+            value='Riverside Spot'
+            onChange={handleTags}
+            label='Riverside Spot' control='input' type='checkbox' />
           <Button type="submit">
             Register
           </Button>
