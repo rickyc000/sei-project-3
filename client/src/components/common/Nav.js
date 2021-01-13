@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link, useHistory, useLocation } from 'react-router-dom'
+
+import { getUserProfile, headers } from '../lib/api'
 import { isAuthenticated, logout, getUserId } from '../lib/auth'
 import {
   Button,
@@ -10,12 +12,29 @@ import {
 
 function Nav() {
 
+  const [profile, setProfile] = React.useState({})
+
   useLocation()
   
   const isLoggedIn = isAuthenticated()
   
   const history = useHistory()
 
+  React.useEffect(() => {
+    const getProfile = async () => {
+      try {
+        const { data } = await getUserProfile(headers())
+        setProfile(data)
+      } catch (err) {
+        console.log(err)
+        // setHasError(true)
+      }
+    }
+    getProfile()
+  }, [])
+
+
+  console.log(profile.profileImage)
   const handleLogout = () => {
     logout()
     history.push('/')
@@ -52,9 +71,9 @@ function Nav() {
               <Button as="" onClick={handleLogout}>
               Log Out
               </Button>
-              <Button as={Link} to={`/profile/${getUserId()}`}>
-            Profile
-              </Button>
+              <Link to={`/profile/${getUserId()}`} className="navbar-item">
+                <i className="big user circle icon"></i>
+              </Link>
             </>}
         </Menu.Item>
       </Container>

@@ -26,7 +26,7 @@ function SpaceIndexCategories() {
     <>
       <h2 className="featured-list">Go To Any Space</h2>
       {spaces ?
-        <div className="ui padded 4 column grid">
+        <div className="categories-wrapper">
           <div className="column">
             <div className="card" key={spaces[9]._id}>
               <div className="category-wrapper">
@@ -64,17 +64,17 @@ function SpaceIndexCategories() {
                   <img key={spaces[6]._id} className="images" src={spaces[6].image} />
                 </a>
               </div>
-              <h6 className="label">Peace & Quiet</h6>
+              <h6 className="label">Riverside Spot</h6>
             </div>
           </div>
           <div className="column">
-            <div className="card" key={spaces[33]._id}>
+            <div className="card" key={spaces[27]._id}>
               <div className="category-wrapper">
-                <a href={spaces[33].image}>
-                  <img key={spaces[33]._id} className="images" src={spaces[33].image} />
+                <a href={spaces[27].image}>
+                  <img key={spaces[27]._id} className="images" src={spaces[27].image} />
                 </a>
               </div>
-              <h6 className="label">Sports & Leisure</h6>
+              <h6 className="label">Lively</h6>
             </div>
           </div>
           <div className="column">
@@ -84,27 +84,27 @@ function SpaceIndexCategories() {
                   <img key={spaces[13]._id} className="images" src={spaces[13].image} />
                 </a>
               </div>
-              <h6 className="label">Peace & Quiet</h6>
+              <h6 className="label">Architecture</h6>
             </div>
           </div>
           <div className="column">
-            <div className="card" key={spaces[45]._id}>
+            <div className="card" key={spaces[12]._id}>
               <div className="category-wrapper">
-                <a href={spaces[45].image}>
-                  <img key={spaces[45]._id} className="images" src={spaces[45].image} />
+                <a href={spaces[12].image}>
+                  <img key={spaces[12]._id} className="images" src={spaces[12].image} />
                 </a>
               </div>
-              <h6 className="label">Peace & Quiet</h6>
+              <h6 className="label">Food & Drink</h6>
             </div>
           </div>
           <div className="column">
-            <div className="card" key={spaces[2]._id}>
+            <div className="card" key={spaces[36]._id}>
               <div className="category-wrapper">
-                <a href={spaces[2].image}>
-                  <img key={spaces[2]._id} className="images" src={spaces[2].image} />
+                <a href={spaces[27].image}>
+                  <img key={spaces[1]._id} className="images" src={spaces[1].image} />
                 </a>
               </div>
-              <h6 className="label">Peace & Quiet</h6>
+              <h6 className="label">Art & Design</h6>
             </div>
           </div>
         </div>
