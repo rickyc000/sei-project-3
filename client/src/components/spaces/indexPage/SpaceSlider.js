@@ -24,7 +24,6 @@ function SpaceSlider() {
     getSpaces()
   }, [])
 
-  console.log(spaces)
   const settings = {
     dots: true,
     infinite: true,

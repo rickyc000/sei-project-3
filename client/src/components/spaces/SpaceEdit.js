@@ -1,10 +1,27 @@
 import React from 'react'
-
 import { useParams, useHistory } from 'react-router-dom'
 import { getSingleSpace, editSpace } from '../lib/api'
 import useForm from '../../utils/useForm'
+import { getLongLatData } from '../lib/api'
+// import { getPostcodeData }from '../lib/api'
 
 import SpaceForm from './SpaceForm'
+
+async function getLongLat(postcode) {
+  const { data } = await getLongLatData(postcode)
+  return {
+    longitude: data.result.longitude,
+    latitude: data.result.latitude
+  }
+}
+
+// async function getPostcode(longitude, latitude) {
+//   const { data } = await getPostcodeData(longitude, latitude)
+//   return {
+//     longitude: data.result.longitude,
+//     latitude: data.result.latitude
+//   }
+// }
 
 function SpaceEdit() {
 
@@ -17,24 +34,33 @@ function SpaceEdit() {
     location: ''
   })
 
+  //* We are currently adding in an empty string for Postcode when loading the Edit page
+
+  //* Ideally we would do a GET request on pageload for the postcode, entering the Long/Lat which I have started to set up
+
   React.useEffect(() => {
     const getData = async () => {
       const { data } = await getSingleSpace(id)
-      setFormdata(data)
+      const updatedData = { ...data, location: '' }
+      setFormdata(updatedData) 
     }
     getData()
   }, [id, setFormdata])
 
+
   const handleSubmit = async event => {
     event.preventDefault()
-
     try {
-      await editSpace(id, formdata)
+      const longLat = await getLongLat(formdata.location)
+      const newSpace = { ...formdata, location: longLat }
+      console.log(newSpace)
+      await editSpace(id, newSpace)
       history.push(`/spaces/${id}`)
     } catch (err) {
       setErrors(err.response.data.errors)
     }
   }
+
   return (
     <section className="section">
       <div className="container">

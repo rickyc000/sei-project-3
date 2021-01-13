@@ -5,8 +5,7 @@ function SpaceForm({ formdata, handleChange, handleSubmit, buttonText = 'Submit'
   return (
     <section className="form-container">
       <div className="form-box">
-        <form className="ui form" onSubmit={handleSubmit}>
-
+        <form className="ui form" onSubmit={handleSubmit}>  
           <div className="field">
             <label className="label">Name</label>
             <div className="control">
@@ -53,11 +52,6 @@ function SpaceForm({ formdata, handleChange, handleSubmit, buttonText = 'Submit'
                 value={formdata.location}
               />
             </div>
-            <div className="ui label">
-
-              Verify Postcode
-            </div>
-
           </div>
 
 
