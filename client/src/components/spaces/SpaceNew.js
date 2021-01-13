@@ -20,7 +20,8 @@ function SpaceNew() {
     name: '',
     description: '',
     image: '',
-    location: ''
+    location: '',
+    tags: []
   })
 
   const handleSubmit = async event => {

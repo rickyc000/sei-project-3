@@ -31,7 +31,8 @@ function SpaceEdit() {
     name: '',
     description: '',
     image: '',
-    location: ''
+    location: '',
+    tags: []
   })
 
   //* We are currently adding in an empty string for Postcode when loading the Edit page
