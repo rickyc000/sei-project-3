@@ -81,8 +81,12 @@ export function loginUser(formdata) {
 
 // //* POST CODE Request
 
-export function getPostcodeData(postcode) {
+export function getLongLatData(postcode) {
   return axios.get(`https://api.postcodes.io/postcodes/${postcode}`)
+}
+
+export function getPostcodeData(longitude, latitude) {
+  return axios.get(`https://api.postcodes.io/postcodes?lon=${longitude}&lat=${latitude}`)
 }
 
 

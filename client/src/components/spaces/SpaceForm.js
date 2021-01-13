@@ -53,11 +53,6 @@ function SpaceForm({ formdata, handleChange, handleSubmit, buttonText = 'Submit'
                 value={formdata.location}
               />
             </div>
-            <div className="ui label">
-
-              Verify Postcode
-            </div>
-
           </div>
 
 
