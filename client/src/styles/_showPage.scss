@@ -7,6 +7,8 @@
   align-items: center;
   h1 {
     font-family: 'Comfortaa', cursive;
+    font-size: 40px;
+    padding: 20px;
   }
 }
 
@@ -21,12 +23,37 @@
   width: 440px;
 }
 
+.photo-map-tabs-wrapper {
+  height: 440px;
+}
+
 .showpage-text-wrapper {
   padding: 20px;
+}
+
+.show-page-favourites.ui.button.yellow{
+  display: flex;
+  width: max-content;
+}
+
+.showpage-interactions-panel {
+  display: flex;
+  width: 880px;
+}
+
+
+.showpage-tags-wrapper {
+  display: flex;
+  // justify-content: flex-start;
+  // align-items: flex-end;
+  // max-width: 880px;
 }
 
 @media only screen and (max-width: 880px) {
   .showpage-main-content {
     flex-direction: column;
+  }
+  .showpage-interactions-panel {
+    width: 440px;
   }
 }
