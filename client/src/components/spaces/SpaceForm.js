@@ -1,5 +1,4 @@
 import React from 'react'
-import { Form } from 'semantic-ui-react'
 
 function SpaceForm({ formdata, handleChange, handleSubmit, buttonText = 'Submit' }) {
 
@@ -62,46 +61,65 @@ function SpaceForm({ formdata, handleChange, handleSubmit, buttonText = 'Submit'
           />
         </div>
       </div>
-      <Form.Field
-        name="tags"
-        value="Peace & Quiet"
-        onChange={handleTags}
-        label='Peace & Quiet' control='input' type='checkbox' />
-      <Form.Field
-        name="tags"
-        value="Art & Design"
-        onChange={handleTags}
-        label='Art & Design' control='input' type='checkbox' />
-      <Form.Field
-        name="tags"
-        value='Sports & Leisure'
-        onChange={handleTags}
-        label='Sports & Leisure' control='input' type='checkbox' />
-      <Form.Field
-        name="tags"
-        value='Mother Nature'
-        onChange={handleTags}
-        label='Mother Nature' control='input' type='checkbox' />
-      <Form.Field
-        name="tags"
-        value='Architecture'
-        onChange={handleTags}
-        label='Architecture' control='input' type='checkbox' />
-      <Form.Field
-        name="tags"
-        value='Lively'
-        onChange={handleTags}
-        label='Lively' control='input' type='checkbox' />
-      <Form.Field
-        name="tags"
-        value='Food & Drink'
-        onChange={handleTags}
-        label='Food & Drink' control='input' type='checkbox' />
-      <Form.Field
-        name="tags"
-        value='Riverside Spot'
-        onChange={handleTags}
-        label='Riverside Spot' control='input' type='checkbox' />
+      <div className="tags-wrapper">
+        <div className="checkbox-wrapper">
+          <input type="checkbox" name="tags"
+            value="Peace & Quiet"
+            onChange={handleTags}
+            control='input' />
+          <label>Peace & Quiet</label>
+        </div>
+        <div className="checkbox-wrapper">
+          <input type="checkbox" name="tags"
+            value="Lively"
+            onChange={handleTags}
+            control='input' />
+          <label>Lively</label>
+        </div>
+        <div className="checkbox-wrapper">
+          <input type="checkbox" name="tags"
+            value="Art & Design"
+            onChange={handleTags}
+            control='input' />
+          <label>Art & Design</label>
+        </div>
+        <div className="checkbox-wrapper">
+          <input type="checkbox" name="tags"
+            value="Sports & Leisure"
+            onChange={handleTags}
+            control='input' />
+          <label>Sports & Leisure</label>
+        </div>
+        <div className="checkbox-wrapper">
+          <input type="checkbox" name="tags"
+            value="Mother Nature"
+            onChange={handleTags}
+            control='input' />
+          <label>Mother Nature</label>
+        </div>
+        <div className="checkbox-wrapper">
+          <input type="checkbox" name="tags"
+            value="Architecture"
+            onChange={handleTags}
+            control='input' />
+          <label>Architecture</label>
+        </div>
+        <div className="checkbox-wrapper">
+          <input type="checkbox" name="tags"
+            value="Food & Drink"
+            onChange={handleTags}
+            control='input' />
+          <label>Food & Drink</label>
+        </div>
+        <div className="checkbox-wrapper">
+          <input type="checkbox" name="tags"
+            value="Riverside Spot"
+            onChange={handleTags}
+            control='input' />
+          <label>Riverside Spot</label>
+        </div>
+
+      </div>
 
       <div className="field">
         <button type="submit" className="ui button">{buttonText}</button>

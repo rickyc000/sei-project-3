@@ -205,50 +205,67 @@ function Register() {
             </div>
           }
 
-          <Form.Field
-            name="favouriteTags"
-            value="Peace & Quiet"
-            onChange={handleTags}
-            label='Peace & Quiet' control='input' type='checkbox' />
-          <Form.Field
-            name="favouriteTags"
-            value="Art & Design"
-            onChange={handleTags}
-            label='Art & Design' control='input' type='checkbox' />
-          <Form.Field
-            name="favouriteTags"
-            value='Sports & Leisure'
-            onChange={handleTags}
-            label='Sports & Leisure' control='input' type='checkbox' />
-          <Form.Field
-            name="favouriteTags"
-            value='Mother Nature'
-            onChange={handleTags}
-            label='Mother Nature' control='input' type='checkbox' />
-          <Form.Field
-            name="favouriteTags"
-            value='Architecture'
-            onChange={handleTags}
-            label='Architecture' control='input' type='checkbox' />
-          <Form.Field
-            name="favouriteTags"
-            value='Lively'
-            onChange={handleTags}
-            label='Lively' control='input' type='checkbox' />
-          <Form.Field
-            name="favouriteTags"
-            value='Food & Drink'
-            onChange={handleTags}
-            label='Food & Drink' control='input' type='checkbox' />
-          <Form.Field
-            name="favouriteTags"
-            value='Riverside Spot'
-            onChange={handleTags}
-            label='Riverside Spot' control='input' type='checkbox' />
+          <div className="tags-wrapper">
+            <div className="checkbox-wrapper">
+              <input type="checkbox" name="favouriteTags"
+                value="Peace & Quiet"
+                onChange={handleTags}
+                control='input' />
+              <label>Peace & Quiet</label>
+            </div>
+            <div className="checkbox-wrapper">
+              <input type="checkbox" name="favouriteTags"
+                value="Lively"
+                onChange={handleTags}
+                control='input' />
+              <label>Lively</label>
+            </div>
+            <div className="checkbox-wrapper">
+              <input type="checkbox" name="favouriteTags"
+                value="Art & Design"
+                onChange={handleTags}
+                control='input' />
+              <label>Art & Design</label>
+            </div>
+            <div className="checkbox-wrapper">
+              <input type="checkbox" name="favouriteTags"
+                value="Sports & Leisure"
+                onChange={handleTags}
+                control='input' />
+              <label>Sports & Leisure</label>
+            </div>
+            <div className="checkbox-wrapper">
+              <input type="checkbox" name="favouriteTags"
+                value="Mother Nature"
+                onChange={handleTags}
+                control='input' />
+              <label>Mother Nature</label>
+            </div>
+            <div className="checkbox-wrapper">
+              <input type="checkbox" name="favouriteTags"
+                value="Architecture"
+                onChange={handleTags}
+                control='input' />
+              <label>Architecture</label>
+            </div>
+            <div className="checkbox-wrapper">
+              <input type="checkbox" name="favouriteTags"
+                value="Food & Drink"
+                onChange={handleTags}
+                control='input' />
+              <label>Food & Drink</label>
+            </div>
+            <div className="checkbox-wrapper">
+              <input type="checkbox" name="favouriteTags"
+                value="Riverside Spot"
+                onChange={handleTags}
+                control='input' />
+              <label>Riverside Spot</label>
+            </div>
+          </div>
           <Button type="submit">
             Register
           </Button>
-
         </Form>
       </div>
     </section>
