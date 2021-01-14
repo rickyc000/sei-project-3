@@ -8,8 +8,18 @@
     
 }
 
-.ui.fixed.menu.active {
+.ui.menu {
+  border-bottom: 0px none !important;
+  box-shadow: none;
+}
 
+// .ui.menu.fixed {
+//   //margin-bottom: 50px;
+//   //margin: 0px auto 100px;
+// }
+
+.ui.fixed.menu.active {
+  margin-bottom: 200px;
   background-color: #000000;
   background: linear-gradient(315deg,  #FA9A81 0%, #6795C1 94%);
 }

@@ -3,7 +3,7 @@ import { useHistory, Link } from 'react-router-dom'
 import useForm from '../../utils/useForm'
 import { loginUser } from '../lib/api'
 import { setToken } from '../lib/auth'
-import { Button, Form } from 'semantic-ui-react'
+import { Button, Form, Container } from 'semantic-ui-react'
 
 
 function Login() {
@@ -33,55 +33,57 @@ function Login() {
   }
 
   return (
-    <section className="form-container">
-      <div className="form-box ui form error">
+    <Container>
+      <section className="form-container">
+        <div className="form-box ui form error">
 
-        <Form
-          onSubmit={handleSubmit}
-          className="login-form">
+          <Form
+            onSubmit={handleSubmit}
+            className="login-form">
 
-          <Form.Field>
-            <label>Email</label>
-            <input
-              placeholder="Email"
-              onChange={handleChange}
-              name="email"
-              value={formdata.email}
-              onFocus={handleFocus}
-            />
-          </Form.Field>
+            <Form.Field>
+              <label>Email</label>
+              <input
+                placeholder="Email"
+                onChange={handleChange}
+                name="email"
+                value={formdata.email}
+                onFocus={handleFocus}
+              />
+            </Form.Field>
 
-          <Form.Field>
-            <label>Password</label>
-            <input
-              type="password"
-              placeholder="Password"
-              onChange={handleChange}
-              name="password"
-              value={formdata.password}
-              onFocus={handleFocus}
-            />
-          </Form.Field>
+            <Form.Field>
+              <label>Password</label>
+              <input
+                type="password"
+                placeholder="Password"
+                onChange={handleChange}
+                name="password"
+                value={formdata.password}
+                onFocus={handleFocus}
+              />
+            </Form.Field>
 
-          {error &&
+            {error &&
           <div className="ui error message small">
             <div className="header">Incorrect Password or Email</div>
             <p>Sorry, your username or password are incorrect.</p>
           </div>
-          }
+            }
 
 
-          <div className="login-button">
-            <Button type="submit">
+            <div className="login-button">
+              <Button type="submit">
             Log In
-            </Button>
+              </Button>
             
-          </div>
-          <p className="register-link">Dont have an account? Sign up <Link to="/register">here</Link></p>
+            </div>
+            <p className="register-link">Dont have an account? Sign up <Link to="/register">here</Link></p>
 
-        </Form>
-      </div>
-    </section>
+          </Form>
+        </div>
+      </section>
+    </Container>
   )
 }
 

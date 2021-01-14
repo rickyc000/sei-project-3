@@ -11,6 +11,25 @@
 @import '_landingPage.scss';
 @import '_navBar.scss';
 
+.container {
+  padding-top: 57px;
+}
+
+// .map-container {
+//   display: flex;
+//   justify-content: center;
+//   height: 380px;
+//   width: 1000px;
+//   // height: 500px;
+//   // width: 500px;
+// }
+
+// .homepage-slider-section {
+//   width: 100%;
+//   display: flex;
+//   justify-content: center;
+// }
+
 
 .homepage-card-name {
   display: flex;
