@@ -15,7 +15,7 @@
 }
 
 .welcome-message {
-  font-family: 'Comfortaa', cursive;
+  font-family: 'Quicksand', sans-serif;
   font-size: 50px;
   color: white;
 }
@@ -46,13 +46,14 @@
 //* CATEGORIES SECTION
 
 .homepage-slider-section,
-.mapbox-wrapper
-.homepage-recommended-section
+.mapbox-wrapper,
+.homepage-recommended-section,
 .homepage-categories-section
   {
   width: 100%;
   display: flex;
   justify-content: center;
+  margin: 10px;
 }
 
 //* FEATURED SUB-SECTION
@@ -60,19 +61,16 @@
 //* RECOMMENDED SUB-SECTION
 //* CATEGORIES SUB-SECTION
 
-.slider-container,
 .map-container,
-.homepage-categories-container,
-.homepage-user-recommended-wrapper
-  {
-  width: 1000px;
-}
-
-.map-container {
+.homepage-user-recommended-wrapper,
+.slider-container,
+.homepage-categories-container {
+  width: 900px;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  padding: 10px;
 }
-
 
 //* FEATURED
 
@@ -80,8 +78,6 @@
 //* MAP SECTION
 
 .map-container {
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   height: 380px;
   div {
@@ -92,10 +88,33 @@
 
 //* RECOMMENDED
 
-.homepage-user-recommended-wrapper {
+.tag-wrapper {
+  height: 300px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: space-around;
+}
+
+.user-tags{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 5px;
+}
+
+.user-label-tags{
+  font-family: 'Quicksand', sans-serif;
+  padding: .8rem 1.25rem;
+  border: 1px solid grey;
+  margin-right: 10px;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  color: grey;
+}
+
+.user-label-tags:hover {
+  background-color: rgba(238, 238, 238, 1);
 }
 
 
@@ -122,7 +141,7 @@ h6 {
 
 }
 
-.category-wrapper{
+.category-wrapper {
   position: relative;
   width: 90px;     
   height: 75px;
@@ -143,34 +162,6 @@ h6 {
   }
 }
 
-.tag-wrapper {
-  height: 300px;
-  display: flex;
-  align-items: space-around;
-}
-
-.user-tags{
-  display: flex;
-  align-items: center;
-  margin-left: 65px;
-  margin-bottom: 40px;
-}
-
-.user-label-tags{
-  font-family: 'Comfortaa', cursive;
-  padding: .8rem 1.25rem;
-  border: 1px solid grey;
-  margin-right: 10px;
-  box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 600;
-  color: grey;
-}
-
-.user-label-tags:hover {
-  background-color: rgba(238, 238, 238, 1);
-}
 
 .categories-wrapper{
   display: flex;
