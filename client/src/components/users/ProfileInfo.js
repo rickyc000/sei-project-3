@@ -23,16 +23,18 @@ function ProfileInfo({ profile, image, name }) {
             </div>
             <div className="info-container">
               <h1>{profile.firstName} {profile.lastName}</h1>
-              <div>
+              <div className="profile-tags-container">
                 <p>Where {name} Happy Place:</p>
                 {profile.favouriteTags ?
-                  <div className="tags">
-                    {profile.favouriteTags.map(tag => (
-                      <Link to={`/spaces/category/${tag}`} key={tag}>
-                        <div className="profile-tag">
-                          <p className="ui olive label profile-tag" key={tag}>{tag}</p>
-                        </div>
-                      </Link>))}
+                  <div>
+                    <div className="tags">
+                      {profile.favouriteTags.map(tag => (
+                        <Link to={`/spaces/category/${tag}`} key={tag}>
+                          <div className="profile-tag">
+                            <p className="ui olive label profile-tag" key={tag}>{tag}</p>
+                          </div>
+                        </Link>))}
+                    </div>
                   </div>
                   :
                   ''
