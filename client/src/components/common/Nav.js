@@ -13,11 +13,18 @@ import {
 function Nav() {
 
   const [profile, setProfile] = React.useState({})
+  const [navbar,setNavbar] = React.useState(false)
 
-  useLocation()
-  
+  const changeBackground = () => {
+    window.scrollY >= 50 ? setNavbar(true) : setNavbar(false)
+  }
+
+  window.addEventListener('scroll', changeBackground)
+
+  const location = useLocation()
+
   const isLoggedIn = isAuthenticated()
-  
+
   const history = useHistory()
 
   React.useEffect(() => {
@@ -40,48 +47,49 @@ function Nav() {
     history.push('/')
   }
 
-  
+
   return (
-    <Menu
-      size='large'
-      pointing secondary
-    >
-      <Container>
-        <Link to="/spaces" className="navbar-item">
-          <Menu.Item
-            className="home"
-            name='Explore'
-          />
-        </Link>
-        {isLoggedIn && 
-         <Link to="/spaces/new" className="navbar-item">
-           <Menu.Item
-             className="home"
-             name='Add New Space'
-           />
-         </Link>}
-        <Menu.Item position='right'>
-          {!isLoggedIn ?
-            <>
-              <Button as={Link} to='/login'>
-                Log In
-              </Button>
-              <Button as={Link} to='/register' style={{ marginLeft: '0.5em' }}>
-                Sign Up
-              </Button>
-            </>
-            : 
-            <> 
-              <Button as="" onClick={handleLogout}>
-              Log Out
-              </Button>
-              <Link to={`/profile/${getUserId()}`} className="navbar-item">
-                <i className="big user circle icon"></i>
-              </Link>
-            </>}
-        </Menu.Item>
-      </Container>
-    </Menu>
+
+    location.pathname !== '/' ?
+      <div className={navbar ? 'ui menu fixed active' : 'ui menu fixed'}>
+        <Container>
+          <Link to="/spaces" className="navbar-item">
+            <Menu.Item
+              className="home"
+              name='Explore'
+            />
+          </Link>
+          {isLoggedIn &&
+            <Link to="/spaces/new" className="navbar-item">
+              <Menu.Item
+                className="home"
+                name='Add New Space'
+              />
+            </Link>}
+          <Menu.Item position='right'>
+            {!isLoggedIn ?
+              <>
+                <Button as={Link} to='/login'>
+                  Log In
+                </Button>
+                <Button as={Link} to='/register' style={{ marginLeft: '0.5em' }}>
+                  Sign Up
+                </Button>
+              </>
+              :
+              <>
+                <Button as="" onClick={handleLogout}>
+                  Log Out
+                </Button>
+                <Link to={`/profile/${getUserId()}`} className="navbar-item">
+                  <i className="big user circle icon"></i>
+                </Link>
+              </>}
+          </Menu.Item>
+        </Container>
+      </div>
+
+      : null
   )
 }
 

@@ -1,15 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap');
 @import '_slick.scss';
 @import '_slickTheme.scss';
 
 .slider-container {
   margin: 40px 0 0 20px;
+  width: 1000px;
+  h4 {
+    border-radius: 5px;
+  }
 }
 
 .featured-list {
-  font-family: 'Comfortaa', cursive;
-  font-size: 40px;
-  margin-left: 60px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 30px;
+  padding: 2px 2px 2px 18px;
+  background-color: #faac98;
+  color: white;
 }
 
 .welcome-container {
@@ -39,7 +46,7 @@ h6{
   font-family: 'Comfortaa', cursive;
 }
 
-.img-wrapper{
+.img-wrapper {
   transition: .3s ease-in-out
 }
 
@@ -69,7 +76,7 @@ h6{
   }
 }
 
-.tag-wrapper{
+.tag-wrapper {
   height: 300px;
   display: flex;
   align-items: space-around;
@@ -118,3 +125,15 @@ h6{
     }
   }
 }
+
+// @media screen and (max-width 1050px)
+
+
+// @media only screen and (max-width: 880px) {
+//   .showpage-main-content {
+//     flex-direction: column;
+//   }
+//   .showpage-interactions-panel {
+//     width: 440px;
+//   }
+// }

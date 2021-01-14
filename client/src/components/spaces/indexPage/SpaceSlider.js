@@ -5,6 +5,8 @@ import SimpleReactLightbox from 'simple-react-lightbox'
 // import { SRLWrapper } from 'simple-react-lightbox'
 import { getAllSpaces } from '../../lib/api'
 
+
+
 function SpaceSlider() {
 
   const [spaces, setSpaces] = React.useState(null)
@@ -27,10 +29,10 @@ function SpaceSlider() {
   const settings = {
     dots: true,
     infinite: true,
-    slidesToShow: 4,
+    slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 4000,
     pauseOnHover: true
   }
 
@@ -58,7 +60,7 @@ function SpaceSlider() {
   return (
     <SimpleReactLightbox>
       <div className="ui segment slider-container">
-        <h2 className="featured-list">Featured</h2>
+        <h4 className="featured-list">Featured</h4>
         {spaces ?
           // <SRLWrapper options={options}>
           <Slider {...settings}>
@@ -68,6 +70,11 @@ function SpaceSlider() {
                   <Link to={`/spaces/${space._id}`}>
                     <img key={space._id} className="images" src={space.image} />
                   </Link>
+                </div>
+                <div className="homepage-card-name">
+                  <div>
+                    {/* {space.name} */}
+                  </div>
                 </div>
               </div>
             ))}
