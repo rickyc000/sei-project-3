@@ -1,0 +1,15 @@
+.ui.menu:first-child{
+  margin: 0;
+  background: transparent
+}
+
+.ui.menu>.container, .ui.menu>.grid {
+  border-width: 0px;
+    
+}
+
+.ui.fixed.menu.active {
+
+  background-color: #000000;
+  background: linear-gradient(315deg,  #FA9A81 0%, #6795C1 94%);
+}
