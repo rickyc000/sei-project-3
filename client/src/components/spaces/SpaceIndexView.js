@@ -9,6 +9,7 @@ import WelcomeBanner from './WelcomeBanner'
 // import { getUserProfile, headers } from '../lib/api'
 import SpaceIndexMap from './indexPage/SpaceIndexMap'
 import { isAuthenticated } from '../lib/auth'
+import { Container } from 'semantic-ui-react'
 
 
 function SpaceIndexView() {
@@ -19,33 +20,34 @@ function SpaceIndexView() {
     <>
 
 
+      <Container>
+        <WelcomeBanner />
       
-      <WelcomeBanner />
-      
-      <div className="homepage-slider-section">
-        <SpaceSlider />
-      </div>
+        <div className="homepage-slider-section">
+          <SpaceSlider />
+        </div>
       
    
-      {/* { isLoggedIn &&
+        {/* { isLoggedIn &&
         <ReccomendedSlider 
         />
       } */}
       
 
 
-      <h4 className="featured-list">Browse Map</h4>
-      <div className="mapbox-wrapper">
-        <SpaceIndexMap />
-      </div>
-      { isLoggedIn &&
+        <h4 className="featured-list">Browse Map</h4>
+        <div className="mapbox-wrapper">
+          <SpaceIndexMap />
+        </div>
+        { isLoggedIn &&
         <ReccomendedSlider
         />
-      }
-      <SpaceIndexCategories />
-      <footer className="footer">
-        <p>&copy; CitySpace </p>
-      </footer>
+        }
+        <SpaceIndexCategories />
+        <footer className="footer">
+          <p>&copy; CitySpace </p>
+        </footer>
+      </Container>
 
 
     </>
