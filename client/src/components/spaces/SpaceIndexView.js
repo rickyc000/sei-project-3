@@ -27,10 +27,10 @@ function SpaceIndexView() {
       </div>
       
    
-      { isLoggedIn &&
+      {/* { isLoggedIn &&
         <ReccomendedSlider 
         />
-      }
+      } */}
       
 
 

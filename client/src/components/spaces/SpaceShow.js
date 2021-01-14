@@ -28,7 +28,8 @@ function SpaceShow() {
   })
 
   const [space, setSpace] = React.useState([])
-  const [refreshData, setRefreshData] = React.useState(true)
+  const [newComment, setNewComment] = React.useState() 
+  // const [refreshData, setRefreshData] = React.useState(true)
   const { id } = useParams()
 
   const isLoggedIn = isAuthenticated()
@@ -47,14 +48,14 @@ function SpaceShow() {
         }
         if (data.comments) {
           setComments(data.comments)
-          setRefreshData(false)
         }
       } catch (err) {
         console.log(err)
       }
     }
-    if (refreshData) getSpace()
-  }, [id, refreshData])
+    getSpace()
+  }, [id, newComment])
+
 
   const history = useHistory()
 
@@ -93,14 +94,19 @@ function SpaceShow() {
     //* Add to the users favourites
   }
 
+  // const [comments, setComments] = React.useState(null)
+  console.log('NEW COMMENT', newComment)
+  console.log(comments)
 
 
+
+  // Add Comment Data 
   // Add Comment Data 
   const handleAddComment = async event => {
     event.preventDefault()
     try {
       await addComment(id, formdata)
-      setRefreshData(true)
+      setNewComment({ id, formdata })
       setFormdata({ text: '' })
       console.log('Add Comment')
     } catch (err) {
@@ -112,11 +118,12 @@ function SpaceShow() {
     try {
       const commentId = event.target.name
       await deleteComment(id, commentId)
-      setRefreshData(true)
+      // setRefreshData(true)
     } catch (err) {
       console.log(err)
     }
   }
+
 
 
   //Delete Space
