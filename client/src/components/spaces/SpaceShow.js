@@ -180,7 +180,7 @@ function SpaceShow() {
                   </div>
                   {photoTab ?
                     <div className="ui bottom attached segment active tab">
-                      <img src={space.image} className="ui large rounded image"></img>
+                      <img src={space.image} className="showpage-card-image"></img>
                     </div>
                     :
                     <div className="ui bottom attached segment active tab">
@@ -214,6 +214,9 @@ function SpaceShow() {
                       </Link>
                     </div>
                   </div>
+                  <Header as='h4' dividing>
+                    <span className="tags-header-showpage"></span>
+                  </Header>
                   {space.tags ?
                     <div className="showpage-tags-wrapper">
                       {space.tags.map(tag => (
@@ -294,13 +297,15 @@ function SpaceShow() {
                     </>
                   </div>
                   {isOwner(space.owner ? space.owner._id : '') &&
-                <div className="buttons">
-                  <Button onClick={handleDelete} >Delete Space</Button>
-                  <Button as={Link} to={`/spaces/${id}/edit`} style={{ marginLeft: '0.5em' }}>
+                  <div className="buttons">
+                    <Button onClick={handleDelete} >Delete Space</Button>
+                    <Button as={Link} to={`/spaces/${id}/edit`} style={{ marginLeft: '0.5em' }}>
                 Edit Space
-                  </Button>
-                </div>
+                    </Button>
+                  </div>
                   }
+            
+                 
                 </div>
               </div>
             </div>

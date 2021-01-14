@@ -69,19 +69,14 @@
 // }
 
 .tags{
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  flex-wrap: wrap;
-  // align-items: left;
-  width: calc(25% - 20px);
-  // margin-bottom: 30px;
-  flex-direction: column;
-  // padding: 2px;
 }
 .profile-tag{
   margin: 5px;
 }
-
 // Tab Bit:
 
 
