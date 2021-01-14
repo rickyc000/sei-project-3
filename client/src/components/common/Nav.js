@@ -5,12 +5,14 @@ import { getUserProfile, headers } from '../lib/api'
 import { isAuthenticated, logout, getUserId } from '../lib/auth'
 import {
   Button,
-  Container,
+  // Container,
   Menu
 } from 'semantic-ui-react'
 
 
 function Nav() {
+
+  
 
   const [profile, setProfile] = React.useState({})
   const [navbar,setNavbar] = React.useState(false)
@@ -52,67 +54,84 @@ function Nav() {
 
     
     <div className={navbar ? 'ui menu fixed active' : 'ui menu fixed'}>
-      <Container>
-        <>
-          {location.pathname !== '/' ?
-            <>
-              <Link to="/spaces" className="navbar-item">
-                <Menu.Item
-                  className="home"
-                  name='Home'
-                />
-            
-              </Link>
-              <Link to="/spaces/category/View%20All" className="navbar-item">
-                <Menu.Item
-                  className="home"
-                  name='Explore'
-                />
-              </Link>
-            </>
+      <>
+        {location.pathname === '/' ?
+          <>
+            <Menu.Item position='right'>
+              {!isLoggedIn ?
+                <>
+                  <Button as={Link} to='/login'>
+                  Log In
+                  </Button>
+                  <Button as={Link} to='/register' style={{ marginLeft: '0.5em' }}>
+                  Sign Up
+                  </Button>
+                </>
+                :
+                <>
+                  <Button as="" onClick={handleLogout}>
+                  Log Out
+                  </Button>
+                  <Link to={`/profile/${getUserId()}`} className="navbar-item">
+                    <i className="big user circle icon"></i>
+                  </Link>
+                </>}
+            </Menu.Item>
+          </>
+          :
+          <>
+            <Link to="/spaces" className="navbar-item">
+              <Menu.Item
+                className="home"
+                name='Home'
+              />
+            </Link>
+            <Link to="/spaces/category/View%20All" className="navbar-item">
+              <Menu.Item
+                className="home"
+                name='Explore'
+              />
+            </Link>
+            <Menu.Item position='right'>
+              {!isLoggedIn ?
+                <>
+                  <Button as={Link} to='/login'>
+                  Log In
+                  </Button>
+                  <Button as={Link} to='/register' style={{ marginLeft: '0.5em' }}>
+                  Sign Up
+                  </Button>
+                </>
+                :
+                <>
+                  <Button as="" onClick={handleLogout}>
+                  Log Out
+                  </Button>
+                  <Link to={`/profile/${getUserId()}`} className="navbar-item">
+                    <i className="big user circle icon"></i>
+                  </Link>
+                </>}
+            </Menu.Item>
+          </>
+        }
+      </>
+    </div>
             
      
-          // {isLoggedIn &&
-          //     <Link to="/spaces/new" className="navbar-item">
-          //       <Menu.Item
-          //         className="home"
-          //         name='Add New Space'
-          //       />
-          //     </Link>}
+  // {isLoggedIn &&
+  //     <Link to="/spaces/new" className="navbar-item">
+  //       <Menu.Item
+  //         className="home"
+  //         name='Add New Space'
+  //       />
+  //     </Link>}
          
-            :
-            null
-          }
-          {isLoggedIn &&
-              <Link to="/spaces/new" className="navbar-item">
-                <Menu.Item
-                  className="home"
-                  name='Add New Space'
-                />
-              </Link>}
-        </>
-        <Menu.Item position='right'>
-          {!isLoggedIn ?
-            <>
-              <Button as={Link} to='/login'>
-                  Log In
-              </Button>
-              <Button as={Link} to='/register' style={{ marginLeft: '0.5em' }}>
-                  Sign Up
-              </Button>
-            </>
-            :
-            <>
-              <Button as="" onClick={handleLogout}>
-                  Log Out
-              </Button>
-              <Link to={`/profile/${getUserId()}`} className="navbar-item">
-                <i className="big user circle icon"></i>
-              </Link>
-            </>}
-        </Menu.Item>
-      </Container>
-    </div>
+          
+       
+        
+     
+  
+
 
      
   )

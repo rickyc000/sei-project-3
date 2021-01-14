@@ -4,7 +4,7 @@ import useForm from '../../utils/useForm'
 import { createSpace } from '../lib/api'
 import SpaceForm from './SpaceForm'
 import { getLongLatData } from '../lib/api'
-
+import { Container } from 'semantic-ui-react'
 
 async function getLongLat(postcode) {
   const { data } = await getLongLatData(postcode)
@@ -40,26 +40,28 @@ function SpaceNew() {
   }
 
   return (
-    <section className="form-container">
-      <div className="form-box">
-        <SpaceForm
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-          formdata={formdata}
-          errors={errors}
-          buttonText="Add a new Space!"
-        />
-        <div>
-          {!errors ?
-            <div className="ui error message small">
-              <div className="header">Sorry, some information is incorrect.</div>
-            </div>
-            :
-            <p></p>
-          }
+    <Container>
+      <section className="form-container">
+        <div className="form-box">
+          <SpaceForm
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            formdata={formdata}
+            errors={errors}
+            buttonText="Add a new Space!"
+          />
+          <div>
+            {!errors ?
+              <div className="ui error message small">
+                <div className="header">Sorry, some information is incorrect.</div>
+              </div>
+              :
+              <p></p>
+            }
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </Container>
   )
 }
 

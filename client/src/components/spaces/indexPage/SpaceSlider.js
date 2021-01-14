@@ -61,7 +61,7 @@ function SpaceSlider() {
 
   return (
     <SimpleReactLightbox>
-      <div className="ui segment slider-container">
+      <div className="slider-container">
         <h4 className="featured-list">Featured</h4>
         {spaces ?
           // <SRLWrapper options={options}>

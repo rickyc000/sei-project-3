@@ -15,11 +15,11 @@ function SimilarPlacesSlider ({ space }) {
 
   const settings = {
     dots: false,
-    infinite: false,
+    infinite: true,
     slidesToShow: 3,
     slidesToScroll: 3,
-    autoplay: false,
-    autoplaySpeed: 2000,
+    autoplay: true,
+    autoplaySpeed: 8000,
     pauseOnHover: true
   }
 
@@ -44,7 +44,7 @@ function SimilarPlacesSlider ({ space }) {
   const addSimilarPlaces = () => {
     if (space.tags) {
       const filterSpaces = () => spaces.filter(item=> {
-        if (item.tags.includes(space.tags[0])) {
+        if ((item._id !== space._id) && (item.tags.includes(space.tags[0]))) {
           return similarPlaces.push(item)
         }
       })
@@ -71,7 +71,7 @@ function SimilarPlacesSlider ({ space }) {
   const filterSimilarPlaces = () => {
     // const currentChoices = [] // empty array 
     if (space.tags) {
-      for (let i = 0; i <= 5; i++) {
+      for (let i = 0; i <= similarPlaces.length; i++) {
         const randomIndex = similarPlaces[Math.floor(Math.random() * similarPlaces.length)]
         console.log(randomIndex)
         if (!filteredSimilarPlaces.includes(randomIndex) && (filteredSimilarPlaces.length < 3)){
@@ -106,11 +106,13 @@ function SimilarPlacesSlider ({ space }) {
 
   return (
     <>
-      <h2 className="featured-list">{'Similar Places'}</h2>
-      {spaces ?
-        <div className="slider-container">
+      
+      
+      <div className="ui segment slider-container">
+        <h2 className="featured-list">{'Similar Places'}</h2>
+        {spaces ?
           <Slider {...settings}>
-            {filteredSimilarPlaces.map(item => (
+            {similarPlaces.map(item => (
               <div key={item.name} className="similar-slider-tag">
                 <Link to={`/spaces/${item._id}`}>
                   <div className="card">
@@ -124,13 +126,15 @@ function SimilarPlacesSlider ({ space }) {
             ))
             }
           </Slider>
-        </div>
-        :
-        <h2 className="title has-text-centered">
+        
+          :
+          <h2 className="title has-text-centered">
           ...Loading
-        </h2>
-      }
+          </h2>
+        }
+      </div>
     </>
+    
   )
 }
 
