@@ -35,7 +35,11 @@ function SpaceIndexView() {
       } */}
 
 
+<<<<<<< HEAD
           {/* <h4 className="featured-list">Browse Map</h4> */}
+=======
+          
+>>>>>>> development
           <div className="mapbox-wrapper">
             <SpaceIndexMap />
           </div>

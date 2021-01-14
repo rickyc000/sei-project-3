@@ -23,8 +23,8 @@ function ProfileInfo({ profile, image, name }) {
             </div>
             <div className="info-container">
               <h1>{profile.firstName} {profile.lastName}</h1>
+              <p>{name} Favourite Kind of Happy Place:</p>
               <div className="profile-tags-container">
-                <p>Where {name} Happy Place:</p>
                 {profile.favouriteTags ?
                   <div>
                     <div className="tags">
