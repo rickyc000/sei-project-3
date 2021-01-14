@@ -151,154 +151,167 @@ function SpaceShow() {
 
 
   return (
-
-    <Container>
-      {space
-        ?
-        <div>
-          <div className="showpage-wrapper">
-            <div className="title-wrapper">
-              <h1>{space.name}</h1>
-            </div>
-            <div className="showpage-main-content">
-              <div className="photo-map-tabs-wrapper">
-                <div className="ui attached tabular menu">
-                  <div className={photoTab ? 'active item' : 'item'}>
-                    <div onClick={handlePhotoTab}> Photo </div>
-                  </div>
-                  <div className={photoTab ? 'item' : 'active item'}>
-                    <div onClick={handlePhotoTab}> Map </div>
-                  </div>
-                </div>
-                {photoTab ?
-                  <div className="ui bottom attached segment active tab">
-                    <img src={space.image} className="ui large rounded image"></img>
-                  </div>
-                  :
-                  <div className="ui bottom attached segment active tab">
-                    <div className="showpage-map-wrapper">
-                      <SpaceShowMap space={space} />
+    <>
+      <Container>
+        {space
+          ?
+          <div>
+            <div className="showpage-wrapper">
+              <div className="title-wrapper">
+                <h1>{space.name}</h1>
+              </div>
+              <div className="showpage-main-content">
+                <div className="photo-map-tabs-wrapper">
+                  <div className="ui attached tabular menu">
+                    <div className={photoTab ? 'active item' : 'item'}>
+                      <div onClick={handlePhotoTab}> Photo </div>
+                    </div>
+                    <div className={photoTab ? 'item' : 'active item'}>
+                      <div onClick={handlePhotoTab}> Map </div>
                     </div>
                   </div>
-                }
-                <div className="show-page-favourites ui button yellow">
-                  {!isFavourite ?
-                    <Icon
-                      name="heart outline"
-                      onClick={handleFavourite}></Icon>
+                  {photoTab ?
+                    <div className="ui bottom attached segment active tab">
+                      <img src={space.image} className="ui large rounded image"></img>
+                    </div>
                     :
-                    <Icon
-                      name="heart"
-                      onClick={handleUnFavourite}></Icon>
+                    <div className="ui bottom attached segment active tab">
+                      <div className="showpage-map-wrapper">
+                        <SpaceShowMap space={space} />
+                      </div>
+                    </div>
                   }
-                  <div>{favourites ? favourites : 0}</div>
-                </div>
-              </div>
-              <div className="showpage-info-wrapper">
-                <div className="showpage-text-wrapper">
-                  <p>{space.description}</p>
-                  <div>
-                    <Link to={space.owner ? `/users/${space.owner._id}` : ''} className="ui image label">
-                      <Icon name="user circle" />
+                  <div className="showpage-interactions-panel">
+                    <div className="show-page-favourites">
+                      {!isFavourite ?
+                        <div className="ui button" onClick={handleFavourite}>
+                          <Icon
+                            name="heart outline"
+                          ></Icon>
+                          {favourites ? favourites : 0}
+                        </div>
+                        :
+                        <div className="ui button yellow" onClick={handleUnFavourite}>
+                          <Icon
+                            name="heart"
+                          ></Icon>
+                          {favourites ? favourites : 0}
+                        </div>
+                      }
+                    </div>
+                    <div className="added-by">
+                      <Link to={space.owner ? `/users/${space.owner._id}` : ''} className="ui image label">
+                        <Icon name="user circle" />
                       Added by {space.owner ? space.owner.username : ''}
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="showpage-interactions-panel">
-              
-              {isOwner(space.owner ? space.owner._id : '') &&
-                <div className="buttons">
-                  <button onClick={handleDelete} className="button is-danger">Delete Space</button>
-                  <Link to={`/spaces/${id}/edit`} className="button is-warning">Edit Space</Link>
-                </div>
-              }
-              <div className="showpage-tags-wrapper">
-                {space.tags ?
-                  <div>
-                    {space.tags.map(tag => (
-                      <Link
-                        key={tag}
-                        to={`/spaces/category/${tag}`}>
-                        <p className="ui olive label" key={tag}>{tag}</p>
                       </Link>
-                    )
-                    )}
+                    </div>
                   </div>
-                  :
-                  ''
-                }
-              </div>
-            </div>
-            <div className="showpage-comments-wrapper">
-              <>
-                <Comment.Group>
-                  <Header as='h3' dividing>
-                    Comments
-                  </Header>
-                  {comments ? comments.map(comment => (
+                
+                  {space.tags ?
+                    <div className="showpage-tags-wrapper">
+                      {space.tags.map(tag => (
+                        <Link
+                          key={tag}
+                          to={`/spaces/category/${tag}`}>
+                          <div className="category-tag">
+                            <p className="ui olive label" key={tag}>{tag}</p>
+                          </div>
+                        </Link>
+                      )
+                      )}
+                    </div>
+                    :
+                    ''
+                  }
+                
+                </div>
+                <div className="showpage-info-wrapper">
+                  <div className="showpage-text-wrapper">
+                    <p>{space.description}</p>
+                  </div>
+                  <div className="showpage-comments-wrapper">
                     <>
-                      <Comment key={comment._id} value={comment._id}>
-                        <Comment.Avatar
-                          src={comment.owner.profileImage} />
-                        <Comment.Content>
-                          <Comment.Author as='a'>{comment.owner.name}</Comment.Author>
-                          <Comment.Metadata>
-                            <div>Today at 5:42PM</div>
-                          </Comment.Metadata>
-                          <Comment.Text>{comment.text}</Comment.Text>
-                          {isOwner(comment.owner ? comment.owner._id : '') &&
+                      <Comment.Group>
+                        <Header as='h3' dividing>
+                    Comments
+                        </Header>
+                        {comments ? comments.map(comment => (
+                          <>
+                            <Comment key={comment._id} value={comment._id}>
+                              <Comment.Avatar
+                                src={comment.owner.profileImage} />
+                              <Comment.Content>
+                                <Comment.Author as='a'>{comment.owner.name}</Comment.Author>
+                                <Comment.Metadata>
+                                  <div>Today at 5:42PM</div>
+                                </Comment.Metadata>
+                                <Comment.Text>{comment.text}</Comment.Text>
+                                {isOwner(comment.owner ? comment.owner._id : '') &&
                             <Comment.Actions>
                               <Comment.Action onClick={handleDeleteComment} name={comment._id}>Delete</Comment.Action>
                             </Comment.Actions>
-                          }
-                        </Comment.Content>
-                      </Comment>
+                                }
+                              </Comment.Content>
+                            </Comment>
+                          </>
+                        ))
+                          :
+                          <Comment>
+                            <Comment.Avatar image="" />
+                            <Comment.Content>
+                              <Comment.Author as='a'>Matt</Comment.Author>
+                              <Comment.Metadata>
+                                <div>Today at 5:42PM</div>
+                              </Comment.Metadata>
+                              <Comment.Text>How artistic!</Comment.Text>
+                              <Comment.Actions>
+                                <Comment.Action>Reply</Comment.Action>
+                              </Comment.Actions>
+                            </Comment.Content>
+                          </Comment>
+                        }
+                        {isLoggedIn && <Form reply>
+                          <Form.TextArea
+                            onChange={handleChange}
+                            name="text"
+                            value={formdata.text}
+                            placeholder="Add to the Conversation" />
+                          <Button
+                            content='Add Reply'
+                            position='right'
+                            onClick={handleAddComment}
+                            labelPosition='left' icon='edit' primary />
+                        </Form>
+                        }
+                      </Comment.Group>
                     </>
-                  ))
-                    :
-                    <Comment>
-                      <Comment.Avatar image="" />
-                      <Comment.Content>
-                        <Comment.Author as='a'>Matt</Comment.Author>
-                        <Comment.Metadata>
-                          <div>Today at 5:42PM</div>
-                        </Comment.Metadata>
-                        <Comment.Text>How artistic!</Comment.Text>
-                        <Comment.Actions>
-                          <Comment.Action>Reply</Comment.Action>
-                        </Comment.Actions>
-                      </Comment.Content>
-                    </Comment>
+                  </div>
+                  {isOwner(space.owner ? space.owner._id : '') &&
+                <div className="buttons">
+                  <Button onClick={handleDelete} >Delete Space</Button>
+                  <Button as={Link} to={`/spaces/${id}/edit`} style={{ marginLeft: '0.5em' }}>
+                Edit Space
+                  </Button>
+                </div>
                   }
-                  {isLoggedIn && <Form reply>
-                    <Form.TextArea
-                      onChange={handleChange}
-                      name="text"
-                      value={formdata.text}
-                      placeholder="Max 300 Characters" />
-                    <Button
-                      content='Add Reply'
-                      onClick={handleAddComment}
-                      labelPosition='left' icon='edit' primary />
-                  </Form>
-                  }
-                </Comment.Group>
-              </>
+                </div>
+              </div>
+            </div>
+            <div className="similar-places-slider-container">
+              <SimilarPlacesSlider
+                space={space}
+              />
             </div>
           </div>
-          <div>
-            <SimilarPlacesSlider
-              space={space}
-            />
-          </div>
-        </div>
-        :
-        <p>Error Loading</p>
-      }
+          :
+          <p>Error Loading</p>
+        }
 
-    </Container >
+      </Container >
+      <footer className="footer">
+        <p>&copy; CitySpace </p>
+      </footer>
+    </>
   )
 }
 

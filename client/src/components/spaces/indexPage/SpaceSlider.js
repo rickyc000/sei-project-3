@@ -55,6 +55,8 @@ function SpaceSlider() {
   //   }
   // }
 
+  
+
   return (
     <SimpleReactLightbox>
       <div className="ui segment slider-container">

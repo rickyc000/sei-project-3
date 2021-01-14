@@ -8,17 +8,17 @@ import { getAllSpaces } from '../lib/api'
 function SimilarPlacesSlider ({ space }) {
 
   // const { id } = useParams()
-  const recommendedSpaces = []
+  
   const [spaces, setSpaces] = React.useState([])
   // const [hasError, setHasError] = React.useState(false)
   
 
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true,
+    slidesToScroll: 3,
+    autoplay: false,
     autoplaySpeed: 2000,
     pauseOnHover: true
   }
@@ -38,26 +38,68 @@ function SimilarPlacesSlider ({ space }) {
 
 
 
+  const similarPlaces = []
+  const filteredSimilarPlaces = []
 
-  const addRecommendedSpaces = () => {
+  const addSimilarPlaces = () => {
     if (space.tags) {
-      for (let i = 0; i <= spaces.length; i++) {
-        const filterSpaces = () => spaces.filter(item=> {
-          if (item.tags.includes(space.tags[0])) {
-            return recommendedSpaces.push(item)
-          }
-        })
-        filterSpaces()
-      }
+      const filterSpaces = () => spaces.filter(item=> {
+        if (item.tags.includes(space.tags[0])) {
+          return similarPlaces.push(item)
+        }
+      })
+      filterSpaces()
     }
   }
-  addRecommendedSpaces()
+  
+  addSimilarPlaces()
+  // console.log(similarPlaces)
+
+  // const filterSimilarPlaces = () => {
+  //   if (space.tags) {
+  //     for (let i = 0; i <= 3; i++) {
+  //       const randomIndex = Math.floor(Math.random() * similarPlaces.length)
+  //       filteredSimilarPlaces.push(similarPlaces[randomIndex])
+  //     }
+  //   }
+  // }
+  
+  // filterSimilarPlaces()
+
+  // const [filteredSimilarPlaces, setFilteredSimilarPlaces] = React.useState([])
+
+  const filterSimilarPlaces = () => {
+    // const currentChoices = [] // empty array 
+    if (space.tags) {
+      for (let i = 0; i <= 5; i++) {
+        const randomIndex = similarPlaces[Math.floor(Math.random() * similarPlaces.length)]
+        console.log(randomIndex)
+        if (!filteredSimilarPlaces.includes(randomIndex) && (filteredSimilarPlaces.length < 3)){
+          filteredSimilarPlaces.push(randomIndex)
+        }
+      }
+    
+    }
+  }
+
+  filterSimilarPlaces()
+
+  // console.log(filteredSimilarPlaces)
+
+
+  // console.log(filteredSimilarPlaces)
+
+
 
   // console.log(recommendedSpaces)
 
   // filter spaces
   // if the spaces have favourite tags 
 
+  // const randomIndex = Math.floor(Math.random() * 8)
+
+  // const randomIndex = Math.floor(Math.random() * recommendedSpaces.length)
+      
   
 
 
@@ -66,25 +108,23 @@ function SimilarPlacesSlider ({ space }) {
     <>
       <h2 className="featured-list">{'Similar Places'}</h2>
       {spaces ?
-      // <SRLWrapper options={options}>
-        <Slider {...settings}>
-          {recommendedSpaces.map(item => (
-            <Link to={`/spaces/${item._id}`} key={item._id}>
-              <div>
-                <div className="card">
-                  <div className="ui-card img-wrapper">
-                
-                
-                    <img key={item._id} className="images" src={item.image} />
-                
+        <div className="slider-container">
+          <Slider {...settings}>
+            {filteredSimilarPlaces.map(item => (
+              <div key={item.name} className="similar-slider-tag">
+                <Link to={`/spaces/${item._id}`}>
+                  <div className="card">
+                    <div className="ui-card img-wrapper">
+                      <img className="images" src={item.image} />
+                    </div>     
                   </div>
-            
-                </div>
+                </Link>
               </div>
-            </Link>
-          ))}
-        </Slider>
-      // </SRLWrapper>
+          
+            ))
+            }
+          </Slider>
+        </div>
         :
         <h2 className="title has-text-centered">
           ...Loading

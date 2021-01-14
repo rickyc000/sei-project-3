@@ -15,12 +15,15 @@
 .showpage-main-content {
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .photo-map-tabs-wrapper, .showpage-info-wrapper {
   flex-grow: 1;
   width: 440px;
+}
+
+.showpage-info-wrapper {
+  margin: 10px;
 }
 
 .photo-map-tabs-wrapper {
@@ -29,31 +32,62 @@
 
 .showpage-text-wrapper {
   padding: 20px;
+  margin-top: 20px;
 }
 
-.show-page-favourites.ui.button.yellow{
+.show-page-favourites {
   display: flex;
   width: max-content;
 }
 
-.showpage-interactions-panel {
-  display: flex;
-  width: 880px;
+.added-by{
+ margin-left: auto;
+ order: 2;
 }
 
+.showpage-interactions-panel {
+  display: flex;
+  width: 440px;
+}
+
+.showpage-comments-wrapper {
+  width: 400px;
+  margin: 10px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
 
 .showpage-tags-wrapper {
   display: flex;
-  // justify-content: flex-start;
-  // align-items: flex-end;
-  // max-width: 880px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
+
+.category-tag {
+  margin: 10px;
+}
+
+.slider-container {
+  margin: 10px;
+}
+
 
 @media only screen and (max-width: 880px) {
   .showpage-main-content {
     flex-direction: column;
   }
+
+  h1 {
+    text-align: Center;
+  }
   .showpage-interactions-panel {
     width: 440px;
+  }
+  .photo-map-tabs-wrapper, .showpage-info-wrapper {
+    margin: 0px;
   }
 }
