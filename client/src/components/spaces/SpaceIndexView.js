@@ -11,25 +11,24 @@ import { isAuthenticated } from '../lib/auth'
 
 
 function SpaceIndexView() {
-
-
   const isLoggedIn = isAuthenticated()
 
-
-
-  
   return (
 
     <>
-      <SpaceSlider />
-   
-      { isLoggedIn &&
-        <ReccomendedSlider 
-        />
-      }
+      <div className="homepage-slider-section">
+        <SpaceSlider />
+      </div>
+
+
+      <h4 className="featured-list">Browse Map</h4>
       <div className="mapbox-wrapper">
         <SpaceIndexMap />
       </div>
+      { isLoggedIn &&
+        <ReccomendedSlider
+        />
+      }
       <SpaceIndexCategories />
       <footer className="footer">
         <p>&copy; CitySpace </p>
@@ -39,6 +38,6 @@ function SpaceIndexView() {
     </>
   )
 
-  
+
 }
 export default SpaceIndexView

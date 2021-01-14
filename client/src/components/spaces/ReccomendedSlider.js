@@ -14,7 +14,7 @@ function RecommendedSlider () {
   const settings = {
     dots: true,
     infinite: true,
-    slidesToShow: 4,
+    slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
@@ -72,7 +72,7 @@ function RecommendedSlider () {
 
   return (
     <>
-      <h2 className="featured-list">{`Recommended for ${profile.username}`}</h2>
+      <h2 className="featured-list">{`Recommended For ${profile.username}`}</h2>
       <div className="user-tags">
         {profile.favouriteTags ?
           profile.favouriteTags.map(categoryTag => (
