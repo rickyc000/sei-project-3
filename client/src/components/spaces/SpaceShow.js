@@ -285,13 +285,13 @@ function SpaceShow() {
                   </Form>
                   }
                 </Comment.Group>
-                {isLoggedIn &&
-                  <SimilarPlacesSlider
-                    space={space}
-                  />
-                }
               </>
             </div>
+          </div>
+          <div>
+            <SimilarPlacesSlider
+              space={space}
+            />
           </div>
         </div>
         :
