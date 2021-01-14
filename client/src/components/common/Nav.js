@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useHistory, useLocation } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import { getUserProfile, headers } from '../lib/api'
 import { isAuthenticated, logout, getUserId } from '../lib/auth'
@@ -21,7 +21,7 @@ function Nav() {
 
   window.addEventListener('scroll', changeBackground)
 
-  const location = useLocation()
+  // const location = useLocation()
 
   const isLoggedIn = isAuthenticated()
 
@@ -50,9 +50,10 @@ function Nav() {
 
   return (
 
-    location.pathname !== '/' ?
+  // location.pathname !== '/' ?
+    <div className="navbar-issue">
       <div className={navbar ? 'ui menu fixed active' : 'ui menu fixed'}>
-        <Container>
+        <Container className="navbar-issue">
           <Link to="/spaces" className="navbar-item">
             <Menu.Item
               className="home"
@@ -88,8 +89,9 @@ function Nav() {
           </Menu.Item>
         </Container>
       </div>
+    </div>
 
-      : null
+  // : null
   )
 }
 
