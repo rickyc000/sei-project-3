@@ -3,26 +3,11 @@
 @import '_slick.scss';
 @import '_slickTheme.scss';
 
-.slider-container {
-  margin: 40px 0 0 20px;
-  width: 1000px;
-  h4 {
-    border-radius: 5px;
-  }
-}
-
-.featured-list {
-  font-family: 'Quicksand', sans-serif;
-  font-size: 30px;
-  padding: 2px 2px 2px 18px;
-  background-color: #faac98;
-  color: white;
-}
+//* WELCOME, NAME SECTION
 
 .welcome-container {
   display: flex;
   justify-content: center;
-  //margin: 20px;
   padding: 50px;
   background-image: url('../assets/welcome-banner.jpeg');
   background-size: cover;
@@ -35,12 +20,93 @@
   color: white;
 }
 
-.tag-wrapper{
+//* MAIN HOMEPAGE WRAPPER (FEAT, MAP, RECOMMENDED, CATEGORIES SECTIONS)
+
+.homepage-main-content-wrapper {
   display: flex;
-  overflow-x: hidden;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-h6{
+//* FEATURED TITLE BARS IN PINK / WHITE
+
+.featured-list {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 30px;
+  padding: 2px 2px 2px 18px;
+  background-color: #faac98;
+  color: white;
+  border-radius: 5px;
+}
+
+//* FEATURED SECTION
+//* BROWSE MAP SECTION
+//* RECOMMENDED SECTION
+//* CATEGORIES SECTION
+
+.homepage-slider-section,
+.mapbox-wrapper
+.homepage-recommended-section
+.homepage-categories-section
+  {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+//* FEATURED SUB-SECTION
+//* BROWSE MAP SUB-SECTION
+//* RECOMMENDED SUB-SECTION
+//* CATEGORIES SUB-SECTION
+
+.slider-container,
+.map-container,
+.homepage-categories-container,
+.homepage-user-recommended-wrapper
+  {
+  width: 1000px;
+}
+
+.map-container {
+  display: flex;
+  justify-content: center;
+}
+
+
+//* FEATURED
+
+
+//* MAP SECTION
+
+.map-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 380px;
+  div {
+    border-radius: 5px;
+  }
+}
+
+
+//* RECOMMENDED
+
+.homepage-user-recommended-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+//* CATEGORIES SECTION
+
+.homepage-categories-container {
+  display: flex;
+  flex-direction: column;
+}
+
+h6 {
   margin-top: 10px;
   margin-left: 25px;
   font-size: 20px;
@@ -109,7 +175,7 @@ h6{
 .categories-wrapper{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  // justify-content: space-between;
   margin-left: 10px;
   width: 90%;
   .column{
@@ -126,15 +192,3 @@ h6{
     }
   }
 }
-
-// @media screen and (max-width 1050px)
-
-
-// @media only screen and (max-width: 880px) {
-//   .showpage-main-content {
-//     flex-direction: column;
-//   }
-//   .showpage-interactions-panel {
-//     width: 440px;
-//   }
-// }

@@ -19,30 +19,32 @@ function SpaceIndexView() {
     <>
 
 
-      
+
       <WelcomeBanner />
-      
-      <div className="homepage-slider-section">
-        <SpaceSlider />
-      </div>
-      
-   
-      {/* { isLoggedIn &&
-        <ReccomendedSlider 
-        />
-      } */}
-      
+
+      <div className="homepage-main-content-wrapper">
+
+        <div className="homepage-slider-section">
+          <SpaceSlider />
+        </div>
 
 
-      <h4 className="featured-list">Browse Map</h4>
-      <div className="mapbox-wrapper">
-        <SpaceIndexMap />
+        <div className="mapbox-wrapper">
+          <SpaceIndexMap />
+        </div>
+
+
+        {isLoggedIn &&
+          <ReccomendedSlider
+          />
+        }
+
+
+        <SpaceIndexCategories />
+
       </div>
-      { isLoggedIn &&
-        <ReccomendedSlider
-        />
-      }
-      <SpaceIndexCategories />
+
+
       <footer className="footer">
         <p>&copy; CitySpace </p>
       </footer>
