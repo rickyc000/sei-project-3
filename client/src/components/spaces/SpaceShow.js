@@ -2,7 +2,7 @@ import React from 'react'
 import { getSingleSpace, addToFavourites, removeFromFavourites, deleteSpace, addComment, deleteComment } from '../lib/api'
 import SpaceShowMap from './SpaceShowMap'
 import { isOwner, getUserId, isAuthenticated } from '../lib/auth'
-// import { Menu } from 'semantic-ui-react'
+
 import { useParams, useLocation, Link, useHistory } from 'react-router-dom'
 import useForm from '../../utils/useForm'
 import SimilarPlacesSlider from './SimilarPlacesSlider'
@@ -30,7 +30,7 @@ function SpaceShow() {
   const [space, setSpace] = React.useState([])
   const [refreshData, setRefreshData] = React.useState(true)
   const { id } = useParams()
- 
+
   const isLoggedIn = isAuthenticated()
 
 
@@ -57,18 +57,18 @@ function SpaceShow() {
   }, [id, refreshData])
 
   const history = useHistory()
-  
+
   // Favourite Functions
 
   const [isFavourite, setIsFavourite] = React.useState(false)
   const [favourites, setFavourites] = React.useState(0)
 
   const [comments, setComments] = React.useState(null)
-  
- 
+
+
   console.log(comments)
-  
-  
+
+
   const handleFavourite = async event => {
     event.preventDefault()
     try {
@@ -130,7 +130,7 @@ function SpaceShow() {
       console.log(err)
     }
   }
-  
+
 
 
   const [photoTab, setPhotoTab] = React.useState(true)
@@ -157,7 +157,9 @@ function SpaceShow() {
         ?
         <div>
           <div className="showpage-wrapper">
-            <h1>{space.name}</h1>
+            <div className="title-wrapper">
+              <h1>{space.name}</h1>
+            </div>
             <div className="showpage-main-content">
               <div className="photo-map-tabs-wrapper">
                 <div className="ui attached tabular menu">
@@ -179,121 +181,123 @@ function SpaceShow() {
                     </div>
                   </div>
                 }
+                <div className="show-page-favourites ui button yellow">
+                  {!isFavourite ?
+                    <Icon
+                      name="heart outline"
+                      onClick={handleFavourite}></Icon>
+                    :
+                    <Icon
+                      name="heart"
+                      onClick={handleUnFavourite}></Icon>
+                  }
+                  <div>{favourites ? favourites : 0}</div>
+                </div>
               </div>
               <div className="showpage-info-wrapper">
                 <div className="showpage-text-wrapper">
                   <p>{space.description}</p>
                   <div>
-                    <Link to={ space.owner ? `/users/${space.owner._id}` : ''} className="ui image label">
+                    <Link to={space.owner ? `/users/${space.owner._id}` : ''} className="ui image label">
                       <Icon name="user circle" />
                       Added by {space.owner ? space.owner.username : ''}
                     </Link>
                   </div>
-
-                  <div>
-                    {space.tags ?
-                      <div>
-                        {space.tags.map(tag => (
-                          <Link
-                            key={tag}
-                            to={`/spaces/category/${tag}`}>
-                            <p className="ui olive label" key={tag}>{tag}</p>
-                          </Link>
-                        )
-                        )}
-                      </div>
-                      :
-                      ''
-                    }
-                  </div>
-              
-                 
-                  {isOwner(space.owner ? space.owner._id : '') &&
-                    <div className="buttons">
-                      <button onClick={handleDelete} className="button is-danger">Delete Space</button>
-                      <Link to={`/spaces/${id}/edit`} className="button is-warning">Edit Space</Link>
-                    </div>
-                  }
-               
-              
-                  <p className="show-page-favourites">
-                    {!isFavourite ?
-                      <Icon
-                        name="heart outline" size="big"
-                        onClick={handleFavourite}></Icon>
-                      
-                      :
-                      <Icon
-                        name="heart"
-                        size="big"
-                        onClick={handleUnFavourite}></Icon>
-                    }
-                    <p>{favourites ? favourites : 0} favourites</p>
-                  </p>
-                  
                 </div>
               </div>
             </div>
+            <div className="showpage-interactions-panel">
+              
+              {isOwner(space.owner ? space.owner._id : '') &&
+                <div className="buttons">
+                  <button onClick={handleDelete} className="button is-danger">Delete Space</button>
+                  <Link to={`/spaces/${id}/edit`} className="button is-warning">Edit Space</Link>
+                </div>
+              }
+              <div className="showpage-tags-wrapper">
+                {space.tags ?
+                  <div>
+                    {space.tags.map(tag => (
+                      <Link
+                        key={tag}
+                        to={`/spaces/category/${tag}`}>
+                        <p className="ui olive label" key={tag}>{tag}</p>
+                      </Link>
+                    )
+                    )}
+                  </div>
+                  :
+                  ''
+                }
+              </div>
+            </div>
+            <div className="showpage-comments-wrapper">
+              <>
+                <Comment.Group>
+                  <Header as='h3' dividing>
+                    Comments
+                  </Header>
+                  {comments ? comments.map(comment => (
+                    <>
+                      <Comment key={comment._id} value={comment._id}>
+                        <Comment.Avatar
+                          src={comment.owner.profileImage} />
+                        <Comment.Content>
+                          <Comment.Author as='a'>{comment.owner.name}</Comment.Author>
+                          <Comment.Metadata>
+                            <div>Today at 5:42PM</div>
+                          </Comment.Metadata>
+                          <Comment.Text>{comment.text}</Comment.Text>
+                          {isOwner(comment.owner ? comment.owner._id : '') &&
+                            <Comment.Actions>
+                              <Comment.Action onClick={handleDeleteComment} name={comment._id}>Delete</Comment.Action>
+                            </Comment.Actions>
+                          }
+                        </Comment.Content>
+                      </Comment>
+                    </>
+                  ))
+                    :
+                    <Comment>
+                      <Comment.Avatar image="" />
+                      <Comment.Content>
+                        <Comment.Author as='a'>Matt</Comment.Author>
+                        <Comment.Metadata>
+                          <div>Today at 5:42PM</div>
+                        </Comment.Metadata>
+                        <Comment.Text>How artistic!</Comment.Text>
+                        <Comment.Actions>
+                          <Comment.Action>Reply</Comment.Action>
+                        </Comment.Actions>
+                      </Comment.Content>
+                    </Comment>
+                  }
+                  {isLoggedIn && <Form reply>
+                    <Form.TextArea
+                      onChange={handleChange}
+                      name="text"
+                      value={formdata.text}
+                      placeholder="Max 300 Characters" />
+                    <Button
+                      content='Add Reply'
+                      onClick={handleAddComment}
+                      labelPosition='left' icon='edit' primary />
+                  </Form>
+                  }
+                </Comment.Group>
+              </>
+            </div>
+          </div>
+          <div>
+            <SimilarPlacesSlider
+              space={space}
+            />
           </div>
         </div>
         :
         <p>Error Loading</p>
       }
-      <>
-        <Comment.Group>
-          <Header as='h3' dividing>
-      Comments
-          </Header>
 
-          {comments ? comments.map(comment => (
-            <>
-              <Comment key={comment._id} value={comment._id}>
-
-                <Comment.Avatar src={comment.owner.profileImage} />
-                <Comment.Content>
-                  <Comment.Author as='a'>{comment.owner.name}</Comment.Author>
-                  <Comment.Metadata>
-                    <div>Today at 5:42PM</div>
-                  </Comment.Metadata>
-                  <Comment.Text>{comment.text}</Comment.Text>
-                  {isOwner(comment.owner ? comment.owner._id : '') && 
-                  <Comment.Actions>
-                    <Comment.Action onClick={handleDeleteComment} name={comment._id}>Delete</Comment.Action>
-                  </Comment.Actions>
-                  }
-                </Comment.Content>
-              </Comment>
-            </>
-          ))
-            :
-            <Comment>
-              <Comment.Avatar image="" />
-              <Comment.Content>
-                <Comment.Author as='a'>Matt</Comment.Author>
-                <Comment.Metadata>
-                  <div>Today at 5:42PM</div>
-                </Comment.Metadata>
-                <Comment.Text>How artistic!</Comment.Text>
-                <Comment.Actions>
-                  <Comment.Action>Reply</Comment.Action>
-                </Comment.Actions>
-              </Comment.Content>
-            </Comment>
-          }
- 
-          {isLoggedIn && <Form reply>
-          
-            <Form.TextArea onChange={handleChange} name="text" value={formdata.text} placeholder="Max 300 Characters"/>
-            <Button content='Add Reply' onClick={handleAddComment} labelPosition='left' icon='edit' primary />
-          </Form>
-          }
-        </Comment.Group>
-        { isLoggedIn &&
-        <SimilarPlacesSlider
-          space={space} 
-        />
-        }
-      </>
     </Container >
   )
 }

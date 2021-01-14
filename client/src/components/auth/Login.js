@@ -1,5 +1,5 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import useForm from '../../utils/useForm'
 import { loginUser } from '../lib/api'
 import { setToken } from '../lib/auth'
@@ -37,7 +37,8 @@ function Login() {
       <div className="form-box ui form error">
 
         <Form
-          onSubmit={handleSubmit}>
+          onSubmit={handleSubmit}
+          className="login-form">
 
           <Form.Field>
             <label>Email</label>
@@ -70,10 +71,13 @@ function Login() {
           }
 
 
-
-          <Button type="submit">
+          <div className="login-button">
+            <Button type="submit">
             Log In
-          </Button>
+            </Button>
+            
+          </div>
+          <p className="register-link">Dont have an account? Sign up <Link to="/register">here</Link></p>
 
         </Form>
       </div>

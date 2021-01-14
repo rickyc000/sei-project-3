@@ -67,7 +67,7 @@ function Nav() {
                 Log In
               </Button>
               <Button as={Link} to='/register' style={{ marginLeft: '0.5em' }}>
-                Register
+                Sign Up
               </Button>
             </>
             : 

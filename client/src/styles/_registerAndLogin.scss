@@ -117,3 +117,21 @@
   .checkbox-wrapper:hover{
     animation: bopping infinite .5s;
   }
+  // Login Page
+
+  .login-form {
+    width: 300px;
+  }
+
+  .login-button, .sign-up-button {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 5px;
+    margin: 5px;
+  }
+
+  .register-link {
+    text-align: Center;
+  }
