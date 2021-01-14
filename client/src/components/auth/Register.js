@@ -1,7 +1,7 @@
 import React from 'react'
 import useForm from '../../utils/useForm'
 import { registerUser } from '../lib/api'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import ImageUploadField from '../../utils/ImageUpload'
 import { Button, Form, Divider } from 'semantic-ui-react'
 
@@ -245,9 +245,12 @@ function Register() {
             value='Riverside Spot'
             onChange={handleTags}
             label='Riverside Spot' control='input' type='checkbox' />
-          <Button type="submit">
-            Register
-          </Button>
+          <div className="sign-up-button">
+            <Button type="submit">
+            Sign Up
+            </Button>
+          </div>
+          <p className="register-link">Already have an account? Login <Link to="/login">here</Link></p>
 
         </Form>
       </div>
