@@ -118,6 +118,7 @@ function SpaceShow() {
     try {
       const commentId = event.target.name
       await deleteComment(id, commentId)
+      setNewComment({ id, formdata })
       // setRefreshData(true)
     } catch (err) {
       console.log(err)
@@ -213,7 +214,6 @@ function SpaceShow() {
                       </Link>
                     </div>
                   </div>
-                
                   {space.tags ?
                     <div className="showpage-tags-wrapper">
                       {space.tags.map(tag => (
@@ -304,7 +304,7 @@ function SpaceShow() {
                 </div>
               </div>
             </div>
-            <div className="similar-places-slider-container">
+            <div className="showpage-slider-section">
               <SimilarPlacesSlider
                 space={space}
               />

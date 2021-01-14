@@ -35,6 +35,7 @@ function SpaceIndexMap() {
 
   return (
     <div className="map-container">
+      <h4 className="featured-list">Browse Map</h4>
 
       <ReactMapGL
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}

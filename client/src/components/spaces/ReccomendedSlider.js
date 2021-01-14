@@ -4,7 +4,7 @@ import Slider from 'react-slick'
 import { getAllSpaces } from '../lib/api'
 import { getUserProfile, headers } from '../lib/api'
 
-function RecommendedSlider () {
+function RecommendedSlider() {
 
   const recommendedSpaces = []
   const [spaces, setSpaces] = React.useState([])
@@ -66,50 +66,54 @@ function RecommendedSlider () {
 
   console.log(recommendedSpaces)
 
-  
-
 
 
   return (
-    <>
-      <h2 className="featured-list">{`Recommended for ${profile.firstName}`}</h2>
-      <div className="user-tags">
-        {profile.favouriteTags ?
-          profile.favouriteTags.map(categoryTag => (
-            <Link
-              key={categoryTag}
-              to={`/spaces/category/${categoryTag}`}>
-              <div
-                className="user-label-tags">{categoryTag}</div>
-            </Link>
-          ))
+    <div className="homepage-recommended-section">
+      <div className="homepage-user-recommended-wrapper">
+        <h2 className="featured-list">
+          Recommended
+          {profile.firstName ? ` for ${profile.firstName}`
+            :
+            ''}</h2>
+        <div className="user-tags">
+          {profile.favouriteTags ?
+            profile.favouriteTags.map(categoryTag => (
+              <Link
+                key={categoryTag}
+                to={`/spaces/category/${categoryTag}`}>
+                <div
+                  className="user-label-tags">{categoryTag}</div>
+              </Link>
+            ))
+            :
+            <p>...loading</p>
+          }
+        </div>
+        <div>
+
+        </div>
+        {spaces ?
+          // <SRLWrapper options={options}>
+          <Slider {...settings}>
+            {recommendedSpaces.map(space => (
+              <div className="card" key={space._id}>
+                <div className="ui-card img-wrapper">
+                  <Link to={`/spaces/${space._id}`}>
+                    <img key={space._id} className="images" src={space.image} />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </Slider>
+          // </SRLWrapper>
           :
-          <p>...loading</p>
+          <h2 className="title has-text-centered">
+            {hasError ? 'There was An Error' : '...loading '}
+          </h2>
         }
       </div>
-      <div>
-
-      </div>
-      {spaces ?
-      // <SRLWrapper options={options}>
-        <Slider {...settings}>
-          {recommendedSpaces.map(space => (
-            <div className="card" key={space._id}>
-              <div className="ui-card img-wrapper">
-                <Link to={`/spaces/${space._id}`}>
-                  <img key={space._id} className="images" src={space.image} />
-                </Link>
-              </div>
-            </div>
-          ))}
-        </Slider>
-      // </SRLWrapper>
-        :
-        <h2 className="title has-text-centered">
-          {hasError ? 'There was An Error' : '...loading '}
-        </h2>
-      }
-    </>
+    </div>
   )
 }
 

@@ -11,20 +11,24 @@
 @import '_landingPage.scss';
 @import '_navBar.scss';
 
-.map-container {
-  display: flex;
-  justify-content: center;
-  height: 380px;
-  width: 1000px;
-  // height: 500px;
-  // width: 500px;
+.container {
+  padding-top: 57px;
 }
 
-.homepage-slider-section {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
+// .map-container {
+//   display: flex;
+//   justify-content: center;
+//   height: 380px;
+//   width: 1000px;
+//   // height: 500px;
+//   // width: 500px;
+// }
+
+// .homepage-slider-section {
+//   width: 100%;
+//   display: flex;
+//   justify-content: center;
+// }
 
 
 .homepage-card-name {
@@ -78,22 +82,6 @@ img.images {
   margin-left: 20px;
 }
 
-.mapbox-wrapper {
-  // margin-top: 50px;
-  width: 100%;
-  // height: 600px;
-  display: flex;
-  justify-content: center;
-  .map-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    div{
-      // border-radius: 40px;
-      margin: 0;
-    }
-  }
-}
 
 
 

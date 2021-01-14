@@ -75,6 +75,13 @@
   margin: 10px;
 }
 
+.showpage-slider-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
 
 @media only screen and (max-width: 880px) {
   .showpage-main-content {
@@ -89,5 +96,8 @@
   }
   .photo-map-tabs-wrapper, .showpage-info-wrapper {
     margin: 0px;
+  }
+  .showpage-slider-section {
+    display: none;
   }
 }
