@@ -12,6 +12,21 @@
   margin-left: 60px;
 }
 
+.welcome-container {
+  display: flex;
+  justify-content: center;
+  //margin: 20px;
+  padding: 50px;
+  background-image: url('../assets/welcome-banner.jpeg');
+  background-size: cover;
+  background-position: center;
+}
+
+.welcome-message {
+  font-family: 'Comfortaa', cursive;
+  font-size: 50px;
+}
+
 .tag-wrapper{
   display: flex;
   overflow-x: hidden;

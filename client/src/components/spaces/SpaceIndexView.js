@@ -5,6 +5,7 @@ import React from 'react'
 import SpaceSlider from './indexPage/SpaceSlider'
 import ReccomendedSlider from './ReccomendedSlider'
 import SpaceIndexCategories from './indexPage/SpaceIndexCategories'
+import WelcomeBanner from './WelcomeBanner'
 // import { getUserProfile, headers } from '../lib/api'
 import SpaceIndexMap from './indexPage/SpaceIndexMap'
 import { isAuthenticated } from '../lib/auth'
@@ -21,6 +22,12 @@ function SpaceIndexView() {
   return (
 
     <>
+
+
+      
+      <WelcomeBanner />
+      
+
       <SpaceSlider />
    
       { isLoggedIn &&

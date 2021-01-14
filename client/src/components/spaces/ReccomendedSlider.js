@@ -72,7 +72,7 @@ function RecommendedSlider () {
 
   return (
     <>
-      <h2 className="featured-list">{`Recommended for ${profile.username}`}</h2>
+      <h2 className="featured-list">{`Recommended for ${profile.firstName}`}</h2>
       <div className="user-tags">
         {profile.favouriteTags ?
           profile.favouriteTags.map(categoryTag => (
