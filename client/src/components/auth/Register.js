@@ -3,7 +3,7 @@ import useForm from '../../utils/useForm'
 import { registerUser } from '../lib/api'
 import { useHistory , Link } from 'react-router-dom'
 import ImageUploadField from '../../utils/ImageUpload'
-import { Button, Form, Divider, Container } from 'semantic-ui-react'
+import { Button, Form, Divider } from 'semantic-ui-react'
 
 function Register() {
 
@@ -48,7 +48,7 @@ function Register() {
   }
 
   return (
-    <Container>
+    <div className="ui container fly-in">
       <section className={`form-container ${errors ? 'error-form-container ' : ''}`}>
         <div className="form-box ui form error">
           <Form
@@ -273,7 +273,7 @@ function Register() {
           </Form>
         </div>
       </section>
-    </Container>
+    </div>
   )
 }
 

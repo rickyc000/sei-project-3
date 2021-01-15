@@ -13,7 +13,6 @@ import {
   Comment,
   Form,
   Header,
-  Container,
   Icon
 } from 'semantic-ui-react'
 
@@ -160,10 +159,10 @@ function SpaceShow() {
 
   return (
     <>
-      <Container>
+      <div>
         {space
           ?
-          <div>
+          <div className="ui container slide-in">
             <div className="showpage-wrapper">
               <div className="title-wrapper">
                 <h1>{space.name}</h1>
@@ -309,7 +308,7 @@ function SpaceShow() {
                             onChange={handleChange}
                             name="text"
                             value={formdata.text}
-                            placeholder="Add to the Conversation" />
+                            placeholder="Add to the conversation" />
                           <Button
                             content='Add Reply'
                             position='right'
@@ -342,12 +341,10 @@ function SpaceShow() {
           :
           <p>Error Loading</p>
         }
-        <footer className="footer">
-          <p>&copy; CitySpace </p>
-        </footer>
-
-      </Container >
-      
+      </div>
+      <footer className="footer">
+        <p>&copy; CitySpace </p>
+      </footer>
     </>
   )
 }

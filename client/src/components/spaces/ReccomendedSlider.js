@@ -12,7 +12,7 @@ function RecommendedSlider() {
   const [profile, setProfile] = React.useState({})
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -97,10 +97,13 @@ function RecommendedSlider() {
           // <SRLWrapper options={options}>
           <Slider {...settings}>
             {recommendedSpaces.map(space => (
-              <div className="card" key={space._id}>
+              <div className="card recommended-card-wrapper" key={space._id}>
                 <div className="ui-card img-wrapper">
                   <Link to={`/spaces/${space._id}`}>
                     <img key={space._id} className="images" src={space.image} />
+                    <div className="recommended-slider-card-overlay">
+                      {space.name}
+                    </div>
                   </Link>
                 </div>
               </div>

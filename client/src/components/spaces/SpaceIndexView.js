@@ -9,7 +9,6 @@ import WelcomeBanner from './WelcomeBanner'
 // import { getUserProfile, headers } from '../lib/api'
 import SpaceIndexMap from './indexPage/SpaceIndexMap'
 import { isAuthenticated } from '../lib/auth'
-import { Container } from 'semantic-ui-react'
 
 
 function SpaceIndexView() {
@@ -20,7 +19,7 @@ function SpaceIndexView() {
     <>
 
 
-      <Container>
+      <div className="ui container fly-in">
         <WelcomeBanner />
 
         <div className="homepage-main-content-wrapper">
@@ -53,7 +52,7 @@ function SpaceIndexView() {
           <p>&copy; CitySpace </p>
         </footer>
 
-      </Container>
+      </div>
 
 
     </>
