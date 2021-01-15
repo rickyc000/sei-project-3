@@ -1,4 +1,15 @@
 
+//* ANIMATION, FLY IN REGISTER PAGE
+.fly-in{
+  animation: fly-in 1.5s ease
+}
+
+//* ANIMATION, SLIDE IN LOGIN PAGE
+.slide-in{
+  animation: slide-in 1.3s ease;
+}
+
+
 .name-errors {
   display: flex;
 }
@@ -120,10 +131,6 @@
   .checkbox-wrapper input[type='checkbox']:focus + label::before {
     box-shadow: 0 0 10px black;
     
-  }
-
-  .checkbox-wrapper:hover{
-    animation: bopping infinite .5s;
   }
   // Login Page
 

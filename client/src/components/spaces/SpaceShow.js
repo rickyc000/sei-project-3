@@ -13,7 +13,6 @@ import {
   Comment,
   Form,
   Header,
-  Container,
   Icon
 } from 'semantic-ui-react'
 
@@ -160,10 +159,10 @@ function SpaceShow() {
 
   return (
     <>
-      <Container>
+      <div>
         {space
           ?
-          <div>
+          <div className="ui container slide-in">
             <div className="showpage-wrapper">
               <div className="title-wrapper">
                 <h1>{space.name}</h1>
@@ -319,7 +318,7 @@ function SpaceShow() {
           <p>Error Loading</p>
         }
 
-      </Container >
+      </div>
       <footer className="footer">
         <p>&copy; CitySpace </p>
       </footer>

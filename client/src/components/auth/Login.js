@@ -3,7 +3,7 @@ import { useHistory, Link } from 'react-router-dom'
 import useForm from '../../utils/useForm'
 import { loginUser } from '../lib/api'
 import { setToken } from '../lib/auth'
-import { Button, Form, Container } from 'semantic-ui-react'
+import { Button, Form } from 'semantic-ui-react'
 
 
 function Login() {
@@ -33,7 +33,7 @@ function Login() {
   }
 
   return (
-    <Container>
+    <div className="ui container slide-in">
       <section className="login-form-container">
         <div className="form-box ui form error">
 
@@ -83,7 +83,7 @@ function Login() {
           </Form>
         </div>
       </section>
-    </Container>
+    </div>
   )
 }
 

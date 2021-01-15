@@ -77,3 +77,55 @@ img.images {
   font-size: 16px;
   padding: 60px 0 20px 0;
 }
+
+
+// *ANIMATIONS
+
+
+//* ANIMATION, SLIDE IN, FOR LOGIN PAGE, PROFILE AND SHOWPAGE
+.slide-in{
+  animation: slide-in 1.3s ease;
+}
+
+//USED ON FEATURE PAGE AND SIGNUP PAGE 
+
+@keyframes fly-in {
+  0% {
+    opacity: 0;
+    transform: translateY(300px);
+  }
+  60% {
+    opacity: 0;
+    transform: translateY(300px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+// // LOG IN PAGE
+// @keyframes fade-in {
+//   0% {
+//     opacity: 0;
+//   }
+//   100% {
+//     opacity: 1;
+//   }
+//}
+
+//LOG IN PAGE PROFILE AND SHOWPAGE
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  60% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}

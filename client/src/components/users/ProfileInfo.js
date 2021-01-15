@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {
-  Container,
   Icon
 } from 'semantic-ui-react'
 
@@ -16,7 +15,7 @@ function ProfileInfo({ profile, image, name }) {
 
   return (
     <>
-      <Container>
+      <div className="ui container slide-in">
         <div className="profile-container">
           <div className="profile-header">
             <div className="profile-image-container">
@@ -110,7 +109,7 @@ function ProfileInfo({ profile, image, name }) {
             }
           </div>
         </div>
-      </Container>
+      </div>
     </>
   )
 }

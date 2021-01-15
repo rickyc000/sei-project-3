@@ -3,6 +3,12 @@
 @import '_slick.scss';
 @import '_slickTheme.scss';
 
+
+//* ANIMATION, FLY IN
+.fly-in{
+  animation: fly-in 1.5s ease;
+}
+
 //* WELCOME, NAME SECTION
 
 .welcome-container {

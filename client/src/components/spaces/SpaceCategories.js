@@ -4,17 +4,19 @@ import { getAllSpaces } from '../lib/api'
 import { Icon, Container } from 'semantic-ui-react'
 import { useParams, Link } from 'react-router-dom'
 // import StackGrid from 'react-stack-grid'
-import { CSSGrid, layout, measureItems, makeResponsive } from 'react-stonecutter'
+import { CSSGrid, layout } from 'react-stonecutter'
+//measureItems, makeResponsive
+//TO MAKE GRID RESPONSIVE
 
 
 
 
 function SpaceCategoriesView() {
 
-  const Grid = makeResponsive(measureItems(CSSGrid), {
-    maxWidth: 1920,
-    minPadding: 100
-  })
+  // const Grid = makeResponsive(measureItems(CSSGrid), {
+  //   maxWidth: 1920,
+  //   minPadding: 100
+  // })
 
   const [spaces, setSpaces] = React.useState([])
   const [activeCategory, setActiveCategory] = React.useState(useParams().category)
@@ -157,13 +159,14 @@ function SpaceCategoriesView() {
 
         <div className="grid-wrapper">
           {spaces ?
-            <Grid
+            <CSSGrid
               component="div"
               columnWidth={290}
               gutterWidth={50}
               gutterHeight={50}
               layout={layout.pinterest}
               duration={800}
+              columns={3}
               easing="ease-out"
             >
               {filterSpaces(category).map((space =>
@@ -211,7 +214,7 @@ function SpaceCategoriesView() {
                   </div>
                 </div>
               ))}
-            </Grid>
+            </CSSGrid>
             :
             <div>Loading</div>
           }
