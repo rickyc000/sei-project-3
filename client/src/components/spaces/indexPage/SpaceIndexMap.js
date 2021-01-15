@@ -2,8 +2,9 @@ import React from 'react'
 import ReactMapGL, { Marker, Popup } from 'react-map-gl'
 import { getAllSpaces } from '../../lib/api'
 import { Link } from 'react-router-dom'
-import { Icon } from 'semantic-ui-react'
+// import { Icon } from 'semantic-ui-react'
 // import { getToken } from '../lib/auth'
+import CitySpaceFavicon from '../../../assets/CitySpaceFavicon.png'
 function SpaceIndexMap() {
   const [viewport, setViewport] = React.useState({
     latitude: 51.502643,
@@ -49,7 +50,11 @@ function SpaceIndexMap() {
               onMouseOver={() => setPopup(space)}
               onMouseOut={() => setPopup(null)}
             >
-              <Icon name="circle thin green" />
+              {/* <Icon name="circle thin green" /> */}
+              <img
+                src={CitySpaceFavicon}
+                alt="popup"
+                width="17px"></img>
             </span>
           </Marker>
         ))}

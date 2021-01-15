@@ -26,14 +26,17 @@ function spaceShowMap({ space }) {
           <span
             role="img"
             aria-label="map-marker"
-            onMouseOver={() => setPopup(space)}
-            onMouseOut={() => setPopup(null)}
+          // onMouseOver={() => setPopup(space)}
+          // onMouseOut={() => setPopup(null)}
           >
-            <img src={CitySpaceFavicon} />
+            <img
+              src={CitySpaceFavicon}
+              alt="popup"
+              width="27px"></img>
             {/* <Icon name="circle thin green" /> */}
-         
 
-             
+
+
           </span>
         </Marker>
       </ReactMapGL>
