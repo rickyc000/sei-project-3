@@ -3,6 +3,7 @@ import { useParams, useHistory } from 'react-router-dom'
 import { getSingleSpace, editSpace } from '../lib/api'
 import useForm from '../../utils/useForm'
 import { getLongLatData } from '../lib/api'
+import { Container } from 'semantic-ui-react'
 // import { getPostcodeData }from '../lib/api'
 
 import SpaceForm from './SpaceForm'
@@ -63,26 +64,29 @@ function SpaceEdit() {
   }
 
   return (
-    <section className="form-container">
-      <div className="form-box">
-        <SpaceForm
-          formdata={formdata}
-          errors={errors}
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-          buttonText="Edit your Space!"
-        />
-        <div>
-          {!errors ?
-            <div className="ui error message small">
-              <div className="header">Sorry, some information is incorrect.</div>
-            </div>
-            :
-            <p></p>
-          }
+    <Container>
+      <section className="new-space-form-container">
+        <h1>Edit your Space</h1>
+        <div className="form-box">
+          <SpaceForm
+            formdata={formdata}
+            errors={errors}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            buttonText="Edit your Space!"
+          />
+          <div>
+            {!errors ?
+              <div className="ui error message small">
+                <div className="header">Sorry, some information is incorrect.</div>
+              </div>
+              :
+              <p></p>
+            }
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </Container>
   )
 }
 
