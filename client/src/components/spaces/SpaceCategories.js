@@ -170,48 +170,25 @@ function SpaceCategoriesView() {
               easing="ease-out"
             >
               {filterSpaces(category).map((space =>
-                <div key={space.name} itemHeight={270} className="category-card">
+                <div key={space.name} itemHeight={270}>
                   <Link
                     to={`/spaces/${space._id}`}
                     key={space.name}>
-                    <img className="category-card-image" src={space.image} />
-                  </Link>
-                  <div className="category-card-content">
-                    <div className="ui header category-card-header">
-                      {space.name}
-                    </div>
-                    <div className="label-heart-wrapper">
-                      <Link to={`/spaces/${space._id}`}>
-                        <a value={space._id} className="point yellow">
-                          <Icon name="heart" />
-                          {space.favouritedBy.length}
-                        </a>
-                      </Link>
-                      <Link
-                        to={`/spaces/${space._id}`}
-                        key={space.name}>
-                        <div className="ui label">
-                          More info
+                    <div key={space.name} itemHeight={270} className="category-card">
+                      <img className="category-card-image" src={space.image} />
+                      <div className="category-card-content">
+                        <div className="ui header category-card-header">
+                          {space.name}
                         </div>
-                      </Link>
+                        <div className="label-heart-wrapper">
+                          <div value={space._id} className="point yellow">
+                            <Icon name="heart" />
+                            {space.favouritedBy.length}
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    {/* <div className="category-card-info"> */}
-                    {/* <div className="category-card-favourite"> */}
-                    {/* {isItAFavourite(space) ? 
-                        <button value={space._id} onClick={handleFavourite} className="ui button blue">
-                          <Icon name="heart" />
-                          {space.favouritedBy.length}                      
-                        </button>
-                        :
-                        <button value={space._id} onClick={handleUnFavourite} className="ui button yellow">
-                          <Icon name="heart outline" />
-                          {space.favouritedBy.length}
-                        
-                        </button>
-                      } */}
-                    {/* </div> */}
-                    {/* </div> */}
-                  </div>
+                  </Link>
                 </div>
               ))}
             </CSSGrid>
@@ -220,7 +197,7 @@ function SpaceCategoriesView() {
           }
         </div>
       </section >
-    </Container>
+    </Container >
   )
 }
 
