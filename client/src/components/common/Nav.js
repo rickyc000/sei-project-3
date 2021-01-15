@@ -60,16 +60,16 @@ function Nav() {
             <Menu.Item position='right'>
               {!isLoggedIn ?
                 <>
-                  <Button as={Link} to='/login'>
+                  <Button primary as={Link} to='/login' style={{ borderRadius: 5 }}>
                   Log In
                   </Button>
-                  <Button as={Link} to='/register' style={{ marginLeft: '0.5em' }}>
+                  <Button primary as={Link} to='/register' style={{ marginLeft: '0.5em' }}>
                   Sign Up
                   </Button>
                 </>
                 :
                 <>
-                  <Button as="" onClick={handleLogout}>
+                  <Button primary as="" onClick={handleLogout}>
                   Log Out
                   </Button>
                   <Link to={`/profile/${getUserId()}`} className="navbar-item">
@@ -102,16 +102,16 @@ function Nav() {
             <Menu.Item position='right'>
               {!isLoggedIn ?
                 <>
-                  <Button as={Link} to='/login'>
+                  <Button primary as={Link} to='/login'>
                   Log In
                   </Button>
-                  <Button as={Link} to='/register' style={{ marginLeft: '0.5em' }}>
+                  <Button primary as={Link} to='/register' style={{ marginLeft: '0.5em' }}>
                   Sign Up
                   </Button>
                 </>
                 :
                 <>
-                  <Button as="" onClick={handleLogout}>
+                  <Button primary as="" onClick={handleLogout}>
                   Log Out
                   </Button>
                   <Link to={`/profile/${getUserId()}`} className="navbar-item">

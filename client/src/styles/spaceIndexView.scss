@@ -13,17 +13,23 @@
 
 //* WELCOME, NAME SECTION
 
+//ANIMATION CHANGE FOR THE INDEX BANNER
+
 .welcome-container {
   display: flex;
   justify-content: center;
   padding: 150px;
   background-image: url('../assets/welcome-banner.jpeg');
+  // animation: change 5s ease-in-out infinite;
+  // background-color: #8EC5FC;
+  // background-image: linear-gradient(62deg, #cbeaf6 0%, #E0C3FC 100%);
   background-size: cover;
   background-position: center;
 }
 
-.ui.container.fly-in {
+.ui.container.fly-in.no-padding {
   width: 100%;
+  padding: 0;
 }
 
 .welcome-message {

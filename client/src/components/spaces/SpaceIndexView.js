@@ -19,7 +19,7 @@ function SpaceIndexView() {
     <>
 
 
-      <div className="ui container fly-in">
+      <div className="ui container fly-in no-padding">
         <WelcomeBanner />
 
         <div className="homepage-main-content-wrapper">

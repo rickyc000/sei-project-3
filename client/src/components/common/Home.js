@@ -9,7 +9,7 @@ function Home() {
 
   return (
     <section className="homepage">
-      <Container text className="container home-container">
+      <Container text className="container home-container fade-in">
         <div className="header">
           <h1 className="title-header">
           cityspace
@@ -22,7 +22,7 @@ function Home() {
         </h2>
         <div className="button-wrapper">
           <Link to="/spaces" className="navbar-item">
-            <Button primary size='huge' animated='fade' style={{ backgroundColor: '#e0e1e2', borderRadius: 0 }}>
+            <Button primary size='huge' animated='fade' style={{ borderRadius: 5 }}>
               <Button.Content visible>Find your happy place</Button.Content>
               <Button.Content hidden>London is waiting</Button.Content>
             </Button>
