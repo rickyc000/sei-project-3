@@ -5,13 +5,13 @@ import { getAllSpaces } from '../lib/api'
 
 
 
-function SimilarPlacesSlider ({ space }) {
+function SimilarPlacesSlider({ space }) {
 
   // const { id } = useParams()
-  
+
   const [spaces, setSpaces] = React.useState([])
   // const [hasError, setHasError] = React.useState(false)
-  
+
 
   const settings = {
     dots: false,
@@ -43,7 +43,7 @@ function SimilarPlacesSlider ({ space }) {
 
   const addSimilarPlaces = () => {
     if (space.tags) {
-      const filterSpaces = () => spaces.filter(item=> {
+      const filterSpaces = () => spaces.filter(item => {
         if ((item._id !== space._id) && (item.tags.includes(space.tags[0]))) {
           return similarPlaces.push(item)
         }
@@ -51,7 +51,7 @@ function SimilarPlacesSlider ({ space }) {
       filterSpaces()
     }
   }
-  
+
   addSimilarPlaces()
   // console.log(similarPlaces)
 
@@ -63,7 +63,7 @@ function SimilarPlacesSlider ({ space }) {
   //     }
   //   }
   // }
-  
+
   // filterSimilarPlaces()
 
   // const [filteredSimilarPlaces, setFilteredSimilarPlaces] = React.useState([])
@@ -74,11 +74,11 @@ function SimilarPlacesSlider ({ space }) {
       for (let i = 0; i <= similarPlaces.length; i++) {
         const randomIndex = similarPlaces[Math.floor(Math.random() * similarPlaces.length)]
         console.log(randomIndex)
-        if (!filteredSimilarPlaces.includes(randomIndex) && (filteredSimilarPlaces.length < 3)){
+        if (!filteredSimilarPlaces.includes(randomIndex) && (filteredSimilarPlaces.length < 3)) {
           filteredSimilarPlaces.push(randomIndex)
         }
       }
-    
+
     }
   }
 
@@ -99,42 +99,46 @@ function SimilarPlacesSlider ({ space }) {
   // const randomIndex = Math.floor(Math.random() * 8)
 
   // const randomIndex = Math.floor(Math.random() * recommendedSpaces.length)
-      
-  
+
+
 
 
 
   return (
     <>
-      
-      
+
+
       <div className="ui segment show-page-slider-container">
         <h2 className="featured-list">{'Similar Places'}</h2>
         {spaces ?
           <Slider {...settings}>
             {similarPlaces.map(item => (
-              <div key={item.name} className="similar-slider-tag">
-                <Link to={`/spaces/${item._id}`}>
-                  <div className="card">
-                    <div className="ui-card img-wrapper">
-                      <img className="images" src={item.image} />
-                    </div>     
-                  </div>
-                </Link>
+              <div key={item.name} className="showpage-similar-card-wrapper">
+                <div key={item.name} className="similar-slider-tag">
+                  <Link to={`/spaces/${item._id}`}>
+                    <div className="card">
+                      <div className="ui-card img-wrapper">
+                        <img className="images" src={item.image} />
+                        <div className="showpage-card-overlay">
+                          {item.name}
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
               </div>
-          
             ))
             }
           </Slider>
-        
+
           :
           <h2 className="title has-text-centered">
-          ...Loading
+            ...Loading
           </h2>
         }
       </div>
     </>
-    
+
   )
 }
 

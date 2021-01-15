@@ -328,7 +328,7 @@ function SpaceShow() {
                   </div>
                   }
             
-                 
+                
                 </div>
               </div>
             </div>
@@ -343,7 +343,7 @@ function SpaceShow() {
         }
       </div>
       <footer className="footer">
-        <p>&copy; CitySpace </p>
+        {/* <p>&copy; CitySpace </p> */}
       </footer>
     </>
   )

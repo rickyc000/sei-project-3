@@ -102,13 +102,15 @@
 //*CARD OVERLAY
 
 .homepage-card-wrapper,
-.recommended-card-wrapper {
+.recommended-card-wrapper,
+.showpage-similar-card-wrapper {
   position: relative;
   font-size: 20px;
 }
 
 .homepage-card-overlay,
-.recommended-slider-card-overlay {
+.recommended-slider-card-overlay,
+.showpage-card-overlay {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -133,6 +135,7 @@
 }
 
 .homepage-card-name:hover .homepage-card-overlay,
-.recommended-card-wrapper:hover .recommended-slider-card-overlay {
+.recommended-card-wrapper:hover .recommended-slider-card-overlay,
+.showpage-similar-card-wrapper:hover .showpage-card-overlay {
   opacity: 1;
 }
