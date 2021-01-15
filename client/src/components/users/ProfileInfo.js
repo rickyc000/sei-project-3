@@ -45,13 +45,13 @@ function ProfileInfo({ profile, image, name }) {
           <div className="spaces-tabs-wrapper">
             <div className="ui attached tabular menu tab-menu">
               <div className={spacesTab ? 'active item' : 'item'}>
-                <div onClick={handleSpacesTab}> Created Spaces </div>
-              </div>
-              <div className={spacesTab ? 'item' : 'active item'}>
                 <div onClick={handleSpacesTab}> Favourite Spaces </div>
               </div>
+              <div className={spacesTab ? 'item' : 'active item'}>
+                <div onClick={handleSpacesTab}> Created Spaces </div>
+              </div>
             </div>
-            {spacesTab ?
+            {!spacesTab ?
               <div className="ui bottom attached segment active tab">
                 <div>
                   {profile.createdSpaces ?

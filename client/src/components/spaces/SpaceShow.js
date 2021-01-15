@@ -190,28 +190,52 @@ function SpaceShow() {
                     </div>
                   }
                   <div className="showpage-interactions-panel">
-                    <div className="show-page-favourites">
-                      {!isFavourite ?
-                        <div className="ui button" onClick={handleFavourite}>
+                    
+                    {!isLoggedIn ?
+                      <Link to='/login'>
+                        <div className="ui button">
                           <Icon
                             name="heart outline"
                           ></Icon>
                           {favourites ? favourites : 0}
                         </div>
+                      </Link>
+                      :
+                      <div className="show-page-favourites">
+                        {!isFavourite ?
+                          <div className="ui button" onClick={handleFavourite}>
+                            <Icon
+                              name="heart outline"
+                            ></Icon>
+                            {favourites ? favourites : 0}
+                          </div>
+                          :
+                          <div className="ui button yellow" onClick={handleUnFavourite}>
+                            <Icon
+                              name="heart"
+                            ></Icon>
+                            {favourites ? favourites : 0}
+                          </div>
+                        
+                        }
+                      </div>
+                    }
+                    <div>
+                      {isLoggedIn ?
+                        <div className="added-by">
+                          <Link to={space.owner ? `/users/${space.owner._id}` : ''} className="ui image label">
+                            <Icon name="user circle" />
+                      Added by {space.owner ? space.owner.username : ''}
+                          </Link>
+                        </div>
                         :
-                        <div className="ui button yellow" onClick={handleUnFavourite}>
-                          <Icon
-                            name="heart"
-                          ></Icon>
-                          {favourites ? favourites : 0}
+                        <div className="added-by">
+                          <Link to='/login' className="ui image label">
+                            <Icon name="user circle" />
+                      Added by {space.owner ? space.owner.username : ''}
+                          </Link>
                         </div>
                       }
-                    </div>
-                    <div className="added-by">
-                      <Link to={space.owner ? `/users/${space.owner._id}` : ''} className="ui image label">
-                        <Icon name="user circle" />
-                      Added by {space.owner ? space.owner.username : ''}
-                      </Link>
                     </div>
                   </div>
                   <Header as='h4' dividing>
@@ -318,11 +342,12 @@ function SpaceShow() {
           :
           <p>Error Loading</p>
         }
+        <footer className="footer">
+          <p>&copy; CitySpace </p>
+        </footer>
 
       </Container >
-      <footer className="footer">
-        <p>&copy; CitySpace </p>
-      </footer>
+      
     </>
   )
 }

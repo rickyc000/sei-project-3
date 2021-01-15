@@ -108,7 +108,7 @@ function SimilarPlacesSlider ({ space }) {
     <>
       
       
-      <div className="ui segment slider-container">
+      <div className="ui segment show-page-slider-container">
         <h2 className="featured-list">{'Similar Places'}</h2>
         {spaces ?
           <Slider {...settings}>
