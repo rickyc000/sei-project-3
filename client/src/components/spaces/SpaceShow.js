@@ -285,7 +285,7 @@ function SpaceShow() {
                             onChange={handleChange}
                             name="text"
                             value={formdata.text}
-                            placeholder="Add to the Conversation" />
+                            placeholder="Add to the conversation" />
                           <Button
                             content='Add Reply'
                             position='right'

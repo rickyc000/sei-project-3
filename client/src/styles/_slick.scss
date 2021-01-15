@@ -98,3 +98,41 @@
 .slick-arrow.slick-hidden {
   display: none;
 }
+
+//*CARD OVERLAY
+
+.homepage-card-wrapper,
+.recommended-card-wrapper {
+  position: relative;
+  font-size: 20px;
+}
+
+.homepage-card-overlay,
+.recommended-slider-card-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 5px;
+  // bottom: 5px;
+  float: left;
+  padding: 15px;
+
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  text-align: center;
+
+  background-color: #6795C1;
+  color: white;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 20px;
+  
+  opacity: 0;
+  transition: .5s ease;
+  
+}
+
+.homepage-card-name:hover .homepage-card-overlay,
+.recommended-card-wrapper:hover .recommended-slider-card-overlay {
+  opacity: 1;
+}

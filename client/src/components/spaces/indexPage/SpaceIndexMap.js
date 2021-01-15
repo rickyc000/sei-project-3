@@ -57,7 +57,8 @@ function SpaceIndexMap() {
             <span
               role="img"
               aria-label="map-marker"
-              onClick={() => setPopup(space)}
+              onMouseOver={() => setPopup(space)}
+              onMouseOut={() => setPopup(null)}
             >
               <Icon name="circle thin green" />
             </span>

@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {
-  Container
+  Container,
+  Icon
 } from 'semantic-ui-react'
 
 function ProfileInfo({ profile, image, name }) {
@@ -18,7 +19,7 @@ function ProfileInfo({ profile, image, name }) {
       <Container>
         <div className="profile-container">
           <div className="profile-header">
-            <div className="profile-image-container"> 
+            <div className="profile-image-container">
               <img className="profile-image" src={image}></img>
             </div>
             <div className="info-container">
@@ -45,10 +46,16 @@ function ProfileInfo({ profile, image, name }) {
           <div className="spaces-tabs-wrapper">
             <div className="ui attached tabular menu tab-menu">
               <div className={spacesTab ? 'active item' : 'item'}>
-                <div onClick={handleSpacesTab}> Created Spaces </div>
+                <div onClick={handleSpacesTab}>
+                  <Icon name="add yellow" />
+                  Created Spaces
+                </div>
               </div>
               <div className={spacesTab ? 'item' : 'active item'}>
-                <div onClick={handleSpacesTab}> Favourite Spaces </div>
+                <div onClick={handleSpacesTab}>
+                  <Icon name="heart yellow"/>
+                  Favourite Spaces
+                </div>
               </div>
             </div>
             {spacesTab ?
@@ -59,16 +66,24 @@ function ProfileInfo({ profile, image, name }) {
                       {profile.createdSpaces.map(space => (
                         <div key={space._id} className="space-div">
                           <Link to={`/spaces/${space._id}`}>
-                            <img src={space.image} className="space-image"/>
+                            <img src={space.image} className="space-image" />
                           </Link>
                           {/* <p key={space._id}>{space.name}</p> */}
                         </div>
-                        
+
                       ))}
                     </div>
                     :
                     <p>{profile.firstName} hasnt created any spaces</p>
                   }
+                </div>
+                <div>
+                  <Link to="/spaces/new">
+                    <div className="profile-add-new-space">
+                      <Icon name="add" />
+                      Add New Space
+                    </div>
+                  </Link>
                 </div>
               </div>
               :
@@ -79,12 +94,12 @@ function ProfileInfo({ profile, image, name }) {
                       {profile.favouritedSpaces.map(space => (
                         <div className="space-div" key={space._id}>
                           <Link to={`/spaces/${space._id}`}>
-                            <img src={space.image} className="space-image"/>
+                            <img src={space.image} className="space-image" />
                           </Link>
                           {/* <p key={space._id}>{space.name}</p> */}
                         </div>
-                        
-                        
+
+
                       ))}
                     </div>
                     :

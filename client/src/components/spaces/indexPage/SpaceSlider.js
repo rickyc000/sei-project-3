@@ -41,7 +41,7 @@ function SpaceSlider() {
   const featuredSpaces = () => {
     if (spaces) {
       for (let i = 0; i <= spaces.length; i++) {
-        if (i === 0 || i === 5 || i === 6 || i === 7 || i === 9 
+        if (i === 0 || i === 5 || i === 6 || i === 7 || i === 9
           || i === 56 || i === 53 || i === 51 || i === 50 || i === 44
           || i === 42 || i === 41 || i === 39 || i === 38 || i === 37) {
           mySpaces.push(spaces[i])
@@ -57,7 +57,7 @@ function SpaceSlider() {
   //   }
   // }
 
-  
+
 
   return (
     <SimpleReactLightbox>
@@ -68,16 +68,19 @@ function SpaceSlider() {
           <Slider {...settings}>
             {mySpaces.map(space => (
               <div className="card" key={space._id}>
-                <div className="ui-card img-wrapper">
-                  <Link to={`/spaces/${space._id}`}>
-                    <img key={space._id} className="images" src={space.image} />
-                  </Link>
-                </div>
                 <div className="homepage-card-name">
-                  <div>
-                    {/* {space.name} */}
+                  
+                  <div className="ui-card img-wrapper">
+                    <Link to={`/spaces/${space._id}`}>
+                      <img key={space._id} className="images" src={space.image} />
+                      <div className="homepage-card-overlay">
+                        {space.name}
+                      </div>
+                    </Link>
                   </div>
+
                 </div>
+
               </div>
             ))}
           </Slider>
