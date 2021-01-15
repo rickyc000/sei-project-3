@@ -34,53 +34,60 @@ function Login() {
 
   return (
     <div className="ui container slide-in">
+      
       <section className="login-form-container">
-        <div className="form-box ui form error">
+        <div className="container-for-login">
+          <h1>cityspace</h1>
+       
+          <div className="form-box ui form error">
 
-          <Form
-            onSubmit={handleSubmit}
-            className="login-form">
+            <Form
+              onSubmit={handleSubmit}
+              className="login-form">
 
-            <Form.Field>
-              <label>Email</label>
-              <input
-                placeholder="Email"
-                onChange={handleChange}
-                name="email"
-                value={formdata.email}
-                onFocus={handleFocus}
-              />
-            </Form.Field>
+              <Form.Field>
+                <label>Email</label>
+                <input
+                  className="login-input"
+                  placeholder="Email"
+                  onChange={handleChange}
+                  name="email"
+                  value={formdata.email}
+                  onFocus={handleFocus}
+                />
+              </Form.Field>
 
-            <Form.Field>
-              <label>Password</label>
-              <input
-                type="password"
-                placeholder="Password"
-                onChange={handleChange}
-                name="password"
-                value={formdata.password}
-                onFocus={handleFocus}
-              />
-            </Form.Field>
+              <Form.Field>
+                <label>Password</label>
+                <input
+                  className="login-input"
+                  type="password"
+                  placeholder="Password"
+                  onChange={handleChange}
+                  name="password"
+                  value={formdata.password}
+                  onFocus={handleFocus}
+                />
+              </Form.Field>
 
-            {error &&
+              {error &&
           <div className="ui error message small">
             <div className="header">Incorrect Password or Email</div>
             <p>Sorry, your username or password are incorrect.</p>
           </div>
-            }
+              }
 
 
-            <div className="login-button">
-              <Button type="submit">
+              <div className="login-button">
+                <Button type="submit">
             Log In
-              </Button>
+                </Button>
             
-            </div>
-            <p className="register-link">Dont have an account? Sign up <Link to="/register">here</Link></p>
+              </div>
+              <p className="register-link">Dont have an account? Sign up <Link to="/register">here</Link></p>
 
-          </Form>
+            </Form>
+          </div>
         </div>
       </section>
     </div>
