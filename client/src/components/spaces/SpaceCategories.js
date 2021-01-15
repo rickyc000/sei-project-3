@@ -3,8 +3,18 @@ import { getAllSpaces } from '../lib/api'
 // import { getUserId } from '../lib/auth'
 import { Icon, Container } from 'semantic-ui-react'
 import { useParams, Link } from 'react-router-dom'
+// import StackGrid from 'react-stack-grid'
+import { CSSGrid, layout, measureItems, makeResponsive } from 'react-stonecutter'
+
+
+
 
 function SpaceCategoriesView() {
+
+  const Grid = makeResponsive(measureItems(CSSGrid), {
+    maxWidth: 1920,
+    minPadding: 100
+  })
 
   const [spaces, setSpaces] = React.useState([])
   const [activeCategory, setActiveCategory] = React.useState(useParams().category)
@@ -52,6 +62,16 @@ function SpaceCategoriesView() {
   ]
 
   filterSpaces(category)
+
+  const itemHeights = [
+    300, 330, 270, 250
+  ]
+  const randomHeight = () => {
+    const randomIndex = Math.floor(Math.random() * itemHeights.length)
+    return itemHeights[randomIndex]
+  }
+  console.log(randomHeight())
+
 
   // Favourites and Add Favourites
 
@@ -134,61 +154,64 @@ function SpaceCategoriesView() {
         <div className="ui divider">
         </div>
 
-        <div>
+
+        <div className="grid-wrapper">
           {spaces ?
-            <div className="category-card-wrapper ui cards">
+            <Grid
+              component="div"
+              columnWidth={290}
+              gutterWidth={50}
+              gutterHeight={50}
+              layout={layout.pinterest}
+              duration={800}
+              easing="ease-out"
+            >
               {filterSpaces(category).map((space =>
-                <div key={space.name} className="ui card category-card">
-                  <div className="image-card-wrapper">
-                    <Link
-                      to={`/spaces/${space._id}`}
-                      key={space.name}>
-                      <img className="category-card-image"src={space.image} />
-                    </Link>
-                  </div>
-                  <div className="content category-card-content">
-                    <div className="header category-card-header">
+                <div key={space.name} itemHeight={270} className="category-card">
+                  <Link
+                    to={`/spaces/${space._id}`}
+                    key={space.name}>
+                    <img className="category-card-image" src={space.image} />
+                  </Link>
+                  <div className="category-card-content">
+                    <div className="ui header category-card-header">
                       {space.name}
                     </div>
-                    <div className="category-card-info">
-                      <div className="category-card-favourite">
-                        {/* {isItAFavourite(space) ? 
-                        <button value={space._id} onClick={handleFavourite} className="ui button blue">
-
+                    <div className="label-heart-wrapper">
+                      <Link to={`/spaces/${space._id}`}>
+                        <a value={space._id} className="point yellow">
                           <Icon name="heart" />
                           {space.favouritedBy.length}
-                        
+                        </a>
+                      </Link>
+                      <Link
+                        to={`/spaces/${space._id}`}
+                        key={space.name}>
+                        <div className="ui label">
+                          More info
+                        </div>
+                      </Link>
+                    </div>
+                    {/* <div className="category-card-info"> */}
+                    {/* <div className="category-card-favourite"> */}
+                    {/* {isItAFavourite(space) ? 
+                        <button value={space._id} onClick={handleFavourite} className="ui button blue">
+                          <Icon name="heart" />
+                          {space.favouritedBy.length}                      
                         </button>
                         :
                         <button value={space._id} onClick={handleUnFavourite} className="ui button yellow">
-
                           <Icon name="heart outline" />
                           {space.favouritedBy.length}
                         
                         </button>
                       } */}
-                        <Link to={`/spaces/${space._id}`}>
-                          <a value={space._id} className="ui button yellow">
-
-                            <Icon name="heart" />
-                            {space.favouritedBy.length}
-
-                          </a>
-                        </Link>
-
-                        <Link
-                          to={`/spaces/${space._id}`}
-                          key={space.name}>
-                          <div className="ui label">
-                          More info
-                          </div>
-                        </Link>
-                      </div>
-                    </div>
+                    {/* </div> */}
+                    {/* </div> */}
                   </div>
                 </div>
               ))}
-            </div>
+            </Grid>
             :
             <div>Loading</div>
           }
