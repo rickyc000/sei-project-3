@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 @import '_slick.scss';
 @import '_slickTheme.scss';
 
@@ -14,10 +16,14 @@
 .welcome-container {
   display: flex;
   justify-content: center;
-  padding: 50px;
+  padding: 150px;
   background-image: url('../assets/welcome-banner.jpeg');
   background-size: cover;
   background-position: center;
+}
+
+.ui.container.fly-in {
+  width: 100%;
 }
 
 .welcome-message {
@@ -39,9 +45,11 @@
 
 .featured-list {
   font-family: 'Quicksand', sans-serif;
+  // font-family: 'Questrial', sans-serif;
+  // font-family: 'Hind Siliguri', sans-serif;
   font-size: 30px;
   padding: 2px 2px 2px 18px;
-  background-color: #faac98;
+  background-color: #bcdea6;
   color: white;
   border-radius: 5px;
 }
