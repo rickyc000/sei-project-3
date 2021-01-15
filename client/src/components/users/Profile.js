@@ -27,7 +27,7 @@ function Profile() {
     <>
       <ProfileInfo profile={profile}
         image={profile.profileImage}
-        name={'you find your'} />
+        name={'My'} />
     </>
   )
 }

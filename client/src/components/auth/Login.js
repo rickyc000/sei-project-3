@@ -34,7 +34,7 @@ function Login() {
 
   return (
     <Container>
-      <section className="form-container">
+      <section className="login-form-container">
         <div className="form-box ui form error">
 
           <Form

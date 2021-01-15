@@ -3,20 +3,28 @@
   display: flex;
 }
 
+.login-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // height: 60vh;
+  margin: 200px 0 0 0;
+}
+
 .form-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60vh;
-  margin: 70px 0 0 0;
+  // height: 60vh;
+  margin: 20px 0 0 0;
 }
 
 .error-form-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60vh;
-  margin: 150px 0 0 0;
+  // height: 60vh;
+  margin: 40px 0 0 0;
 }
 
 .image-field {

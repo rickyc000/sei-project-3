@@ -109,6 +109,7 @@ export default [
     description: 'A lovely and tranquil place to take a break. Walk along the canals and spot the all the different canal boats',
     image: 'https://offloadmedia.feverup.com/secretldn.com/wp-content/uploads/2020/02/18075556/little-venice.jpg',
     location: { longitude: -0.180200, latitude: 51.522990 },
+    tags: ['Lively', 'Riverside Spot'],
   },
   {
     name: 'Kyoto Garden, Holland Park',
@@ -206,7 +207,7 @@ export default [
     description: 'Kenwood Ladies Pond is a natural bathing pond and one of Londons best open air swimming spots. Come here for a bit of peace and quiet and to leave feeling refreshed and energised.',
     image: 'https://i.guim.co.uk/img/media/87ab092b2a602692ef406d2a13c7ba7156070bbc/0_0_2236_1897/master/2236.jpg?width=700&quality=85&auto=format&fit=max&s=cbf3cf3eb9ab759a1bd6a568361a3b23',
     location: { longitude: -0.149772, latitude: 51.559302 },
-    tags: ['Spots & Leisure', 'Mother Nature', 'Peace & Quiet', 'Sports & Leisure'],
+    tags: ['Sports & Leisure', 'Mother Nature', 'Peace & Quiet' ],
   },
   {
     name: 'Richmond Park',

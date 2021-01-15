@@ -92,6 +92,13 @@ function Nav() {
                 name='Explore'
               />
             </Link>
+            {isLoggedIn &&
+      <Link to="/spaces/new" className="navbar-item">
+        <Menu.Item
+          className="home"
+          name='Add New Space'
+        />
+      </Link>}
             <Menu.Item position='right'>
               {!isLoggedIn ?
                 <>
@@ -117,14 +124,7 @@ function Nav() {
       </>
     </div>
             
-     
-  // {isLoggedIn &&
-  //     <Link to="/spaces/new" className="navbar-item">
-  //       <Menu.Item
-  //         className="home"
-  //         name='Add New Space'
-  //       />
-  //     </Link>}
+  
          
           
        
