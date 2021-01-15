@@ -40,8 +40,9 @@ function SpaceNew() {
   }
 
   return (
-    <Container>
-      <section className="form-container">
+    <Container className="new-container">
+      <section className="new-space-form-container">
+        <h1>Add a Space</h1>
         <div className="form-box">
           <SpaceForm
             handleChange={handleChange}
@@ -51,12 +52,10 @@ function SpaceNew() {
             buttonText="Add a new Space!"
           />
           <div>
-            {!errors ?
+            {!errors &&
               <div className="ui error message small">
                 <div className="header">Sorry, some information is incorrect.</div>
               </div>
-              :
-              <p></p>
             }
           </div>
         </div>

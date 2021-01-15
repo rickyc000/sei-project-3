@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactMapGL, { Marker } from 'react-map-gl'
-import { Icon } from 'semantic-ui-react'
+//import { Icon } from 'semantic-ui-react'
+//import { Input } from 'semantic-ui-react'
+import CitySpaceFavicon from '../../assets/CitySpaceFavicon.png'
 
 function spaceShowMap({ space }) {
   return (
@@ -18,14 +20,20 @@ function spaceShowMap({ space }) {
       >
         <Marker
           key={space._id}
-          latitude={space.location ? space.location.latitude : 51.533451}
-          longitude={space.location ? space.location.longitude : 51.533451}
+          latitude={Number(space.location.latitude)}
+          longitude={Number(space.location.longitude)}
         >
           <span
             role="img"
             aria-label="map-marker"
+            onMouseOver={() => setPopup(space)}
+            onMouseOut={() => setPopup(null)}
           >
-            <Icon name="circle thin green" />
+            <img src={CitySpaceFavicon} />
+            {/* <Icon name="circle thin green" /> */}
+         
+
+             
           </span>
         </Marker>
       </ReactMapGL>

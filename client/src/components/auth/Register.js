@@ -49,7 +49,8 @@ function Register() {
 
   return (
     <div className="ui container fly-in">
-      <section className={`form-container ${errors ? 'error-form-container ' : ''}`}>
+      <section className={`register-form-container ${errors ? 'register-error-form-container ' : ''}`}>
+        <h1>Sign Up</h1>
         <div className="form-box ui form error">
           <Form
             onSubmit={handleSubmit}>

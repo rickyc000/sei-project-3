@@ -4,39 +4,29 @@ import { getAllSpaces } from '../../lib/api'
 import { Link } from 'react-router-dom'
 import { Icon } from 'semantic-ui-react'
 // import { getToken } from '../lib/auth'
-
-
 function SpaceIndexMap() {
   const [viewport, setViewport] = React.useState({
     latitude: 51.502643,
     longitude: -0.07497,
     zoom: 10
   })
-
   const [spaces, setSpaces] = React.useState([])
   const [popup, setPopup] = React.useState(null)
   // const token = getToken()
-
   React.useEffect(() => {
     const getSpaces = async () => {
       try {
         const { data } = await getAllSpaces()
         setSpaces(data)
-
       } catch (err) {
         console.log(err)
       }
     }
     getSpaces()
   }, [])
-
-
-
-
   return (
     <div className="map-container">
       <h4 className="featured-list">Browse Map</h4>
-
       <ReactMapGL
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
         height="100%"
@@ -46,7 +36,6 @@ function SpaceIndexMap() {
         {...viewport}
         onClick={() => setPopup(null)}
         onViewportChange={(viewport) => setViewport(viewport)}
-        
       >
         {spaces.map(space => (
           <Marker
@@ -87,9 +76,6 @@ function SpaceIndexMap() {
         <div>Link here</div>
       </Link> */}
     </div >
-
-
   )
 }
-
 export default SpaceIndexMap

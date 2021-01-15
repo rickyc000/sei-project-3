@@ -49,7 +49,8 @@ function SpaceIndexView() {
         </div>
 
         <footer className="footer">
-          <p>&copy; CitySpace </p>
+          <p>&copy; CitySpace</p>
+          <p>2020 </p>
         </footer>
 
       </div>

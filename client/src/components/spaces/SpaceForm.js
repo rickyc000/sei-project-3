@@ -36,7 +36,6 @@ function SpaceForm({ formdata, handleChange, handleSubmit, buttonText = 'Submit'
             value={formdata.description}
           />
         </div>
-
       </div>
       <div className="field">
         <label className="label">Image URL</label>
