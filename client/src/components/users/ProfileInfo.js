@@ -1,5 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+import { getUserId } from '../lib/auth'
 import {
   Icon
 } from 'semantic-ui-react'
@@ -12,6 +13,8 @@ function ProfileInfo({ profile, image, name }) {
     console.log('photo tab')
   }
 
+  const location = useLocation()
+  const id = getUserId()
 
   return (
     <>
@@ -23,7 +26,7 @@ function ProfileInfo({ profile, image, name }) {
             </div>
             <div className="info-container">
               <h1>{profile.firstName} {profile.lastName}</h1>
-              <p>{name} Favourite Kind of Happy Place:</p>
+              <p>{name} Happy Place:</p>
               <div className="profile-tags-container">
                 {profile.favouriteTags ?
                   <div>
@@ -76,14 +79,18 @@ function ProfileInfo({ profile, image, name }) {
                     <p>{profile.firstName} hasnt created any spaces</p>
                   }
                 </div>
-                <div>
-                  <Link to="/spaces/new">
-                    <div className="profile-add-new-space">
-                      <Icon name="add" />
+                {location.pathname === `/profile/${id}` ? 
+                  <div>
+                    <Link to="/spaces/new">
+                      <div className="profile-add-new-space">
+                        <Icon name="add" />
                       Add New Space
-                    </div>
-                  </Link>
-                </div>
+                      </div>
+                    </Link>
+                  </div>
+                  :
+                  null
+                }
               </div>
               :
               <div className="ui bottom attached segment active tab">
@@ -105,6 +112,18 @@ function ProfileInfo({ profile, image, name }) {
                     <p>{profile.firstName} hasnt favourited any spaces</p>
                   }
                 </div>
+                {location.pathname === `/profile/${id}` ? 
+                  <div>
+                    <Link to="/spaces/category/View%20All">
+                      <div className="profile-add-new-space">
+                        <Icon name="heart" />
+                      Explore More Spaces
+                      </div>
+                    </Link>
+                  </div>
+                  :
+                  null
+                }
               </div>
             }
           </div>

@@ -28,7 +28,7 @@ function UserProfile() {
     <>
       <ProfileInfo profile={profile}
         image={'https://cdn1.vectorstock.com/i/1000x1000/38/05/male-face-avatar-logo-template-pictograph-vector-11333805.jpg'}
-        name={`${profile.firstName}s`}
+        name={`Where ${profile.firstName} finds their`}
       />
     </>
   )
