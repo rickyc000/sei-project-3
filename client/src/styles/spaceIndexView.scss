@@ -14,10 +14,14 @@
 .welcome-container {
   display: flex;
   justify-content: center;
-  padding: 50px;
+  padding: 150px;
   background-image: url('../assets/welcome-banner.jpeg');
   background-size: cover;
   background-position: center;
+}
+
+.ui.container.fly-in {
+  width: 100%;
 }
 
 .welcome-message {
