@@ -17,7 +17,7 @@
     "mongoose-unique-validator": "^2.0.3",
     "react-images": "^1.1.7",
     "react-images-viewer": "^1.6.2",
-    "react-map-gl": "^6.0.3",
+    "react-map-gl": "5.0.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.2",
     "react-slick": "^0.27.13",
