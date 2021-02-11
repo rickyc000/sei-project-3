@@ -90,5 +90,5 @@ async function seedDatabase() {
     console.log('🤖 Goodbye')
   }
 }
-
+// Update
 seedDatabase()
