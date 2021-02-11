@@ -26,7 +26,7 @@ const citySpaceSchema = new mongoose.Schema({
   location: { type: Object, required: true },
   owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true  },
   comments: [commentSchema],
-  favouritedBy: [{ type: mongoose.Schema.ObjectId, ref: 'User', required: true  }], // * Literally just an array of the user ids now
+  favouritedBy: [{ type: mongoose.Schema.ObjectId, ref: 'User', required: true }], // * Literally just an array of the user ids now
   tags: [{ type: String, required: false }],
 })
 
