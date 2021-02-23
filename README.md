@@ -6,7 +6,7 @@
 ## Project Brief
 For the third project as part of GA's Software Engineering Immersive course I worked in a group of four.
 
-The objective here was to build our first full-stack applicaation, using an Express API to serve our data from a Mongo database and consuming the API with a separate React-built frontend.
+The objective here was to build our first full-stack application, using an Express API to serve our data from a Mongo database and consuming the API with a separate React-built frontend.
 
 Our aim was to build a complete product with multiple relationships, CRUD functionality on multiple models and finished with a visually impressive design.
 
@@ -199,6 +199,12 @@ Many components featured on CitySpace are taken from Semantic UI React.
 
 
 ## Reflection
+
+### Key Learnings:
+
+* **MERN app structure:** Building, planning and deploying a full-stack MERN application gave me a deeper understanding of the structure of this kind of web application. I'm now able to use this project as a valuable tool for referencing each section with knowledge of how each part interacts with each other.
+
+* **Sprint planning:** Clearly defining what we wanted to achieve within a set timeframe was essential for working in a group of 4 and gave us an insight into how the way in which some companies structure their time.
 
 ### Challenges
 
