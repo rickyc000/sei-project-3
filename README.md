@@ -57,7 +57,7 @@ CitySpace is a platform for discovering and sharing unique and interesting locat
 
 At a time when many of us aren't able to socialise indoors, CitySpace offers ideas of new places to checkout. Explore a range of 'spaces' based on what interests you, whether you're looking for stunning architecture, somewhere lively or perhaps just a bit of peace and quiet.
 
-Once you've created a profile, you can save your favourites spaces, comment on existing spaces and even add your own.
+Once you've created a profile, you can save your favourite spaces, comment on existing spaces and even add your own.
 
 ### Landing Page / Homepage
 
