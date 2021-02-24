@@ -55,7 +55,7 @@ password: pass
 
 CitySpace is a platform for discovering and sharing unique and interesting locations in and around London.
 
-At a time when many of us aren't able to socialise indoors, CitySpace offers ideas of new places to checkout. Explore a range of 'spaces' based on what interests you, whether you're looking for stunning architecture, somewhere lively or perhaps just a bit of peace and quiet.
+At a time when many of us aren't able to socialise indoors, CitySpace offers ideas of new places to check out. Explore a range of 'spaces' based on what interests you, whether you're looking for stunning architecture, somewhere lively or perhaps just a bit of peace and quiet.
 
 Once you've created a profile, you can save your favourite spaces, comment on existing spaces and even add your own.
 
